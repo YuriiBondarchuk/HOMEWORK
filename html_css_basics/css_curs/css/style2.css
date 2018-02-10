@@ -1,0 +1,49 @@
+.conteiner{
+    width: 1000 px;
+    margin: 0 auto;
+    padding: 1px;
+    background-color: white;
+}
+.header, .navigation, .footer {
+    margin: 20px;
+    padding:10px;
+}
+.content{
+    padding: 20px;
+}
+.header{
+    height: 50px;
+    text-align: right;
+    font-style: italic;
+    background-color:  #BCBE97;
+
+}
+.footer{
+    height:40px;
+    text-align: center;
+    background-color: #F2F2F2;
+}
+.contact-form{
+    width: 700px;
+    padding: 10px;
+    margin: 0 auto;
+    border: 2px solid #444
+}
+.navigation{
+    border-top: 10px solid #EDEDED;
+    border-bottom: 10px solid #EDEDED;
+}
+body{
+    background-color: #E5E5E5;
+}
+.floower{
+    float: left;
+
+}
+img{
+    height: 50px;
+    margin-left: 50px;
+}
+h4{
+    color: #403E3F;
+}

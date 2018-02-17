@@ -5,7 +5,8 @@ require_once __DIR__.'/core/helper.php';
 require_once __DIR__.'/core/template.php';
 require_once __DIR__.'/core/router.php';
 
+
 dispatch($_SERVER['REQUEST_URI'],$config['controllersPath'],$config['baseUrl']);
 echo "<br>";
 
-//var_dump($_SERVER['REQUEST_URI']);
+

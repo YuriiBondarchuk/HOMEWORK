@@ -7,8 +7,8 @@ function config ($key, $default = null){
     return array_key_exists($key,$config)? $config[$key]:$default;
 }
 
-function toUrl ($url){
 
+function toUrl ($url){
     return config ('baseUrl').'/'.trim($url,'/');
 }
 function getUniqueFileName ($dir, $fileExt){
@@ -20,8 +20,10 @@ function getUniqueFileName ($dir, $fileExt){
 
     return $name;
 }
+
 function redirect ($url, $status = 301){
- //var_dump($url);
-    header("Location: {$url}", $status);
+ // var_dump($url);
+
+header ("Location: {$url}", $status);
     exit;
 }

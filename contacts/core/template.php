@@ -5,7 +5,7 @@ function render ($template,array $variables=[]) {
 
         $viewsPath = config('viewsPath');
 
-        extract($variables);
+        extract ($variables);
 
         require_once "{$viewsPath}/{$template}.php";
 }

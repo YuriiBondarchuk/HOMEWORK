@@ -4,7 +4,15 @@ function dispatch($url,$controllersPath,$baseUrl = null) {
         $url = substr($url,strlen($baseUrl));
     }
 
+       $getParamsStart = stripos($url, '?');
+    if ($getParamsStart !== false) {
+        $url = substr($url, 0, $getParamsStart);
+    }
+
     $part = explode('/',trim($url,'/'));
+//    $part = isGuest() ? prepareGuestParts($part) : prepareUserParts($part);
+
+
 
     $controller="{$controllersPath}/{$part[0]}.php";
     if (!file_exists($controller)){

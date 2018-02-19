@@ -1,5 +1,6 @@
 body {
     background-color: #f1f1f9;
+
 }
 
 h1 {
@@ -26,7 +27,36 @@ p {
     color: #0069cc;
     font-style: oblique;
 }
+ul {
+    list-style-type: circle;
+    margin-left: 500px;
+    font-size: 20px;
+    font-weight: 800;
+    }
 
+li {
+    /* width: 50px; */
+    height: 50px;
+}
+/* i.fa-delete {
+    background: url(../../files/icons/file.ico) no-repeat;
+    width: 50px;
+    height: 50px;
+} */
+a {
+margin: 0 20px;
+}
+
+li.fa-file {
+    padding-left: 60px;
+background-position: left;
+background: url(../../files/icons/file.ico) no-repeat;
+}
+li.fa-fold {
+    padding-left: 60px;
+background-position: left;
+background: url(../../files/icons/fold.ico) no-repeat;
+}
 table {
     /* border: 2px solid red; */
     background-color: white;

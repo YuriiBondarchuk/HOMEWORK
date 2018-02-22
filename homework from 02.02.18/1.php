@@ -37,7 +37,6 @@ function outputFile ($filen ) {
     else {
 
         $file_outp = dirSort($dir_other);
-
     }
 
     return $file_outp;

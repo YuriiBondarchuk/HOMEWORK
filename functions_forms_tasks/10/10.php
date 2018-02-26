@@ -6,16 +6,34 @@
  * Time: 20:08
  */
 $str = $_POST['text'];
-$arr = explode(" ",$str);
-$arrsort = array_count_values($arr);
-$count = 0;
-//var_dump($arrsort);
-foreach ( $arrsort as $key => $value) {
-    if($value == 1) {
-        echo " Унікальне слово :   $key <br> ";
-        $count++;
+
+$arr = explode(" ",trim($str," "));
+
+if (!empty(uniqueName($arr))){
+    echo "Уникальные слова : <br>";
+    foreach (uniqueName($arr) as $value) {
+        echo "<< <b>$value</b> >> <br>";
     }
+
 }
-if($count == 0){
-    echo "В даному тексті унікальні слова відсутні";
+else {
+    echo "Уныкальных слов нет !";
+}
+
+
+function uniqueName ($arr) {
+    $unigue = [];
+
+    foreach ($arr as $value){
+        $count = 0;
+        foreach ($arr as $item) {
+            if ($value==$item){
+                $count++;            }
+        }
+
+        if ($count==1){
+            $unigue [] = $value;
+        }
+    }
+    return $unigue;
 }

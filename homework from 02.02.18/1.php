@@ -2,9 +2,9 @@
 //var_dump($_POST);
 //$url =__URI;
 if ($_POST){
-    fileDownload ();
+    fileUpload ();
 }
-function fileDownload ()
+function fileUpload ()
 {
 
     $dir_img = __DIR__.'/img/';

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Function POW</title>
+</head>
+<body>
+    <!-- Напишіть рекурсивну функцію pow (x, n), яка повертає x в ступені n. Інакше кажучи, примножує x на себе n разів і повертає результат.
+    pow(2,2); 2*2 = 4;
+    pow(2, 5); 2*2*2*2*2 = 32; -->
+
+<script type="text/javascript">
+    var x= prompt ("Введите число которое необходимо возвести в степень: ",2);
+    var n = prompt ("Введите степень числа: " , 3)
+    alert ( pow(x, n) );
+    function pow (x,n)
+    {
+        if (n!=1){
+            return  x * pow(x,n-1);
+        }
+        else {
+            return x;
+        }
+
+    }
+
+</script>
+
+</body>
+</html>

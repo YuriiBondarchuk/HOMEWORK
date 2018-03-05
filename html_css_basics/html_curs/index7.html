@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>FORMS and TABLE</title>
+</head>
+
+<body>
+    <h3>Создание формы с использованием таблици</h3>
+    <form action="" method="post" enctype="multipart/form-data">
+        <table >
+            <tr>
+                <td><label for="name">Your name :</label></td>
+                <td><input type="text" name="name" /></td>
+            </tr>
+            <tr>
+                <td><label for="email">Email :</label></td>
+                <td><input type="email" name="email" /></td>
+            </tr>
+            <tr>
+                <td><label for="phone">Phone :</label></td>
+                <td><input type="text" name="phone" /></td>
+            </tr>
+            <tr>
+                <td><label for="messege">Messege</label></td>
+                <td> <textarea name="mesage"></textarea></td>
+            </tr>
+            <tr>
+                <td>Gender:</td>
+                <td><input type="radio" name="gender" value="female"/>Female
+                    <input type="radio" name="gender" value="male"checked/>Male
+                </td>
+            </tr>
+            <tr>
+                <td>Application For:</td>
+                <td><input type="checkbox" name="game" />Game
+                    <input type="checkbox" name="work"/>Work
+                </td>
+            </tr>
+            <tr>
+                <td>Your country :</td>
+                <td>
+                    <select>
+                        <option value="0" selected>Selected your country</option>
+                        <option value="Ukr">Ukraine</option>
+                        <option value="Bra">Brazil</option>
+                        <option value="Can">Canada</option>
+                        <option value="Ital" disabled>Italia</option>
+                    </select>
+
+                </td>
+            </tr>
+            <tr>
+                <td>Your resume download:</td>
+                <td><input type="file" name="resume" multiple></td>
+            </tr>
+            <tr>
+                <input type="hidden" name="data" value="17/01/18">
+                <td colspan="2"><input type="submit" value="Отправить"></td>
+            </tr>
+
+
+
+
+        </table>
+    </form>
+</body>
+
+</html>

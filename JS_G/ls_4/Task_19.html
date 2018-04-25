@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Task_19</title>
+</head>
+<body id="body">
+    <header style="width : 200px; height: : 200px; display: = block">
+        <h2>Перезвоните мне </h2>
+        <button type="button" name="button"  id="btn">Обратный звонок</button>
+
+
+
+
+
+    <script type="text/javascript">
+
+
+
+        function newDiw (){
+event.stopPropagation();
+            // console.log(event.target.tagName);
+            var newdiv = document.createElement("div");
+            newdiv.setAttribute("id", "div_id");
+            newdiv.innerHTML='<input type="text" onclick="event.stopPropagation();" id="input" placeholder="Insert you phone" name="text"><button type="button"  id="btn2" name="button">Yes !</button>';
+
+            document.body.children[0].appendChild(newdiv);
+            btn.removeEventListener('click',newDiw);
+            btn2.addEventListener('click',newData);
+event.stopPropagation();
+
+// onclick = "newData()"
+        }
+        btn.addEventListener('click',newDiw);
+
+
+        function newData(){
+            var phone = document.getElementById('input');
+            if (phone.value=="") {
+                    console.log("Поле пустое");
+
+return event.stopPropagation();
+            }
+            else  {
+                console.log(phone.value);
+
+                var del = document.getElementById('div_id');
+                del.parentNode.removeChild(del);
+
+                return event.stopPropagation();
+
+            }
+
+        }
+        body.addEventListener('click',delData);
+function delData(){
+    console.log('body');
+
+    var del = document.getElementById('div_id');
+    del.parentNode.removeChild(del);
+
+
+
+}
+    </script>
+
+    </header>
+</body>
+</html>

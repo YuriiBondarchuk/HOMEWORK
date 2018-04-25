@@ -1,0 +1,14 @@
+ul li {
+    position: relative;
+    list-style-type: none;
+}
+
+ul li::before {
+    content: ' ';
+position: absolute;
+border-left: 0.4em solid transparent;
+border-right: 0.4em solid transparent;
+border-bottom: 0.7em solid red;
+margin: 0.15em -1em;
+
+}

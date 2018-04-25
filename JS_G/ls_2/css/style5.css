@@ -1,0 +1,40 @@
+.card {
+    width: 200px;
+    height: 200px;
+    position: relative;
+    left: 500px;
+    top: 100px;
+}
+
+.Front {
+    background-color: red;
+    transform: rotateY(0deg);
+}
+
+.Back {
+    background-color: blue;
+    transform: rotateY(180deg);
+}
+
+.Front, .Back {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    backface-visibility: hidden;
+    transition: transform 0.5s;
+}
+
+.ef_hover:hover .Front {
+    transform: rotateY(180deg)
+}
+
+.ef_hover:hover .Back {
+    transform: rotateY(0deg);
+}
+
+span {
+    color: white;
+    position: relative;
+    left: 80px;
+    top: 40%;
+}

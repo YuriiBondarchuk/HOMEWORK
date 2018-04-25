@@ -1,0 +1,39 @@
+<!-- 12. (функции/строки)
+function toCamelCase(){}
+
+console.log(toCamelCase("background-color")); // 'backgroundColor';
+console.log(toCamelCase("list-style-image")); // 'listStyleImage';
+console.log(toCamelCase("-webkit-transition")); // 'WebkitTransition';
+<!DOCTYPE html> -->
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Task_12</title>
+</head>
+
+<body>
+
+    <script type="text/javascript">
+        function toCamelCase(str) {
+            var strnew = "";
+            for (var i = 0; i < str.length; i++) {
+                if (str[i] == '-') {
+                    ++i;
+                    strnew = strnew.concat(str[i].toUpperCase());
+                } else {
+                    strnew = strnew.concat(str[i]);
+                }
+            }
+            return strnew;
+        }
+        console.log(toCamelCase("background-color")); // 'backgroundColor';
+        console.log(toCamelCase("list-style-image")); // 'listStyleImage';
+        console.log(toCamelCase("-webkit-transition")); // 'WebkitTransition';
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,51 @@
+
+div p:first-child  {
+    font-weight: bold;
+}
+b {
+    font-weight: normal;
+}
+div p:last-child {
+    font-style: oblique;
+
+}
+i {
+    font-style: normal;
+}
+
+
+.smile {
+    width: 100px;
+    height: 100px;
+    background: #ffeb3b;
+    border-radius: 50px;
+}
+
+.eye {
+    width: 10px;
+    height: 10px;
+    background: black;
+    border-radius: 50px;
+}
+
+.eye-left {
+    position: relative;
+    top: 30%;
+    left: 25%;
+}
+
+.eye-right {
+    position: relative;
+    top: 20%;
+    left: 60%;
+}
+
+.mouth {
+    background: black;
+    width: 50px;
+    height: 7px;
+    position: relative;
+    left: 23%;
+    top: 45%;
+    border-radius: 100%;
+}

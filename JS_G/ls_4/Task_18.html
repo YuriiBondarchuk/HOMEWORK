@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Task_18</title>
+</head>
+
+<body>
+
+    <form class="" name="my" action="index.html" id="form" method="post">
+        <label for="check">У меня есть образование</label>
+        <input type="checkbox" id="input" name="input"><br>
+
+
+
+    </form>
+
+    <script type="text/javascript">
+        function newInput() {
+
+            if (input.checked) {
+                var newinput = document.createElement("INPUT");
+                newinput.setAttribute("type", "name");
+                newinput.setAttribute("id", "in");
+                newinput.setAttribute("placeholder", "You Education");
+                document.forms.my.appendChild(newinput);
+
+            } else {
+                var del = document.getElementById('in');
+                del.parentNode.removeChild(del);
+            }
+        }
+
+        input.addEventListener('click', newInput);
+    </script>
+
+</body>
+
+</html>

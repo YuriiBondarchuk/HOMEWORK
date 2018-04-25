@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Task_13</title>
+</head>
+
+<body>
+    <script type="text/javascript">
+        var names, total, sorted;
+        var users = [{
+                name: "Alex",
+                cash: 43
+            },
+            {
+                name: "John",
+                cash: 274
+            },
+            {
+                name: "Carl",
+                cash: 82
+            },
+            {
+                name: "Bill",
+                cash: 14
+            }
+        ];
+
+        /* some magic */
+
+
+
+        names = [];
+        for (var key in users) {
+            names[key] = users[key].name;
+        }
+        total = 0;
+        for (var key in users) {
+            total = total + users[key].cash
+        }
+        console.log(names); // ["Alex", "John", "Carl", "Bill"]
+        console.log(total); // 413
+
+
+        function sortedO(sortedA, sortedB) {
+            return sortedA.cash - sortedB.cash;
+        }
+        sorted = [];
+        for (var key in users) {
+            sorted[key] = users[key];
+
+        }
+        sorted.sort(sortedO);
+        console.log(sorted); // [{name:"Bill",cash:14},{name:"Alex",cash:43},{name:"Carl",cash:82},{name:"John",cash:274}]
+
+        console.log(users); // [{name:"Alex",cash:43},{name:"John",cash:274},{name:"Carl",cash:82},{name:"Bill",cash:14}]
+
+
+    </script>
+</body>
+
+</html>

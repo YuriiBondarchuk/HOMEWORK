@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Task_9</title>
+</head>
+<body>
+    <!--
+
+9. (цепные вызовы)
+Напишите цепочку вызовов, которая превращает одну строку в другую:
+"Some time ago I was here"  =>"Yesterday I was here and there"
+"10, 20, 30, 40" => "10; 20; 30; 40"
+
+  -->
+  <script type="text/javascript">
+        var str = "Some time ago I was here";
+        var snum = "10, 20, 30, 40";
+        var to_str =str
+            .replace("ago","Yesterday")
+            .concat(" and there")
+            .substr(10);
+
+            var to_snum = snum
+                .replace(",",";")
+                .replace(",",";")
+                .replace(",",";");
+            console.log(to_str);
+            console.log(to_snum);
+
+  </script>
+
+</body>
+</html>

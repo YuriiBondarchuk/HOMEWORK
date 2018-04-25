@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Task_15</title>
+</head>
+
+<body>
+    <script type="text/javascript">
+        function hexToRGB(hex) {
+            var rgb = [];
+            var str = hex.substring(1);
+            if (str.length !== 6) {
+                return console.log("null");
+            } else {
+
+                for (var i = 0; i < str.length; i = i + 2) {
+
+                    rgb.push(parseInt(str.substr(i, 2), 16));
+                }
+
+
+                return console.log(rgb);
+            }
+
+        }
+
+        hexToRGB ("#ff00FF");
+
+        
+        rgb = [255, 0, 255];
+
+        function RGBtohex(rgb) {
+            var hex = '';
+            for (var i = 0; i < rgb.length; i++) {
+                if (rgb[i] == 0) {
+                    hex = hex.concat(rgb[i].toString(16)).concat("0");
+                } else {
+                    hex = hex.concat(rgb[i].toString(16));
+                }
+            }
+            return console.log(hex);
+        }
+
+        RGBtohex(rgb);
+    </script>
+</body>
+
+</html>

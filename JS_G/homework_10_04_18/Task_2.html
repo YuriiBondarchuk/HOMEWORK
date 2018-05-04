@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Task_2</title>
+</head>
+<body>
+    <button type="button" id="elem" name="button" style= "margin-left: 600px;
+    margin-top: 200px;">
+     <script>
+
+     var i=getCookie('click_count'); elem.innerText = "Кликов: " + i;
+
+     function getCookie(name) {
+
+     var list = document.cookie.split('; ');
+     var match = list.find(function (item) {
+         var pair = item.split('=');
+         return pair[0] === name;
+         });
+     var count= match.split('=')
+
+     return count[1];
+     }
+     </script>
+
+
+ </button>
+
+
+<script type="text/javascript">
+
+function even1(){
+i++;
+
+elem.innerText = "Кликов: " + i;
+setCookie(i);
+}
+elem.addEventListener("click", even1);
+
+function setCookie (value){
+    var date = new Date();
+     date.setDate(date.getDate()+1);
+    var expires = date.toUTCString();
+    var cookie={click_count:value,path:"/", expires:expires};
+    var stCookie='';
+    for (var key in cookie) {
+        if (cookie.hasOwnProperty(key)) {
+            stCookie += key+'='+cookie[key] +';';
+
+        }
+    }
+
+return document.cookie = stCookie;
+
+}
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Task_1</title>
+</head>
+
+<body>
+    <form class="" name="form" id="form" action="" method="post">
+        <label for="input"> Search</label><br>
+        <input type="options" name="teg1" value="" id="teg1" style="width:200px">
+        <br>
+        <select class="" name="select" style="width:206px">
+
+</select>
+    </form>
+    <script type="text/javascript">
+        var params = {
+            action: 'opensearch',
+            origin: '*',
+            format: 'json',
+            search: ''
+        };
+
+        function event(char) {
+            var apiUrl = 'https://en.wikipedia.org/w/api.php';
+            var http = new XMLHttpRequest();
+            http.open('POST', apiUrl);
+
+            if (document.form.teg1.value === '') {
+                params['search'] = '' + char.key;
+
+            } else {
+                params['search'] += char.key;
+
+            }
+            var body = Object.keys(params)
+                .map(function(prop) {
+                    return prop + '=' + params[prop];
+                })
+                .join('&');
+            console.log('body: ', body);
+            http.send(body);
+
+            http.addEventListener('readystatechange', function() {
+
+                if (this.readyState == 4) {
+                    if (this.status == 200) {
+                        // success callback
+
+                        var objSearch = JSON.parse(this.responseText)
+                        console.log(objSearch);
+                    }
+                    if (document.form.teg1.value != '') {
+                        while (form.select.options.length != 0) {
+                            form.select.options.remove(form.select.options.length - 1);
+                        }
+                        form.select.size = objSearch[1].length + 1;
+                        for (var i = 0; i <= objSearch[1].length; i++) {
+                            var option = document.createElement('option');
+                            option.text = objSearch[1][i];
+                            option.value = objSearch[3][i];
+                            option.setAttribute('onclick', "window.open(value, '_blank')");
+                            form.select.options.add(option);
+                        }
+                    } else {
+                        while (form.select.options.length != 0) {
+                            form.select.options.remove(form.select.options.length - 1);
+                        }
+                    }
+                }
+            });
+        };
+
+        teg1.addEventListener('keydown', event);
+    </script>
+
+</body>
+
+</html>

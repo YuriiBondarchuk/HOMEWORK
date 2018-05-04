@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Task_2</title>
+</head>
+
+<body>
+    <form name="form">
+        <label for="1">Andy: </label>
+        <select class="" id="1" name="select" style="margin-left: 10px">
+        <option value="1">Aple</option>
+        <option value="2">Orange</option>
+        <option value="3">Carrot</option>
+        <option value="4">Chery</option>
+        </select>
+        <br>
+
+        <label for="2">Harry: </label>
+        <select class="" id="2" name="select" style="margin-left: 8px">
+        <option value="1" >Aple</option>
+        <option value="2" >Orange</option>
+        <option value="3">Carrot</option>
+        <option value="4">Chery</option>
+        </select>
+        <br>
+
+        <label for="3">Tom : </label>
+        <select class="" id="3" name="select" style="margin-left: 12px">
+        <option value="">Aple</option>
+        <option value="">Orange</option>
+        <option value="" >Carrot</option>
+        <option value="">Chery</option>
+        </select>
+        <br>
+
+        <label for="4">Bill : </label>
+        <select class="" id="4" name="select" style="margin-left: 18px">
+        <option value="">Aple</option>
+        <option value="">Orange</option>
+        <option value="">Carrot</option>
+        <option value="">Chery</option>
+        </select>
+        <br>
+
+        <button type="button" id="button" name="button" style="margin-top:10px">Save</button>
+    </form>
+    <script type="text/javascript">
+        var select = form.select;
+
+        function save() {
+            localStorage.clear();
+            var onselect = [];
+
+            var name, value;
+
+            select.forEach(function sel(item, i, select) {
+                name = i;
+                value = item.selectedIndex
+                localStorage.setItem(name, value)
+
+            })
+
+
+        }
+        button.addEventListener('click', save);
+
+        select.forEach(function sel(item, i, select) {
+
+            select[i].item(localStorage.getItem(i)).setAttribute('selected', '')
+
+        })
+    </script>
+</body>
+
+</html>

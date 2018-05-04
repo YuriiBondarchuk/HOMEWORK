@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Task_3</title>
+</head>
+<body>
+    <script type="text/javascript">
+
+function delay(ms) {
+return new Promise ( function(resolve,reject){
+    setTimeout(resolve, ms);
+})}
+
+function doStuff() {console.log ("Я появлюсь через 2 секунды");}
+delay(2000).then(doStuff)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+</html>

@@ -7,15 +7,27 @@
  * Для класса User из предыдущего занятия создать методы login(), logout(),
  * которые просто выводят на экран соответствующее сообщение.
  * Создать экземпляр класса, вызвать созданные методы.
+ * @throws Exception
  */
-require_once __DIR__ . '/User.php';
-require_once __DIR__ . '/Car.php';
-require_once __DIR__ . '/Manager.php';
-require_once __DIR__ . '/Admin.php';
-require_once __DIR__ . '/User2.php';
-require_once __DIR__ . '/staticCount.php';
-require_once __DIR__ . '/staticcountSelf.php';
+//require_once __DIR__ . '/User.php';
+//require_once __DIR__ . '/Car.php';
+//require_once __DIR__ . '/Manager.php';
+//require_once __DIR__ . '/Admin.php';
+//require_once __DIR__ . '/User2.php';
+//require_once __DIR__ . '/staticCount.php';
+//require_once __DIR__ . '/staticcountSelf.php';
 
+function __autoload ($className)
+{
+    $file = '/' . "{$className}.php";
+    if (!file_exists($file))
+    {
+        require $file;
+    }
+    else{
+        echo 'File not found';
+    }
+}
 
 $car1 = new Car();
 $car2 = new Car();

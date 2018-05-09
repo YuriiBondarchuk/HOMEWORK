@@ -1,7 +1,16 @@
 <?php
 
-class User
+interface UserI
 {
+    public function  login ();
+
+
+    public function  logout ();
+
+}
+class User implements UserI
+{
+
     protected $login;
     protected $password;
     protected $email;

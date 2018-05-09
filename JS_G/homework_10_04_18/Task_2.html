@@ -11,19 +11,24 @@
     margin-top: 200px;">
      <script>
 
-     var i=getCookie('click_count'); elem.innerText = "Кликов: " + i;
+     var i = getCookie('click_count'); elem.innerText = "Кликов: " + i;
 
      function getCookie(name) {
 
      var list = document.cookie.split('; ');
+
      var match = list.find(function (item) {
          var pair = item.split('=');
          return pair[0] === name;
+
          });
+
      var count= match.split('=')
 
      return count[1];
+
      }
+
      </script>
 
 
@@ -44,8 +49,8 @@ function setCookie (value){
     var date = new Date();
      date.setDate(date.getDate()+1);
     var expires = date.toUTCString();
-    var cookie={click_count:value,path:"/", expires:expires};
-    var stCookie='';
+    var cookie = {click_count:value,path:"/", expires:expires};
+    var stCookie = '';
     for (var key in cookie) {
         if (cookie.hasOwnProperty(key)) {
             stCookie += key+'='+cookie[key] +';';

@@ -63,6 +63,7 @@
                             var option = document.createElement('option');
                             option.text = objSearch[1][i];
                             option.value = objSearch[3][i];
+
                             option.setAttribute('onclick', "window.open(value, '_blank')");
                             form.select.options.add(option);
                         }

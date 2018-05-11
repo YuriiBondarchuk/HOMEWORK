@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Task_download_image</title>
+</head>
+
+<body>
+    <style media="screen">
+        .error {
+
+        font-size: 28px;
+        color:red;
+    }
+    .none {
+        display: none
+    }
+
+        .image {
+            width: auto;
+            height: 30px;
+            left: 170px;
+position: absolute;
+/* right: 145px; */
+margin-top: 5px;
+        }
+        .file {
+            display: none
+        }
+
+        .button {
+            background-image: url(favicon.ico);
+            width: 27px;
+            height: 27px;
+            background-color: white;
+            repeat: no-repeat
+        }
+
+        .list {
+
+            /* border: 2px solid red; */
+            width: 500px;
+            height: 500px;
+        }
+
+        .span {}
+
+        .left {
+            position: absolute;
+            /* float:left; */
+
+
+        }
+
+        .right {
+            position: absolute;
+/* position: relative; */
+        left: 550px;
+            /* float:left; */
+        }
+        label {
+            font-size: 14px;
+            color: white;
+            background-color: black;
+            padding: 5px;
+            /* margin-top: 8px; */
+            position: absolute;
+        }
+        li {
+            margin-bottom: 35px;
+        }
+    </style>
+    <input type="file" id="input" name="img" value="" class="file" multiple>
+    <b> Add a picture</b>
+    <input type="button" name="" id="button" value="" class="button">
+    <br>
+    <br>
+    <div class="list left" id="list_1" name="list_1" >
+        <span class="span"><b>Images</b></span>
+        <br>
+        <br>
+        <ol id="ol"></ol>
+    </div>
+
+    <div class="list right" id="list_2" name="list_2">
+        <span><b>Other files</b></span>
+        <br>
+        <br>
+        <ol id="ol_2"></ol>
+
+    </div>
+    <script>
+        button.addEventListener('click', add);
+
+        function add() {
+            input.click();
+        }
+        input.addEventListener('change', function(e) {
+
+            if (document.getElementsByClassName('error').length){
+
+                document.getElementsByClassName('error')[0].remove();
+                var div_on = document.getElementsByTagName('div');
+
+                    div_on[0].className = 'list left';
+                    div_on[1].className = 'list right';
+            }
+
+
+
+
+
+            var files = e.target.files;
+            if (files.length) {
+                [].forEach.call(files, function(file) {
+
+                        if (file.size>1000000){
+                            var div_del = document.getElementsByTagName('div');
+                            for (var i = 0; i <= 1; i++) {
+                                div_del[i].className = 'none';
+                            }
+                            var d_error = document.createElement("div");
+                            d_error.className = "error";
+                            d_error.innerHTML="ERROR: file size is more than 5 MB";
+                            document.body.appendChild(d_error);
+                        }
+                        else {
+
+                    var reader = new FileReader();
+                    reader.onload = function(e) {
+                        var fileData = e.target.result;
+                        var error = e.target.error;
+                        var li = document.createElement('li')
+
+
+
+
+
+
+
+                        var type = file.type.slice(0,file.type.indexOf("/"))
+                        if (type!="image") {
+
+                            var lil = document.getElementById("ol_2")
+                            lil.appendChild(li);
+                            lil.children.item(lil.children.length-1)
+                            .innerHTML = "<b>name:</b> "+ file.name + "  <b>size:</b> " + formatSize(file.size) + " <br> <label><b><i>delete</i></b></label>";
+                        }
+                        else {
+                            var lil = document.getElementById("ol")
+                            lil.appendChild(li);
+                            var img = document.createElement('img');
+                            lil.children.item(lil.children.length-1)
+                            .innerHTML = "<b>name:</b> "+ file.name + "  <b>size:</b> " + formatSize(file.size) + " <br> <label><b><i>delete</i></b></label>";
+                            img.className = "image";
+                            img.src = fileData;
+                            lil.children.item(lil.children.length-1).appendChild(img);
+                            console.log(error);
+                        }
+                        var del = document.querySelectorAll('li');
+                        del.forEach(function (name){name.setAttribute("onclick", "remove()")})
+                    };
+                    reader.readAsDataURL(file)
+                }
+                });
+
+                this.value = '';
+            }
+
+
+        });
+// var type = file.type
+
+
+        function formatSize(length){
+
+            var i = 0, type = ['б','Кб','Мб','Гб','Тб','Пб'];
+
+            while((length / 1000 | 0) && i < type.length - 1) {
+
+                length /= 1024;
+
+                i++;
+
+            }
+
+            return length.toFixed(2) + ' ' + type[i];
+
+        }
+
+        function remove () {
+            event.currentTarget.remove();
+        }
+
+    </script>
+</body>
+
+</html>

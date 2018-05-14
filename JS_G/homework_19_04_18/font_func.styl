@@ -1,0 +1,21 @@
+
+
+$path = "fonts/proxima/"
+
+$name = "Proxima Nova"
+
+
+
+font($name, $path, $arg...)
+  scr  $path
+  font-family $name
+  if $arg[1]
+    font-weight $arg[1]
+  if $arg[2]
+    font-style $arg[2]
+
+
+@font-face
+  font($name, $path, "ProximaBoldItalic", "bold", "italic")
+
+

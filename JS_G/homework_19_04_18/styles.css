@@ -1,0 +1,33 @@
+.animals {
+  width: 100px;
+  height: 100px;
+  background-image: url("img/my_sprites.png");
+  display: block;
+  float: left;
+  position: relative;
+  border: solid 1px #000;
+}
+.animals.smal_fox {
+  background-position: -200px -200px;
+}
+.animals.fox {
+  background-position: -100px -100px;
+}
+.animals.smal_wolf {
+  background-position: 100px 0;
+}
+.animals.wolf {
+  background-position: -100px 100px;
+}
+.animals.big_wolf {
+  background-position: -100px 0;
+}
+.animals.smal_dog {
+  background-position: 0 -200px;
+}
+.animals.dog {
+  background-position: 0 -100px;
+}
+.animals.big_dog {
+  background-position: 100px -100px;
+}

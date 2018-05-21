@@ -1,0 +1,15 @@
+form {
+  border: 1px solid #000;
+  width: 200px;
+  height: 100px;
+}
+input {
+  left: 13px;
+  top: 5px;
+  position: relative;
+}
+button {
+  position: relative;
+  left: 50px;
+  top: 10px;
+}

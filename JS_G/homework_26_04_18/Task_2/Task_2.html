@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="../jquery-3.3.1.min.js"></script>
+    <link rel="stylesheet" href="jquery-ui.css">
+    <link rel="stylesheet" href="Task_2.css">
+    <script src="jquery-ui.js"></script>
+    <title>Task_2</title>
+</head>
+<body>
+
+
+<script>
+    $(document).ready(function () {
+
+        $.widget( "custom.iconselectmenu", $.ui.selectmenu, {
+            _renderItem: function( ul, item ) {
+                var li = $( "<li>" ),
+                    wrapper = $( "<div>", { text: item.label } );
+
+                if ( item.disabled ) {
+                    li.addClass( "ui-state-disabled" );
+                }
+
+                $( "<span>", {
+                    style: item.element.attr( "data-style" ),
+                    "class": "ui-icon " + item.element.attr( "data-class" )
+                })
+                    .appendTo( wrapper );
+
+                return li.append( wrapper ).appendTo( ul );
+            }
+        });
+
+        $( "#select" )
+            .iconselectmenu()
+            .iconselectmenu( "menuWidget" )
+            .addClass( "ui-menu-icons" );
+
+      });
+
+
+
+</script>
+<select name="select"  id="select" style="width: 150px">
+    <option value="" data-class="Facebook">Facebook</option>
+    <option value="" data-class="Vkontakte">Vkontakte</option>
+    <option value="" data-class="Twetter">Twetter</option>
+    <option value="" data-class="Viber">Viber</option>
+
+</select>
+
+</body>
+</html>

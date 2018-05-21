@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="jquery-3.3.1.min.js"></script>
+    <link rel="stylesheet" href="Task_1.css">
+    <title>Task_1</title>
+</head>
+
+<body>
+<label for="form"> Your form</label>
+<form name="form" id="form">
+    <input type="text" name="name" value="wewe" placeholder="Enter your name"><br>
+    <input type="text" name="email" value="asasasasasa" placeholder="Enter you email"><br>
+    <input type="text" name="email" placeholder="Enter you email"><br>
+    <button name="button" type="button" id="a">
+        Send
+    </button>
+
+</form>
+
+<script type="text/javascript">
+    $('button').click(function () {
+        var $form = $('form').serializeArray();
+        var data = serializeObject($('form'))
+        console.log(data)
+
+    });
+
+
+    function serializeObject($form) {
+        var obj = {
+            name: "",
+        };
+        $form.find('input').each(function (i, elem) {
+
+            if ($(this).attr('name') == "name") {
+                obj.name = $(this).val()
+            } else {
+                if ($(this).attr('name') == "email") {
+
+                    if (obj.email == undefined) {
+
+                        obj.email = $(this).val();
+                    } else {
+                        if ($(this).val() != '') {
+                            obj.email = obj.email.split();
+                            obj.email.push($(this).val())
+                        }
+                    }
+                }
+            }
+        })
+        return obj;
+
+    }
+</script>
+
+</body>
+
+</html>

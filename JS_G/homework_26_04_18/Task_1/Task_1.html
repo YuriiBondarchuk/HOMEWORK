@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <link rel="stylesheet" href="jquery.bxslider.css">
+    <!--<link rel="stylesheet" href="Task_1.css">-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="jquery.bxslider.js"></script>
+    <title>Task_1</title>
+</head>
+<body>
+
+
+<script>
+
+    $(document).ready(function(){
+        $('.slider').bxSlider({
+            slideMargin: 5,
+            minSlides:1,
+            maxSlides:1,
+            moveSlides: 1,
+            slideWidth:500,
+            buildPager:true
+    });
+
+        $('div[class="view"]').bxSlider({
+            controls: false
+        });
+
+
+    })
+</script>
+
+
+
+<div class="slider">
+
+    <div  class="slider-my one"> <div class="view two"></div></div>
+    <div  class="slider-my two"> <div class="view three"></div></div>
+    <div  class="slider-my three"> <div class="view four"></div></div>
+    <div class="slider-my four"> <div class="view one"></div></div>
+
+
+
+
+</div>
+
+</body>
+</html>

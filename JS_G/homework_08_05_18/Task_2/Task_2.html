@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="Task_2.css">
+    <link rel="stylesheet" href="jquery-ui.css">
+    <script src="jquery-3.3.1.min.js"></script>
+    <script src="jquery-ui.js"></script>
+
+    <title>Task_2</title>
+</head>
+<body>
+<script>
+
+
+
+    $(document).ready(function(){
+
+
+        var width = window.innerWidth;
+        var height = window.innerHeight;
+        var div_marg = (window.innerWidth/2)-250
+        $("svg").attr({"width":width,"height":height})
+        $("div").css({"margin-left":div_marg})
+        $(window).mousemove(function (mouse) {
+            var cx = mouse.pageX;
+            var cy = mouse.pageY;
+
+            $("circle").attr({"cx":cx,"cy":cy});
+        });
+        $('svg').on('click',function () {
+            $('svg').css('display', 'none');
+        })
+    });
+
+
+</script>
+
+            <div >
+
+                    <span>Your massage</span><br>
+                    <span> Click me and I will open </span>
+
+            </div>
+
+
+       <svg class="svg_child" >
+                <defs>
+                    <mask id="mask">
+                        <rect class="qw" height="100%" width="100%" fill="white"/>
+                        <circle  cx="150" cy="150" r="100" fill="black" filter="url(#filter)"/>
+                    </mask>
+                    <filter id="filter">
+
+                        <feGaussianBlur result="blurOut" in="offOut" stdDeviation="10" />
+
+                    </filter>
+                </defs>
+           <rect height="100%" width="100%"
+                 fill="black"
+                 mask="url(#mask)"
+
+           />
+
+
+        </svg>
+
+
+
+
+
+</body>
+</html>

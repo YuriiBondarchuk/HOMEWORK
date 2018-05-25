@@ -1,0 +1,20 @@
+img {
+  height: 460px;
+  width: 350px;
+}
+.model {
+  float: left;
+  display: block;
+  margin: 5px;
+}
+/*.none {*/
+/*display: none !important;*/
+/*}*/
+/*.wrapper {*/
+/*padding: 20px;*/
+/*opacity: 0;*/
+/*transition: opacity 1s ease;*/
+/*}*/
+/*.wrapper.app-loaded {*/
+/*opacity: 1;*/
+/*}*/

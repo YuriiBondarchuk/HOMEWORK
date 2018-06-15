@@ -14,82 +14,205 @@
 
 <script>
     $(document).scroll(function () {
-        ($(document).scrollTop() > 100) ? $('header').css({"position": "fixed", "top": "0"})
-            : $('header').css({"position": "relative", "top": "100px"})
+        ($(document).scrollTop() > 300) ? $('div[class="nav"]').css({"position": "fixed", "top": "0","margin-left":"45px"}).find('div[class="nav_country"]').css('display','block')
+            : $('div[class="nav"]').css("position", "inherit").find('div[class="nav_country"]').css('display','none');
     });
 
 </script>
 
 
-<header class="header"><h1>Header</h1></header>
-<content>
-    <p>Lorem ipsum praesent erat etiam ipsum mattis quisque odio volutpat class, sapien non nulla habitasse commodo
-        volutpat
-        libero curabitur donec leo commodo duis lacinia tincidunt odio ac placerat dapibus laoreet condimentum, etiam
-        nam
-        habitasse a accumsan quis urna dui curabitur, leo donec taciti interdum massa curabitur ornare semper ut felis
-        tellus justo pulvinar etiam sociosqu non sem ante eu aptent habitant nec neque.</p>
-    <p>Et nec orci metus nec urna habitant sit suspendisse ad ligula, et nam platea bibendum egestas donec ligula
-        conubia
-        proin, et sollicitudin sed non volutpat sapien blandit enim nisi fringilla litora tortor lectus.</p>
-    <p>Congue sit curabitur curae dapibus molestie ultrices sociosqu semper adipiscing aenean porta amet suscipit, est
-        rhoncus aliquam non cursus fusce convallis nunc rutrum condimentum aptent sem sapien suscipit euismod ante purus
-        enim inceptos, faucibus tortor vitae aenean egestas lacus, at taciti pharetra placerat curae.</p>
-    <p>Tortor volutpat odio venenatis purus viverra tortor rutrum urna donec class velit urna aenean praesent vel
-        quisque,
-        odio dictumst conubia pharetra est nunc sociosqu est venenatis nam velit purus urna sit risus viverra blandit
-        cursus
-        class aenean malesuada aliquam iaculis volutpat nec, sociosqu orci viverra aliquet torquent aliquet pellentesque
-        platea iaculis vehicula habitant, sit class nullam rutrum justo purus molestie curae tempus.</p>
-    <p>Dolor quis eros et porta pulvinar ligula aptent amet diam, libero ornare pellentesque dui dictum gravida sagittis
-        cursus suspendisse elit convallis leo curabitur vivamus habitasse sociosqu, magna condimentum etiam feugiat
-        aliquam
-        enim morbi, lacus ipsum posuere facilisis auctor class non.</p>
-    <p>Adipiscing maecenas accumsan praesent lectus porttitor dui posuere auctor, fames fermentum ipsum suscipit
-        consectetur
-        purus hac cursus ultrices etiam ornare eros habitasse venenatis massa aenean, euismod erat egestas etiam et
-        consequat curae primis eleifend, purus blandit suspendisse dictum justo etiam erat mauris.</p>
-    <p>Nullam consectetur turpis scelerisque hendrerit dictumst malesuada magna diam, habitasse pharetra neque feugiat
-        eros
-        platea nam sapien aliquam, egestas adipiscing habitasse diam tellus metus ante.</p>
-    <p>Suscipit eros feugiat rhoncus auctor orci volutpat quisque aenean, potenti suscipit maecenas sem donec habitant
-        sociosqu proin, mollis tristique egestas sapien dictum maecenas quis felis ut nulla ornare maecenas risus
-        aliquet
-        quis id eu, dapibus quisque et amet conubia netus dolor.</p>
-    <p>Pharetra eleifend quam sem aenean vestibulum suspendisse tempor imperdiet, maecenas nulla felis dolor donec
-        integer
-        purus, tortor turpis id sagittis primis faucibus urna.</p>
-    <p>Facilisis fermentum consectetur class risus dui justo eros, fusce fames risus hendrerit aliquam rutrum venenatis
-        consequat, vivamus mollis justo nibh fames etiam congue praesent tempor adipiscing dolor.</p>
-    <p>Ligula metus ac dui et tellus ligula non cubilia quisque, vulputate aliquet rhoncus semper condimentum diam
-        sapien
-        venenatis, aenean augue non ac vestibulum pretium est hac auctor pretium aliquet rhoncus iaculis tellus
-        malesuada ut
-        libero, accumsan nisi torquent aptent consectetur sem pellentesque magna lacus, faucibus vitae dolor risus
-        tempus
-        luctus mi eros curabitur id convallis massa rutrum quisque quam phasellus vivamus habitasse gravida vehicula
-        augue
-        ornare quis porta et lacinia.</p>
-    <p>Dapibus sociosqu tortor ornare arcu nulla eros id enim non aliquam turpis velit gravida suscipit ligula aptent
-        faucibus turpis nullam elementum interdum dictumst, vivamus ullamcorper ornare nam taciti dolor non eget, ut
-        convallis erat primis dapibus mollis risus congue suscipit sociosqu suspendisse varius augue senectus nibh
-        suscipit
-        sagittis pharetra class, tincidunt sit curabitur urna etiam malesuada eget lorem mi luctus velit, ante pretium
-        euismod porta nisi iaculis eleifend imperdiet varius sed sapien cubilia pulvinar.</p>
-    <p>Cras fusce ante aptent mauris fermentum pharetra curae massa vel at, varius aliquam sagittis aenean lacus
-        curabitur
-        dictumst donec eleifend, sociosqu per mauris per posuere lacinia platea id imperdiet etiam morbi auctor
-        vulputate
-        torquent mi, molestie vehicula imperdiet sapien auctor posuere, iaculis adipiscing ac lobortis sagittis sociosqu
-        morbi bibendum phasellus quisque imperdiet, sodales litora eget elit curabitur lectus, volutpat duis vestibulum
-        adipiscing phasellus.</p>
-    <p>Volutpat curabitur pretium class netus massa sed rutrum et senectus, scelerisque pretium fermentum pretium felis
-        commodo iaculis pretium, feugiat ut lorem donec curabitur vitae molestie aptent adipiscing lobortis diam quisque
-        vulputate quam ut vehicula id, cursus vehicula fermentum hendrerit ut sem volutpat lorem turpis, nunc lacinia
-        sagittis gravida ipsum potenti cubilia.</p>
+
+    <div class="header"><div class="country" > Ukraine</div></div>
+    <div class="nav">
+        <div class="nav_country">Ukraine</div>
+
+        <ul>
+            <a href=""> <li>City</li></a>
+            <a href=""><li>People</li></a>
+            <a href=""><li>Time</li></a>
+    </ul>
+
+
+    </div>
+    <div class="content">
+    <h1>Украина</h1>
+    <p> Украина предлагает отдых на любой вкус - от фешенебельного до самого доступного. Обилие исторических
+        достопримечательностей, разнообразная природа, комфортный климат, теплое море и отсутствие языкового барьера
+        привлекают сюда ежегодно множество туристов. Отдых в Украине - это великолепие крымских гор, нежное Черное море,
+        величественные вершины карпатских гор. Откройте для себя Украину и полюбите ее красоты раз и навсегда. Когда
+        говорят об отдыхе на Украине, то в первую очередь имеют в виду отдых в Крыму. Поскольку Крым — один из наиболее
+        популярных курортных и туристских центров не только Украины, но и Восточной Европы.</p>
+
+    <h4>География</h4>
+
+        <p>Украина - государство, расположенное в Восточной Европе. Граничит на севере с Белоруссией, на севере и
+            востоке - с Российской Федерацией, на западе - с Польшей, Словакией, на юго-западе - с Венгрией, Румынией и
+            Молдовой. На юге Украину омывают Черное и Азовское моря. Территория Украины - 603, 7 тыс. кв. км. Самое
+            большое расстояние с запада на восток - 1300 км, с севера на юг - 900 км. Общая протяженность
+            государственной границы Украины составляет 7698 км. Протяженность морского участка государственной границы
+            составляет 1758 км (черноморская - 1533 км, азовская - 225 км). По административно-территориальному составу
+            территория Украины состоит из 24 областей и автономии Крым.</p>
+
+        <p>Преобладающая часть территории Украины (95%) имеет равнинный характер. Горы находятся на западе и крайнем юге
+            страны. Украина лежит на юго-западе Восточно-Европейской равнины. Равнинные пространства по характеру
+            рельефа неоднородны. Более возвышена правобережная часть страны, где расположены Волынская, Подольская и
+            Приднепровская возвышенности. Самые большие низменности - Полесская, Приднепровская и Причерноморская. На
+            горные области - Карпаты с самой высокой вершиной Украины г. Говерлой (2061 м), Крымские горы (Роман-Кош -
+            1545 м) - приходится около 5% территории.</p>
+
+
+        <h4> Время</h4>
+
+        <p> Украина расположена в двух часовых поясах (2 часа разницы с Гринвичем в 24 областях, включая Киев, и 3 часа
+            разницы в Автономной республике Крым). Переход на летнее время осуществляется в первое воскресенье апреля
+            (на час вперед), на зимнее время - последнее воскресенье октября (на 1 час назад). Отстает от московского на
+            час.</p>
+
+        <h4>Климат</h4>
+
+        <p> На большей части территории Украины климат умеренно континентальный, с четко выраженными сезонами, и лишь на
+            южном берегу Крыма он сменяется на субтропический. В южных и западных районах страны климат мягче, чем в
+            северных и восточных. На севере Украины средняя температура самого холодного месяца, января, составляет -7
+            градусов; в центральных областях она увеличивается до -5, а в Крыму, в зависимости от местоположения,
+            изменяется от -0,5 до +4. В зимний период средние ночные температуры с севера на юг меняются от -9 до +1,
+            средние дневные - от -3 до +6. Лето в Украине теплое, со средней температурой июля +18+20 градусов, а в
+            Крыму - +22 градуса. В некоторые годы столбик термометра может подниматься до +32. Средняя ночная
+            температура июля на большей части Украины составляет +13 градусов, средняя дневная - +23 градуса. В Крыму
+            эти показатели соответственно равны +20 и +26. Осадки распределены по территории страны очень неравномерно.
+            Наибольшее их количество выпадает в горных районах. В Крымских горах за год выпадает около 1100 мм, в
+            Карпатах количество осадков достигает 1400 - 1600 мм. Наиболее засушливыми являются юго-восточные области
+            Украины, здесь количество осадков не превышает 400 мм, а в отдельные годы бывают засухи. На остальной
+            территории в среднем за год выпадает 600 - 700 мм. По месяцам осадки распределены довольно равномерно, но в
+            большинстве районов (кроме Крыма) наблюдается некоторое их увеличение в летний период. Наиболее дождливыми
+            месяцами являются июнь и июль, в течение которых месячное количество осадков составляет около 100 мм на
+            западе, 50 мм в Крыму и 60 - 80 мм на остальной территории. Самыми сухими месяцами на всей территории
+            Украины являются март и октябрь, когда выпадет 30 - 40 мм.</p>
+
+
+        <h4>Язык</h4>
+
+
+        <p>Украинский язык был признан официальным языком в Украине в 1990 году, прейдя на смену русскому языку. Большая
+            часть населения Восточной Украины и Киева считает русский своим родным языком, в отличие от Западной
+            Украины, где наиболее распространен украинский язык. В связи с этим средства массовой информации, политики и
+            бизнесмены используют оба языка, но все официальные документы публикуются на украинском языке. Только
+            небольшая часть населения говорит на иностранных языках - в основном на английском.</p>
+
+
+        <h4>Религия</h4>
+
+
+        <p>Основной религией является христианство (православное, греко-католическое и римско-католическое), но
+            исповедуются также иудаизм и мусульманство.</p>
+
+
+        <h4> Население</h4>
+
+
+        <p>Общая численность населения - 50 млн. человек, в крупных городах: Киев - 2.6 млн., Харьков - 1,6 млн.,
+            Днепропетровск - 1.2 млн., Донецк - 1.1 млн., Одесса - 1.1 млн. жителей. Средняя плотность населения - 90
+            чел. на кв. км. Этнический состав: 80% - украинцы, остальные - русские, белорусы, евреи, крымские татары,
+            молдоване, поляки, венгры, румыны, немцы, болгары и представители других немногочисленных национальностей.
+            Городское население составляет свыше 68%.</p>
+
+
+        <h4> Экстренные телефоны</h4>
+
+
+        <p>Телефонные номера экстренных служб вида 0Х (01, 02 и так далее) переводятся в формат 10Х и 11Х. Номера
+            информационно-справочных служб формата 00Х (05Х, 06Х) будут переведены в формат 150Х, 155Х, 156Х. Таким
+            образом, чтобы позвонить, например, справочную службу железнодорожного транспорта, необходимо будет набрать
+            не 005, как раньше, а 1505, в билетные кассы - 1583, в справочную аэропорта - 1506. Телефоны экстренных
+            служб в новом формате нужно будет набирать так: 101 - пожарная служба, 102 - милиция, 103 - скорая помощь,
+            104 - аварийная служба газа. Новые номера действуют с 18 февраля 2009 года. В октябре-ноябре 2009 года
+            изменены междугородний и международный префиксы. Для того чтобы позвонить в другой город, вместо "8" нужно
+            набирать "0", а чтобы связаться с абонентом из другой страны - "00" вместо "10". Тогда же планируется ввести
+            новый код Киевской области - 45.</p>
+
+
+        <h4>Связь</h4>
+
+
+        <p> Для звонка в страну следует набрать 8 - 10 (код международной связи) - 38 (код Украины) - код города (065ххх
+             - в случае звонка в Крым) - номер абонента. Внутренние переговоры осуществляются с телефонов-автоматов,
+            работающих по специальной магнитной карточке (продаются в газетных киосках, на почтамте, автозаправочных
+            станциях, в магазинах, кафе и т. д.). В некоторых местах сохранились старые таксофоны, работающие по жетонам
+            (монета в 10 копеек). Междугородные и международные переговоры осуществляются со специализированных
+            телефонов-автоматов (также по магнитным карточкам) или с переговорных пунктов. Стоимость 1 минуты разговора
+            с Москвой - около 0,3 доллара США.</p>
+
+        <p> Коды некоторых городов: Киев - 044, Харьков - 0572, Днепропетровск - 0562 (или 056, в зависимости от длины
+            номера - 6 или 7 знаков), Одесса - 0482, Донецк - 0622, Львов - 0322, Запорожье - 0612, Кривой Рог - 0564,
+            Керчь - 065-61, Мариуполь - 0629, Луганск - 0642, Симферополь - 0652, Ялта - 065-4.</p>
+
+
+        <h4>Обмен валюты</h4>
+
+
+        <p>Национальная валюта - гривна, в одной гривне 100 копеек. В ходу банкноты достоинством 100, 50, 20, 10, 5, 2,
+            1 гривна. Монеты достоинством в 50, 25, 10, 5, 2, 1 копейку. Обмен валюты можно произвести в аэропорту,
+            банках, многочисленных обменных пунктах. На рынках и в частных магазинах к оплате свободно принимаются как
+            рубли, так и доллары США. В юго-западной части страны и в Западной Украине обмен рублей затруднён и может
+            быть произведён только в банках.</p>
+
+
+        <h4>Виза</h4>
+
+
+        <p>В настоящее время для россиян действует безвизовый режим, на границе достаточно предъявить общегражданский
+            паспорт. Планируется введение в ближайшее время системы въезда на основании виз или загранпаспорта.</p>
+
+
+        <h5>Таможенные правила</h5>
+
+
+        <p>От налогообложения при ввозе освобождаются предметы стоимостью менее 200 евро (в том числе подакцизные
+            товары) или единичный неделимый предмет стоимостью не выше 300 евро (кроме подакцизных товаров). При ввозе
+            огнестрельного, холодного оружия, взрывных веществ, газовых баллончиков, необходимо разрешение МВД Украины.
+            При ввозе животных - ветеринарный сертификат. При ввозе лекарств более 5 упаковок или больше необходимого
+            для одного человека на один курс лечения, наркотических и психотропных веществ, устройств для курения опия и
+            гашиша - разрешение Министерства здравоохранения. Наличие указанных сертификатов не освобождает от уплаты
+            платежей: ввозная таможенная пошлина, НДС, акцизный сбор. Запрещен ввоз: транспортных средств возрастом
+            свыше 5 лет, отравляющих, радиоактивных, взрывчатых веществ и других предметов, печатных и изобразительных
+            материалов, которые содержат пропаганду идей войны, расизма, насилия, пищевых продуктов без сертификата
+            соответствия.</p>
+
+        <p>Разрешается вывозить предметы на сумму до 100 тыс. евро, на вывоз произведений искусства, культурных и
+            исторических ценностей необходимо разрешение Министерства культуры Украины. Запрещен вывоз драгоценных
+            металлов, драгоценного камня, культурных ценностей, отравляющих, радиоактивных, взрывных веществ,
+            аннулированных ценных бумаг.</p>
+
+        <p>Разрешается ввозить без дополнительных документов до 10000$ или эквивалент в любой национальной валюте.
+            Единственное условие - вся ввозимая валюта декларируется. При ввозе от 10 до 50 тыс. долларов резиденты
+            предоставляют заявление и источник происхождения валюты. Нерезиденты - только заявление. Разрешается
+            вывозить валюту Украины (обязательно указывать ее в таможенной декларации): для резидентов - до 170 гривен,
+            нерезидентов - до 85 гривен, иностранную валюту в сумме до $1000 на одно лицо, дорожные чеки и другие
+            платежные документы на сумму не выше $5000 (причем надо иметь декларацию на ввоз, или доверенность от того,
+            кто их ввез). Беспрепятственно пропускается валюта, которая была ранее ввезена в Украину (на протяжении
+            одного года).</p>
+
+
+        <h4>Праздники и нерабочие дни</h4>
+
+
+        <p> 1 января - Новый год</p>
+        <p>7 января - Рождество</p>
+        <p> 8 марта - Международный женский день</p>
+        <p> 1, 2 мая - День международной солидарности трудящихся</p>
+        <p> 9 мая - День Победы</p>
+        <p>28 июня - День принятия Конституции Украины</p>
+        <p>24 августа - День Независимости</p>
+        <p>Эти дни в Украине нерабочие. Также нерабочими являются дни, на которые приходятся Пасха и Троица.</p>
 
 
 
-</content>
+
+
+
+
+    </div>
+
+
+
 </body>
 </html>

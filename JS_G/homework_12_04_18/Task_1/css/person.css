@@ -2,6 +2,7 @@
     margin-top: 10px;
     margin-bottom: 20px;
 }
+
 #id_name {
     margin-left: 100px;
 }
@@ -9,6 +10,7 @@
 #hair1 {
     margin-left: 105px;
 }
+
 .character {
     width: 150px;
     height: 225px;
@@ -17,9 +19,11 @@
     background-color: white;
     position: relative;
 }
+
 #yellow {
     background-color: yellow;
 }
+
 #black {
     background-color: black;
 }
@@ -27,35 +31,39 @@
 #red {
     background-color: red;
 }
+
 #block {
     display: none;
 }
+
 .head {
     width: 45px;
-height: 45px;
-background-color: #d2b48c;
-position: absolute;
-border-radius: 100%;
-top: 15px;
-left: 50px;
+    height: 45px;
+    background-color: #d2b48c;
+    position: absolute;
+    border-radius: 100%;
+    top: 15px;
+    left: 50px;
 }
+
 .eyes {
     width: 8px;
-height: 8px;
-background: black;
-border-radius: 50px;
-position: absolute;
-
+    height: 8px;
+    background: black;
+    border-radius: 50px;
+    position: absolute;
 
 }
+
 .logo {
     width: 25px;
-	height: 25px;
-	background: black;
+    height: 25px;
+    background: black;
     position: absolute;
     top: 20px;
     left: 10px;
 }
+
 .triangle-down {
     width: 0;
     height: 0;
@@ -64,6 +72,7 @@ position: absolute;
     border-top: 14px solid red;
     position: absolute;
 }
+
 .triangle-top {
     width: 0;
     height: 0;
@@ -73,34 +82,38 @@ position: absolute;
     position: absolute;
     top: 11px;
 }
+
 .left {
     top: 20px;
     left: 10px;
 }
+
 .right {
     top: 20px;
     right: 10px;
 }
+
 .mouth {
     width: 20px;
-height: 5px;
-background-color: black;
-position: absolute;
-top: 33px;
-left: 12px;
+    height: 5px;
+    background-color: black;
+    position: absolute;
+    top: 33px;
+    left: 12px;
 
 }
 
-.hair{
+.hair {
     width: 45px;
-height: 19px;
-background-color: yellow;
-position: absolute;
-border-radius: 40% 40% 0 0;
-top: 15px;
-left: 50px;
+    height: 19px;
+    background-color: yellow;
+    position: absolute;
+    border-radius: 40% 40% 0 0;
+    top: 15px;
+    left: 50px;
 
 }
+
 .torso {
     width: 45px;
     height: 65px;
@@ -108,13 +121,13 @@ left: 50px;
     position: absolute;
     border-radius: 40% 40% 0 0;
 
+    margin-bottom: 50px;
 
-margin-bottom: 50px;
-
-margin-top: 60px;
-margin-left: 50px;
+    margin-top: 60px;
+    margin-left: 50px;
 
 }
+
 .legs {
 
     width: 45px;
@@ -122,25 +135,22 @@ margin-left: 50px;
     background-color: black;
     position: absolute;
 
-
-
-
-margin-top: 125px;
-margin-left: 50px;
+    margin-top: 125px;
+    margin-left: 50px;
 
 }
 
 .legs_distraction {
     width: 10px;
-height: 40px;
-background-color: white;
-position: absolute;
+    height: 40px;
+    background-color: white;
+    position: absolute;
 
-bottom: 0px;
-left: 18px;
-
+    bottom: 0px;
+    left: 18px;
 
 }
+
 .hands {
     width: 110px;
     height: 15px;
@@ -149,6 +159,7 @@ left: 18px;
     top: 80px;
     left: 17px;
 }
+
 .text {
     bottom: 0;
     position: absolute;

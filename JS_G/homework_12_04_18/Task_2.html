@@ -44,7 +44,7 @@
         }])); // [{ one: 1, two: 2 }, { one: 1, two: 2 }]
 
 
-        const merge = (obj1, obj2) => Object.assign(obj1, obj2);
+        const merge = (obj1, obj2) => Object.assign({},obj1, obj2);
 
         console.log(merge({
             one: 1,

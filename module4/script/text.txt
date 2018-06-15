@@ -1,0 +1,1 @@
+UPDATE business SET read_totall = 4 WHERE id = 2

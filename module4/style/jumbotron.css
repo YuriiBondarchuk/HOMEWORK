@@ -1,0 +1,90 @@
+/*/ * Простой контент немного * /*/
+body {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+/*/ * Все, кроме jumbotron, имеет боковое расстояние для мобильных просмотров в первый раз * /*/
+.header,
+.marketing,
+.footer {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/*/ * Пользовательский заголовок страницы * /*/
+.header {
+    border-bottom: 1px solid #e5e5e5;
+}
+
+/*/ * Сделайте заголовок заголовка той же высоты, что и навигация * /*/
+.header h3 {
+    margin-top: 0;
+    margin-bottom: 0;
+    line-height: 40px;
+    padding-bottom: 19px;
+}
+
+/* Пользовательский нижний колонтитул страницы */
+.footer {
+    padding-top: 19px;
+    цвет: #777;
+    border-top: 1px solid #e5e5e5;
+}
+
+/* Настройка контейнера */
+
+@media ( min-width: 768px ) {
+    .container {
+        max-width: 730px;
+    }
+}
+
+.container-narrow > hr {
+    margin: 30px 0;
+}
+
+/* Основное маркетинговое сообщение и кнопка регистрации */
+
+.jumbotron {
+    text-align: center;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.jumbotron .btn {
+    font-size: 21px;
+    заполнение: 14px 24px;
+}
+
+/* Поддержка маркетингового контента */
+
+.marketing {
+    margin: 40px 0;
+}
+
+.marketing p + h4 {
+    margin-top: 28px;
+}
+
+/* Отзывчивый: Портретные планшеты и вверх */
+
+/*@media экрана  и ( мин-ширина: 768 точек ) {*/
+/*!* Удалите прокладку, которую мы установили раньше *!*/
+    /*.header,*/
+    /*.marketing,*/
+    /*.footer {*/
+        /*padding-left: 0;*/
+        /*padding-right: 0;*/
+    /*}*/
+
+/* Исключить топовый файл */
+
+    .header {
+        margin-bottom: 30px;
+    }
+
+/* Снимите нижнюю границу на jumbotron для визуального эффекта */
+
+    .jumbotron {
+        border-bottom: 0;
+    }

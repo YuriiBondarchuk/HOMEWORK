@@ -1,22 +1,8 @@
 <?php
-/**
- * @var select_page int
- */
 require_once 'sample/sample.php';
-require_once 'class/Pagination.php';
-require 'class/Button.php';
 
-
-$page = isset($select_page) ? (int)$select_page : 1;
-$start = ($page==1) ? 0 : ($page*2-2);
-
-$p = new Pagination(array(
-    'itemsCount' =>(int)$count,
-    'itemsPerPage' =>2,
-    'currentPage' => $page
-));
-$count_button = count($p->buttons);
-
+$title = $db->query(SELECT_T,$name." WHERE id = $id");
+//var_dump((int)$title[0]['read_totall']);die;
 ?>
 
 
@@ -24,9 +10,16 @@ $count_button = count($p->buttons);
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+    <script type="text/javascript" src="../script/jquery-3.3.1.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="style/my_style.css">
+
+
 
 
     <meta charset="utf-8">
@@ -38,7 +31,7 @@ $count_button = count($p->buttons);
 
     <title>News Site</title>
     <!-- Custom styles for this template -->
-
+    <script src="../script/script.js" ></script>
 
 
 </head>
@@ -54,7 +47,7 @@ $count_button = count($p->buttons);
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">News site</a>
+            <a class="navbar-brand" href="#">Authorizing</a>
         </div>
         <div class="navbar-collapse collapse">
             <form class="navbar-form navbar-right" role="form">
@@ -73,56 +66,33 @@ $count_button = count($p->buttons);
 <!-- Main jumbotron for a primary marketing message or call to action -->
 <div class="jumbotron">
     <div class="container">
-        <h1><?=$name?></h1>
-
-        <p><a class="btn btn-primary btn-lg data-class" role="button">Search</a></p>
+        <h2 id='name' align="center"><?=$name?></h2>
+        <p><a id="button" class="btn btn-primary btn-lg data-class" role="button" href="">Search</a></p><br>
         <span ><a  class="btn btn-primary btn-lg data-class" role="button" href="<?=toUrl('site/main')?>">Go to main</a></span>
+
+
     </div>
+    <span >Read now: <span id="write"> </span></span><br>
+    <span >Total read: <span > <?= $title[0]['read_total']?></span><span id="read_total"></span></span>
 </div>
 
 <div class="container">
-    <!-- Example row of columns -->
-    <div class="row">
-        <div class="col-md-4">
-           <ol class="list-group">
 
-               <?php $title = $db->query(SELECT_T,($name." LIMIT $start,2" ));?>
-                <?php foreach ($title as $item):?>
-                  <a href="<?=toUrl("site/news?id={$item['id']}")?>">  <li class="list-group-item"><?=$item['title']; ?></li></a>
-                <?php endforeach; ?>
-            </ol>
-
-        </div>
-
-
+    <h2 align="center"><?=$title[0]['title']?></h2>
+    <div>
+        <img src="<?=toUrl("img/"."$name".'/'."$id".'.jpg')?>" alt="">  <?=$title[0]['content']?>
     </div>
+
+
     <hr>
     <br>
-    <form action="">
-            <?php foreach ($p->buttons as $button) :
-                if ($button->isActive) : ?>
-                    <form >
-                        <button class="page-item" name='select_page' value="<?=$button->text?>" formmethod="post" type="submit" formaction="<?=toUrl('site/pagination')?>"><?=$button->text?></button>
-                    </form>
-
-                <?php else : ?>
-                    <span style="color:red"><?=$button->text?></span>
-                <?php endif;
-            endforeach; ?>
-    </form>
-
-
-
-    <footer>
-        <p align="center">&copy; My_Company <b><?=date('Y')?></b></p>
+     <footer>
+        <p align="center" style="bottom: 0px">&copy; My_Company <b><?=date('Y')?></b></p>
     </footer>
+    <p id="id" style="color: white" ><?=$id?></p>
 </div> <!-- /container -->
 
-<!-- jQuery -->
-<script src="/examples/vendors/jquery/jquery-3.3.1.min.js"></script>
-<!-- Popper -->
-<script src="/examples/vendors/popper.js/popper.min.js"></script>
-<!-- Bootstrap JS -->
-<script src="/examples/vendors/bootstrap-4/js/bootstrap.min.js"></script>
+
+
 </body>
 </html>

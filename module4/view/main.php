@@ -71,7 +71,7 @@ require_once 'sample/sample.php';
 
             <h2>Business</h2>
             <ul >
-                <?php $title = $db->query(SELECT_T,$business);?>
+                <?php $title = $db->query(SELECT_T,$business.' LIMIT 5');?>
                 <?php foreach ($title as $item):?>
                     <li> <?=$item['title']; ?></li>
                 <?php endforeach;?>
@@ -82,7 +82,7 @@ require_once 'sample/sample.php';
         </div>
         <div class="col-md-4">
             <h2>Cinema</h2>
-            <?php $title = $db->query(SELECT_T,$cinema);?>
+            <?php $title = $db->query(SELECT_T,$cinema.' LIMIT 5');?>
             <?php foreach ($title as $item):?>
                 <li> <?=$item['title']; ?></li>
             <?php endforeach;?>
@@ -92,7 +92,7 @@ require_once 'sample/sample.php';
         </div>
         <div class="col-md-4">
             <h2>Fashion</h2>
-            <?php $title = $db->query(SELECT_T,$fashion);?>
+            <?php $title = $db->query(SELECT_T,$fashion.' LIMIT 5');?>
             <?php foreach ($title as $item):?>
                 <li> <?=$item['title']; ?></li>
             <?php endforeach;?>
@@ -102,7 +102,7 @@ require_once 'sample/sample.php';
         </div>
         <div class="col-md-4">
             <h2>Sport</h2>
-            <?php $title = $db->query(SELECT_T,$sport);?>
+            <?php $title = $db->query(SELECT_T,$sport.' LIMIT 5');?>
             <?php foreach ($title as $item):?>
                 <li> <?=$item['title']; ?></li>
             <?php endforeach;?>
@@ -112,7 +112,7 @@ require_once 'sample/sample.php';
         </div>
         <div class="col-md-4">
             <h2>Style</h2>
-            <?php $title = $db->query(SELECT_T,$style);?>
+            <?php $title = $db->query(SELECT_T,$style.' LIMIT 5');?>
             <?php foreach ($title as $item):?>
                 <li> <?=$item['title']; ?></li>
             <?php endforeach;?>
@@ -138,23 +138,23 @@ require_once 'sample/sample.php';
                 <div class="item active">
 
 
-                <img src="<?= toUrl('img/business')."/".$sort_date[0]['id'].".jpg"?>" alt="...">
+                <img src="<?= toUrl('img/sport')."/".$sort_date[0]['id'].".jpg"?>" alt="...">
                     <div class="carousel-caption">
-                        <h3><?php $id = (int)$sort_date[0]['id'] ?><?= $db->query(SELECT_T,"business WHERE id=$id")[0]['title']?></h3>
+                        <h3><?php $id = (int)$sort_date[0]['id'] ?><?= $db->query(SELECT_T,"sport WHERE id=$id")[0]['title']?></h3>
 
                     </div>
                 </div>
                 <div class="item">
-                    <img src="<?= toUrl('img/business')."/".$sort_date[1]['id'].".jpg"?>" alt="...">
+                    <img src="<?= toUrl('img/sport')."/".$sort_date[1]['id'].".jpg"?>" alt="...">
                     <div class="carousel-caption">
-                        <h3><?php $id = (int)$sort_date[1]['id'] ?><?= $db->query(SELECT_T,"business WHERE id=$id")[0]['title']?></h3>
+                        <h3><?php $id = (int)$sort_date[1]['id'] ?><?= $db->query(SELECT_T,"sport WHERE id=$id")[0]['title']?></h3>
 
                     </div>
                 </div>
                 <div class="item">
-                    <img src="<?= toUrl('img/business')."/".$sort_date[2]['id'].".jpg"?>" alt="...">
+                    <img src="<?= toUrl('img/sport')."/".$sort_date[2]['id'].".jpg"?>" alt="...">
                     <div class="carousel-caption">
-                        <h3><?php $id = (int)$sort_date[2]['id'] ?><?= $db->query(SELECT_T,"business WHERE id=$id")[0]['title']?></h3>
+                        <h3><?php $id = (int)$sort_date[2]['id'] ?><?= $db->query(SELECT_T,"sport WHERE id=$id")[0]['title']?></h3>
 
                     </div>
                 </div>

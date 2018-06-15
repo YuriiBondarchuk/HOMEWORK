@@ -13,6 +13,7 @@ function dispatch($url,$controllersPath,$baseUrl = null) {
 
 
 
+
     $controller="{$controllersPath}/{$part[0]}.php";
 
     if (!file_exists($controller)){
@@ -20,9 +21,13 @@ function dispatch($url,$controllersPath,$baseUrl = null) {
     }
     require_once $controller;
 
-    $action='action'.ucfirst($part[1]);
+
+
+    $act = (strstr($part[1],'?',true) ? strstr($part[1],'?',true) : $part[1]);
+
+    $action='action'.ucfirst($act);
     if (!function_exists($action)){
-        die ("Action '{$part[1]}' is not allowed in controller '{$part[0]}'");
+        die ("Action $act is not allowed in controller '{$part[0]}'");
     }
     $action();
 }

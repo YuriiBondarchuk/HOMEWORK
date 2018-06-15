@@ -10,7 +10,7 @@ class Pagination
 {
     public $buttons = array();
 
-    public function __construct(Array $options = array('itemsCount' => 50, 'itemsPerPage' => 5, 'currentPage' => 1))
+    public function __construct(Array $options = array('itemsCount' => 50, 'itemsPerPage' => 2, 'currentPage' => 1))
     {
         extract($options);
 
@@ -35,15 +35,17 @@ class Pagination
             $currentPage = $pagesCount;
         }
 
-        $this->buttons[] = new Button($currentPage - 1, $currentPage > 1, 'Previous');
+        $this->buttons[] = new Button(1, $currentPage > 1,1);
 
-        for ($i = 1; $i <= $pagesCount; $i++) {
+        for ($i =2; $i < $pagesCount; $i++) {
             $active = $currentPage != $i;
             $this->buttons[] = new Button($i, $active);
         }
 
-        $this->buttons[] = new Button($currentPage + 1, $currentPage < $pagesCount, 'Next');
+        $this->buttons[] = new Button($currentPage , $currentPage < $pagesCount, $pagesCount);
 
 
     }
 }
+
+

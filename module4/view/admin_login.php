@@ -1,16 +1,3 @@
-<?php
-//require_once '../DBwork/DBwork.php';
-require_once 'sample/sample.php';
-
-
-//var_dump($sql,$_GET);die;
-$id = $_GET['id'];
-$name = $_GET['name'];
-$table = $db->query($sql);
-//var_dump($table);die;
-//var_dump($table);die;
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -40,9 +27,7 @@ $table = $db->query($sql);
 <body>
 
 <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-    <a align="right" style="right: 0px" class="navbar-brand" href="<?= toUrl('site/admin_exit') ?>">
-        <button class="btn btn-warning">EXIT</button>
-    </a>
+
 </div>
 
 <!-- Main jumbotron for a primary marketing message or call to action -->
@@ -54,33 +39,27 @@ $table = $db->query($sql);
 </div>
 
 <div class="container">
-    <!-- Example row of columns -->
-    <h1><?= $name ?></h1>
-    <form action="<?= toUrl("site/admin_tables_save?name={$name}&id={$id}") ?>" method="post">
-        <label for="title">Title</label>
-        <input class="form-control" type="text" value="<?= $table[0]['title'] ?>" name="title" id="title">
-
-        <label for="content">Content</label>
-        <textarea class="form-control" name="content" id="content" cols="50"
-                  rows="30"><?= $table[0]['content'] ?></textarea>
-        <input class="btn btn-success" type="submit" value="SAVE">
-
+    <h5><?= (isset($nologin)) ? $nologin : '' ?></h5>
+    <h3 align="center">Authorization</h3>
+    <form action="<?= toUrl('site/Adminauthor') ?>" method="post">
+        <div class="form-group">
+            <label for="login"> Login</label>
+            <input type="text" id="login" name="login" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="password"> Password</label>
+            <input type="password" id="password" name="password" class="form-control">
+        </div>
+        <input type="submit" class="btn btn-success" value="Sign in">
     </form>
-
-
-    </table>
 
 
 </div>
 <hr>
-
-
-<hr>
-
 <footer>
     <p align="center">&copy; My_Company <b><?= date('Y') ?></b></p>
 </footer>
-</div> <!-- /container -->
+</div>
 
 </body>
 </html>

@@ -1,11 +1,15 @@
 <?php
-session_start();
-//require_once 'sample/sample.php';
-//require_once "class/DB.php";
+//session_start();
+require_once 'class/Session.php';
+
+
+
 
 
 function actionMain ()
 {
+
+
 //    $name1[]= 'hello';
     $db_table_name = [
         'business' => 'business',
@@ -51,15 +55,16 @@ function actionRename(){
 }
 
 function actionAdmin() {
-//    $db_table_name = [
-//        'business' => 'business',
-//        'sport' => 'sport',
-//        'cinema' => 'cinema',
-//        'style' => 'style',
-//        'fashion' => 'fashion'
-//    ];
+//    var_dump($_SESSION);die;
+if (isset($_SESSION['login'])){
+    render('/admin');
+}
+else {
+    redirect('login');
+}
 
-    render ('/admin');
+
+
 
 }
 
@@ -83,7 +88,7 @@ function actionAdmin_tables_delete() {
     $id = $_GET['id'];
     $sql_del= "DELETE  FROM $name WHERE id=$id";
 
-    $dbh = mysqli_connect('localhost','YMB', 'YMB','news_site');
+    $dbh = mysqli_connect('localhost','yuriibondarchuk', 'Yurii18','yuriibondarchuk');
 
     mysqli_query($dbh, $sql_del);
 
@@ -96,20 +101,104 @@ function actionAdmin_tables_delete() {
 }
 function actionAdmin_tables_save() {
 //    var_dump($_POST,$_GET);die;
-    $name = $_GET['name'];
-    $id = $_GET['id'];
+
     $title = $_POST['title'];
     $content = $_POST['content'];
+    $name = $_GET['name'];
+    if(isset($_GET['new_page']))
+    {
+        $sql_insert = "INSERT INTO $name SET title='{$title}', content='{$content}'";
 
+    }
+else {
+
+
+    $id = $_GET['id'];
     $sql_update = "UPDATE $name SET title = '{$title}', content = '{$content}' WHERE id = $id";
+}
+
+
 //    var_dump($sql_update);die;
 
-    $dbh = mysqli_connect('localhost','YMB', 'YMB','news_site');
+    $dbh = mysqli_connect('localhost','yuriibondarchuk', 'Yurii18','yuriibondarchuk');
 
-    mysqli_query($dbh, $sql_update);
+    mysqli_query($dbh, (isset($_GET['new_page'])) ? $sql_insert : $sql_update);
 
     mysqli_close($dbh);
 
     $sql = "SELECT * FROM $name";
     render('/Admin_tables',['sql'=>$sql]);
+}
+function actionAdmin_new_page () {
+    $new_insert = $_GET['name'];
+    render('/Admin_new_page',['new_insert'=>$new_insert]);
+}
+
+function  actionLogin(){
+
+    render('/admin_login');
+}
+
+function  actionAdminauthor(){
+
+    if (isset($_POST['login'])&&isset($_POST['password'])&&$_POST['password']!=''&&$_POST['login']=='admin'){
+        $user = $_POST['login'];
+        $hash_conf = require_once __DIR__."/config_hash.php";
+        $password = md5($hash_conf['hash'].$_POST['password']);
+
+        $sql_user= "SELECT login,password FROM users WHERE login = '{$user}'";
+
+        $dbh = mysqli_connect('localhost','yuriibondarchuk', 'Yurii18','yuriibondarchuk');
+
+        $data =  mysqli_query($dbh, $sql_user);
+        $result = mysqli_fetch_all($data);
+//        var_dump($result);die;
+
+
+        if (!empty($result)){
+
+            $user_db = $result[0][0];
+            $password_db = $result[0][1];
+
+            if ($user == $user_db && $password == $password_db){
+                $auth = new Session();
+                $auth->set('login',$user);
+                $auth->set('role',$user);
+
+                redirect('admin');
+            }
+            else {
+
+                $nologin = 'you are not authorized';
+                render('/admin_login',['nologin'=>$nologin]);
+            }
+
+        }
+
+
+
+
+
+
+
+
+        mysqli_close($dbh);
+    }
+    else {
+        $nologin = 'you are not authorized';
+        render('/admin_login',['nologin'=>$nologin]);
+    }
+
+
+}
+
+
+function actionAdmin_exit () {
+
+    $del_user=new Session();
+    $del_user->delete('login');
+
+    $del_user->delete('role');
+
+    redirect('admin');
 }

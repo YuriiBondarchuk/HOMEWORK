@@ -20,9 +20,9 @@ require_once 'sample/sample.php';
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-
-    <link href="../style/jumbotron.css" rel="stylesheet">
     <link rel="stylesheet" href="../style/my_style.css">
+    <link href="../style/jumbotron.css" rel="stylesheet">
+
 
     <title>News Site</title>
     <!-- Custom styles for this template -->
@@ -32,12 +32,19 @@ require_once 'sample/sample.php';
 </head>
 
 <body>
-
 <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+
+
+    <a align="right" style="right: 0px" class="navbar-brand" href="<?= toUrl('site/admin_exit') ?>">
+        <button class="btn btn-warning">EXIT</button>
+    </a>
+
+
+
 
 </div>
 
-<!-- Main jumbotron for a primary marketing message or call to action -->
+
 <div class="jumbotron">
     <div class="container">
         <h3>Admin Panel</h3>
@@ -51,11 +58,11 @@ require_once 'sample/sample.php';
         <ol class="list-rectangle">
 
 
-            <a href="<?=toUrl("/site/admin_tables?name=business")?>"> <li>Business</li></a>
-            <a href="<?=toUrl("/site/admin_tables?name=cinema")?>"> <li>Cinema</li></a>
-            <a href="<?=toUrl("/site/admin_tables?name=sport")?>"> <li>Sport</li></a>
-            <a href="<?=toUrl("/site/admin_tables?name=style")?>"> <li>Style</li></a>
-            <a href="<?=toUrl("/site/admin_tables?name=fashion")?>"> <li>fashion</li></a>
+            <a href="<?=toUrl("/site/admin_tables?name=business")?>"> <li >Business</li></a>
+            <a  href="<?=toUrl("/site/admin_tables?name=cinema")?>"> <li>Cinema</li></a>
+            <a  href="<?=toUrl("/site/admin_tables?name=sport")?>"> <li>Sport</li></a>
+            <a  href="<?=toUrl("/site/admin_tables?name=style")?>"> <li>Style</li></a>
+            <a  href="<?=toUrl("/site/admin_tables?name=fashion")?>"> <li>fashion</li></a>
         </ol>
 
 

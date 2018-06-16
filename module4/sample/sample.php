@@ -6,9 +6,9 @@ require_once "class/DB.php";
 
 
 $host = 'localhost';
-$database = 'news_site';
-$user = 'YMB';
-$password = 'YMB';
+$database = 'yuriibondarchuk';
+$user = 'yuriibondarchuk';
+$password = 'Yurii18';
 
 $db = new DB($host,$user,$password,$database);
 //$db->query("UPDATE style SET click = 25 WHERE id = 5");

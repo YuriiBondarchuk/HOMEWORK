@@ -3,12 +3,8 @@
 require_once 'sample/sample.php';
 
 
-//var_dump($sql,$_GET);die;
-$id = $_GET['id'];
 $name = $_GET['name'];
-$table = $db->query($sql);
-//var_dump($table);die;
-//var_dump($table);die;
+
 ?>
 
 <!DOCTYPE html>
@@ -43,6 +39,7 @@ $table = $db->query($sql);
     <a align="right" style="right: 0px" class="navbar-brand" href="<?= toUrl('site/admin_exit') ?>">
         <button class="btn btn-warning">EXIT</button>
     </a>
+
 </div>
 
 <!-- Main jumbotron for a primary marketing message or call to action -->
@@ -55,14 +52,13 @@ $table = $db->query($sql);
 
 <div class="container">
     <!-- Example row of columns -->
-    <h1><?= $name ?></h1>
-    <form action="<?= toUrl("site/admin_tables_save?name={$name}&id={$id}") ?>" method="post">
+    <h1>Category: <span><?= $name ?></span></h1>
+    <form action="<?= toUrl("site/admin_tables_save?name={$new_insert}&new_page=ok") ?>" method="post">
         <label for="title">Title</label>
-        <input class="form-control" type="text" value="<?= $table[0]['title'] ?>" name="title" id="title">
+        <input class="form-control" type="text" value="" name="title" id="title">
 
         <label for="content">Content</label>
-        <textarea class="form-control" name="content" id="content" cols="50"
-                  rows="30"><?= $table[0]['content'] ?></textarea>
+        <textarea class="form-control" name="content" id="content" cols="50" rows="30"></textarea>
         <input class="btn btn-success" type="submit" value="SAVE">
 
     </form>

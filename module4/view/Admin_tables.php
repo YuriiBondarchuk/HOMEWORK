@@ -17,9 +17,11 @@ $table = $db->query($sql);
     <script type="text/javascript" src="../script/NoDelete.js"></scriptty>
 
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js" ></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+        <
+        script
+        src = "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js" ></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
@@ -31,13 +33,14 @@ $table = $db->query($sql);
     <!-- Custom styles for this template -->
 
 
-
 </head>
 
 <body>
 
 <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-
+    <a align="right" style="right: 0px" class="navbar-brand" href="<?= toUrl('site/admin_exit') ?>">
+        <button class="btn btn-warning">EXIT</button>
+    </a>
 </div>
 
 <!-- Main jumbotron for a primary marketing message or call to action -->
@@ -50,35 +53,44 @@ $table = $db->query($sql);
 
 <div class="container">
     <!-- Example row of columns -->
-    <h1><?=$name?></h1>
+    <h1><?= $name ?></h1>
     <table class="table table-hover">
-        <?php foreach ($table as $table ) :?>
-        <tr>
-            <th scope="row"><?=$table ['id']?></th>
-            <td><?=$table ['title']?></td>
-            <td align="right">
-                <a href="<?=toUrl("/site/admin_tables_edit?id= {$table['id']}&name={$name}")?>"><button class="btn btn-primary">EDIT</button></a>
-                <a href="<?=toUrl("/site/admin_tables_delete?id={$table['id']}&name={$name}")?>"><button class="btn btn-danger" onclick="NoDelete()">DELETE</button></a>
-            </td>
+        <?php foreach ($table as $table) : ?>
+            <tr>
+                <th scope="row"><?= $table ['id'] ?></th>
+                <td><?= $table ['title'] ?></td>
+                <td align="right">
+                    <a href="<?= toUrl("/site/admin_tables_edit?id= {$table['id']}&name={$name}") ?>">
+                        <button class="btn btn-primary">EDIT</button>
+                    </a>
+                    <a href="<?= toUrl("/site/admin_tables_delete?id={$table['id']}&name={$name}") ?>"
+                       onclick="return NoDelete()">
+                        <button class="btn btn-danger">DELETE</button>
+                    </a>
+                </td>
 
-        </tr>
+            </tr>
 
-<!--            <button class="btn">DELETE</button>-->
-        <?php endforeach;?>
+            <!--            <button class="btn">DELETE</button>-->
+        <?php endforeach; ?>
 
 
     </table>
-
-
+    <div>
+        <a href="<?= toUrl("/site/admin_new_page?name={$name}") ?>">
+            <button class="btn btn-primary">NEW PAGE</button>
+        </a>
     </div>
-    <hr>
+
+</div>
+<hr>
 
 
-    <hr>
+<hr>
 
-    <footer>
-        <p align="center">&copy; My_Company <b><?=date('Y')?></b></p>
-    </footer>
+<footer>
+    <p align="center">&copy; My_Company <b><?= date('Y') ?></b></p>
+</footer>
 </div> <!-- /container -->
 
 </body>

@@ -1,55 +1,100 @@
-import React, {Component} from 'react';
-// import logo from './logo.svg';
+import React, {Component, Fragment} from 'react';
+import logo from './logo.svg';
 import './App.css';
+import Navigation from './Navigation'
+
+
+
+
 
 class App extends Component {
     constructor() {
         super();
         this.state = {
-            category: 'all',
-            data: 'data',
+            category: 'men',
+            zapros:[],
             author: 'author',
             time: "time",
             likes: 'likes',
             coments_count: 'coments',
-            img:'default'
+            img: 'default',
+
         }
-        (async function() {
 
 
+    }
+    categoryClick=(e)=>{
+var category = `${this.refNav.refSelect.value}`
+    this.setState({category: `${category}`})
 
-            const url = 'https://api.imgur.com/3/gallery/search/top/all/integer?q=cats';
-             await fetch(url,{ headers:{Authorization:'Client-ID d2847c77a35ca8f'}}).then(function (response) {
-                // console.log(response.json());
-
-                return response.json();
-
-            }).then(function (data) {
-                // console.log(data);
-
-                return data });
-
-
-            return this.setState({img:"URA"})}) ;
-        console.log(this.state);
+        this.myZapros(category);
 
 
 
     }
-    componentWillMount(){
-        // const {img} = this.state;
+
+    myZapros(cat) {
+        // (category===undefined)
+        const sel = `${this.refNav.refSelect.value}`;
+      const {category} = this.state;alert(category)
+        var name = 'ura'
+        const url = 'https://api.imgur.com/3/gallery/search/top/all/integer?q'+'='+category;
+
+
+        fetch(url, {async:true, mode: "cors", headers: {"Authorization": 'Client-ID d2847c77a35ca8f'}})
+            .then(response => response.json())
+            .then(data => data.data.map(content => (
+
+                {
+                    link: content.link,
+                    description : content.description,
+                    id : content.id,
+                    title : content.title,
+                    points : content.point
+                }
+
+            )))
+            .then(data => this.setState({zapros: data}))
+            .catch(error=>console.log('This ERROR', error))
 
     }
+
+
+    componentWilMount() {
+//
+alert   ('Did')
+        this.myZapros(this.state.category);
+
+
+
+
+     }
 
 
     render() {
+        console.log('render App')
+
 
 
         return (
-            <div>
-                <p>
-                    {/*{console.log(this.state.img)}*/}
-                </p>
+            <div className="App">
+                <header className="App-header">
+                    <img src={logo} className="App-logo" alt="logo"/>
+                    <h1 className="App-title">my integration with the imgur API</h1>
+                </header>
+                <Fragment>
+                    <Navigation change={this.categoryClick} ref={el=>this.refNav=el}/>
+                </Fragment>
+
+                <div>
+                    {
+                        this.state.zapros.map(data=>
+                            {
+                             return <img src={data.link} alt="" key={data.id}/>
+                            }
+                        )
+                    }
+                </div>
             </div>
 
 
@@ -60,72 +105,5 @@ class App extends Component {
 export default App;
 
 
-// import React, { Component } from 'react';
-// import Request from 'react-http-request';
-//
-// export default class App extends Component {
-//     render() {
-//         return (
-//             <Request
-//                 url='https://api.imgur.com/3/account/{{yuriibondarchuk}}'
-//                 method='get'
-//                 accept='application/data'
-//                 verbose={true}
-//             >
-//                 {
-//                     ({error, result, loading,Response}) => {
-//                         if (loading) {
-//
-//                             // return <div>Hi</div>
-//                             return <div>loading...</div>;
-//                         } else {
-//                             console.log(result.text )
-//                             return <React.Fragment>{result.text} </ React.Fragment>
-//                         }
-//                     }
-//                 }
-//             </Request>
-//         );
-//     }
-// }
 
 
-// {/*<div className="App">*/}
-// {/*<header className="App-header">*/}
-// {/*<img src={logo} className="App-logo" alt="logo"/>*/}
-// {/*<h1 className="App-title">my integration with the imgur API</h1>*/}
-// {/*</header>*/}
-// {/*<nav>*/}
-// {/*<label htmlFor="category">Category*/}
-// {/*<select name="category" id="category">*/}
-// {/*<option value="cats">Cats</option>*/}
-// {/*<option value="dog">Dog</option>*/}
-// {/*<option value="girl">Girl</option>*/}
-// {/*<option value="men">Men</option>*/}
-// {/*</select>*/}
-// {/*</label>*/}
-// {/*<fieldset>*/}
-// {/*<legend>Select the data to display</legend>*/}
-// {/*<div>*/}
-// {/*<input type="checkbox" id="date" name="filter" value="date"/>*/}
-// {/*<label htmlFor="date">Date</label>*/}
-// {/*</div>*/}
-// {/*<div>*/}
-// {/*<input type="checkbox" id="author" name="filter" value="author"/>*/}
-// {/*<label htmlFor="author">Author</label>*/}
-// {/*</div>*/}
-// {/*<div>*/}
-// {/*<input type="checkbox" id="likes" name="filter" value="likes"/>*/}
-// {/*<label htmlFor="likes">Likes</label>*/}
-// {/*</div>*/}
-// {/*<div>*/}
-// {/*<input type="checkbox" id="comments" name="filter" value="comments"/>*/}
-// {/*<label htmlFor="comments">Comments</label>*/}
-// {/*</div>*/}
-// {/*<div>*/}
-// {/*<input type="checkbox" id="time" name="filter" value="time"/>*/}
-// {/*<label htmlFor="time">Time</label>*/}
-// {/*</div>*/}
-// {/*</fieldset>*/}
-// {/*</nav>*/}
-// {/*</div>*/}

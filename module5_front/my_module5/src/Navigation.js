@@ -3,23 +3,13 @@ import React, {Component} from 'react';
 
 class Navigation extends Component {
 
-// categoryClick=()=>{
-// console.log(this.refSelect.value)
-//     console.log(this.state)
-//
-// }
-//
-// focus=()=>{
-//     var x = document.getElementById("category");
-//     console.log(x.value)
-// }
     render() {
     console.log('render')
         return (
             <nav>
 
                 <label htmlFor="category">Category
-                    <select name="category" defaultValue={'men'} id="category" key={"category"} ref={(select=>this.refSelect=select)}  onChange={this.props.change} >
+                    <select name="category" id="category" key={"category"} ref={(select=>this.refSelect=select)}  onChange={this.props.change} >
                         <option  value="cats">Cats</option>
                         <option value="dog">Dog</option>
                         <option value="girl">Girl</option>
@@ -27,14 +17,14 @@ class Navigation extends Component {
                         <option value="cats OR dog OR girl OR men">All</option>
                     </select>
                 </label>
-                <fieldset>
+                <fieldset >
                     <legend>Select the data to display</legend>
                     <div>
-                        <input type="checkbox" id="date" name="filter" value="date"/>
+                        <input type="checkbox" id="date" ref={(input=>this.refInputdate=input)}name="filter" value="date"  onChange={this.props.check}/>
                         <label htmlFor="date">Date</label>
                     </div>
                     <div>
-                        <input type="checkbox" id="author" name="filter" value="author"/>
+                        <input type="checkbox" id="author" ref={(input=>this.refInputauthor=input)} name="filter" value="author" onChange={this.props.check}/>
                         <label htmlFor="author">Author</label>
                     </div>
                     <div>

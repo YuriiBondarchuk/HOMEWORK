@@ -1,41 +1,13 @@
 import React, {Component, Fragment} from 'react';
 import logo from './logo.svg';
 import './App.css';
-import Navigation from './Navigation'
+import Navigation from './Navigation';
+import {Link} from 'react-router';
+
 
 
 class App extends Component {
-    constructor() {
-        super();
-        this.state = {
-            category: 'men',
-            zapros: []
-
-
-
-        }
-
-
-    }
-
-    componentWillMount() {
-        console.log('componentWill')
-        this.myZapros();
-    }
-
-    categoryClick = () => {
-        var category = `${this.refNav.refSelect.value}`
-        this.setState({category: `${category}`})
-        this.myZapros();
-
-
-    }
-
-    myCheck=(e)=> {
-        console.log('hello',this.refNav)
-    }
-
-    myZapros() {
+    myZapros = () => {
 
         const category = (this.refNav === undefined) ? 'men' : this.refNav.refSelect.value;
 
@@ -64,7 +36,56 @@ class App extends Component {
             .then(data => this.setState({zapros: data}))
             .catch(error => console.log('This ERROR', error))
 
+
     }
+
+
+    componentWillMount() {
+        console.log('componentWill')
+        this.myZapros();
+
+    }
+
+
+    constructor() {
+        super();
+        this.state = {
+            category: 'men',
+            author: {display: 'none'},
+            date: {display: 'none'},
+            views: {display: 'none'},
+            points: {display: 'none'},
+            comments: {display: 'none'},
+            tittle: {display: 'none'},
+            zapros: []
+
+
+        }
+
+
+    }
+
+    categoryClick = () => {
+        var category = `${this.refNav.refSelect.value}`
+        this.setState({category: `${category}`})
+        this.myZapros();
+
+
+    }
+
+    myCheck = () => {
+        const {refInputauthor, refInputcomments, refInputdate, refInputpoints, refInputviews, refInputtittle} = this.refNav
+
+        return (
+            refInputauthor.checked ? this.setState({author: { display: 'view'}}) : this.setState({author: { display: 'none'}}) ,
+                refInputcomments.checked ? this.setState({comments: {display: 'view'}}) : this.setState({comments: { display: 'none'}}),
+                refInputdate.checked ? this.setState({date: {display: 'view'}}) : this.setState({date: { display: 'none'}}),
+                refInputpoints.checked ? this.setState({points: {display: 'view'}}) : this.setState({points: { display: 'none'}}),
+                refInputviews.checked ? this.setState({views: {display: 'view'}}) : this.setState({views: { display: 'none'}}),
+                refInputtittle.checked ? this.setState({tittle: {display: 'view'}}) : this.setState({tittle: { display: 'none'}})
+        )
+    }
+
 
     render() {
 
@@ -75,7 +96,7 @@ class App extends Component {
                     <h1 className="App-title">my integration with the imgur API</h1>
                 </header>
                 <Fragment>
-                    <Navigation change={this.categoryClick} check= {this.myCheck} ref={el => this.refNav = el}/>
+                    <Navigation change={this.categoryClick} check={this.myCheck} ref={el => this.refNav = el}/>
                 </Fragment>
 
                 <div>
@@ -86,15 +107,15 @@ class App extends Component {
 
                                     return (
                                         <div key={data.id}>
-                                            <img src={data.link} alt=""/>
-                                            <p>Views: {data.views}</p>
+                                            <Link to={"/Comments?image_id="+data.id+"&image_url="+data.link} many={'ura'}> <img src={data.link} alt=""/></Link>
+                                            <p className={this.state.views.display}>Views: {data.views}</p>
 
-                                            <p>Title: {data.title}</p>
-                                            <p> Coments: {data.coment_count}</p>
-                                            <p>Points:{data.points}</p>
-
-                                            <p>Date: <b>{new Date((data.datetime * 1000)).toDateString()}</b></p>
-                                            <p>Author: {data.author}</p>
+                                            <p className={this.state.tittle.display}>Title: {data.title}</p>
+                                            <p className={this.state.comments.display}> Coments: {data.coment_count}</p>
+                                            <p className={this.state.points.display}>Points:{data.points}</p>
+                                            <p className={this.state.date.display}>Date: <b>{new Date((data.datetime * 1000)).toDateString()}</b>
+                                            </p>
+                                            <p className={this.state.author.display}>Author: {data.author}</p>
                                         </div>
 
                                     )

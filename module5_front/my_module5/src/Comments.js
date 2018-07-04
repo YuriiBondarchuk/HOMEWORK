@@ -54,9 +54,13 @@ class Comments extends Component {
 
         return (
                         <div>
-                            <Link to= '/'><p>Back</p></Link>
-                            <p>{this.state.image_title}</p>
-                            <img src={this.state.image_url} alt=""/>
+
+
+
+                            <Link to= '/'><img src="/static/media/back.d7fda2c6.png"  className={'back'} alt=""/></Link>
+                            <p className={'bg-info'}>{this.state.image_title}</p>
+                            <img src={this.state.image_url} className={'img_c'} alt=""/>
+                            <span>Coments:</span><br/><br/>
                             <ul className={"list-group"}>{this.state.comments.map((value,i)=>{
                                 return <li className={"list-group-item list-group-item-success"} key={i}>{value.comments}</li>
                             })}</ul>

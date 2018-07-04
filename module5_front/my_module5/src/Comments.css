@@ -1,0 +1,48 @@
+li {
+    margin: 10px;
+    width: auto;
+    border-radius: 0.8em;
+
+}
+
+body {
+    background-image: url("./sea-foam-severance.png");
+}
+
+.img_c {
+    display: block;
+    align: center;
+    width: 500px;
+    height: 500px;
+    margin: 0 auto;
+    margin-bottom: 80px;
+    border-radius: 0.5em;
+
+}
+
+span {
+    margin-top: 30px;
+    margin-left: 50px;
+    font-size: 2em;
+    width: 300px;
+}
+
+img.back {
+    width: 50px;
+    height: 50px;
+    top: 0px;
+    left: 0px;
+    margin-left: 20px;
+    margin-top: 20px;
+    position: absolute;
+}
+
+.bg-info {
+    width: 500px;
+    border-radius: 0.4em;
+    margin: 0 auto;
+    display: block;
+    padding: 7px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}

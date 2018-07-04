@@ -20,8 +20,10 @@ $table = $db->query($sql);
 
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js" ></script>
+        <
+        script
+        src = "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js" ></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
@@ -33,13 +35,14 @@ $table = $db->query($sql);
     <!-- Custom styles for this template -->
 
 
-
 </head>
 
 <body>
 
 <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-
+    <a align="right" style="right: 0px" class="navbar-brand" href="<?= toUrl('site/admin_exit') ?>">
+        <button class="btn btn-warning">EXIT</button>
+    </a>
 </div>
 
 <!-- Main jumbotron for a primary marketing message or call to action -->
@@ -52,21 +55,20 @@ $table = $db->query($sql);
 
 <div class="container">
     <!-- Example row of columns -->
-    <h1><?=$name?></h1>
-    <form action="<?=toUrl("site/admin_tables_save?name={$name}&id={$id}")?>" method="post">
+    <h1><?= $name ?></h1>
+    <form action="<?= toUrl("site/admin_tables_save?name={$name}&id={$id}") ?>" method="post">
         <label for="title">Title</label>
-        <input class="form-control" type="text" value="<?=$table[0]['title']?>" name="title" id="title">
+        <input class="form-control" type="text" value="<?= $table[0]['title'] ?>" name="title" id="title">
 
         <label for="content">Content</label>
-        <textarea class="form-control" name="content"  id="content" cols="50" rows="30"><?=$table[0]['content']?></textarea>
+        <textarea class="form-control" name="content" id="content" cols="50"
+                  rows="30"><?= $table[0]['content'] ?></textarea>
         <input class="btn btn-success" type="submit" value="SAVE">
 
     </form>
 
 
-
     </table>
-
 
 
 </div>
@@ -76,7 +78,7 @@ $table = $db->query($sql);
 <hr>
 
 <footer>
-    <p align="center">&copy; My_Company <b><?=date('Y')?></b></p>
+    <p align="center">&copy; My_Company <b><?= date('Y') ?></b></p>
 </footer>
 </div> <!-- /container -->
 

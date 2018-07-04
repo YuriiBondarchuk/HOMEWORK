@@ -29,5 +29,17 @@ function dispatch($url,$controllersPath,$baseUrl = null) {
     if (!function_exists($action)){
         die ("Action $act is not allowed in controller '{$part[0]}'");
     }
+//    $action();
+
+    if(isset($part[2])&&$part[2]=='login') {
+
+        $action_login='action'.ucfirst($part[2]);
+    if (!function_exists($action_login)){
+        die ("Action $action_login is not allowed in controller '{$part[0]}'");
+    }
+    $action_login();
+    }
+    else {
     $action();
+    }
 }

@@ -21,9 +21,9 @@ function getUniqueFileName ($dir, $fileExt){
     return $name;
 }
 
-//function redirect ($url, $status = 301){
-//    // var_dump($url);
-//
-//    header ("Location: {$url}", $status);
-////    exit;
-//}
+function redirect ($url, $status = 301){
+    // var_dump($url);
+
+    header ("Location: {$url}", $status);
+//    exit;
+}

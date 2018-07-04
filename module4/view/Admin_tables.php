@@ -72,9 +72,14 @@ $table = $db->query($sql);
 
             </tr>
 
+
             <!--            <button class="btn">DELETE</button>-->
         <?php endforeach; ?>
->>>>>>> c4a83c31e1e37d777e40b64f5afdc0b39e5e756e
+
+
+            <!--            <button class="btn">DELETE</button>-->
+        <?php endforeach; ?>
+
 
 
     </table>
@@ -82,7 +87,7 @@ $table = $db->query($sql);
         <a href="<?= toUrl("/site/admin_new_page?name={$name}") ?>">
             <button class="btn btn-primary">NEW PAGE</button>
         </a>
->>>>>>> c4a83c31e1e37d777e40b64f5afdc0b39e5e756e
+
     </div>
 
 </div>

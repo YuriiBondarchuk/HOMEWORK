@@ -1,9 +1,8 @@
 <?php
 
+//session_start();
 
 require_once 'class/Session.php';
-
-
 
 
 
@@ -110,19 +109,12 @@ function actionAdmin_tables_save() {
     if(isset($_GET['new_page']))
     {
         $sql_insert = "INSERT INTO $name SET title='{$title}', content='{$content}'";
-<<<<<<< HEAD
+
 
     }
 else {
 
 
-=======
-
-    }
-else {
-
-
->>>>>>> c4a83c31e1e37d777e40b64f5afdc0b39e5e756e
     $id = $_GET['id'];
     $sql_update = "UPDATE $name SET title = '{$title}', content = '{$content}' WHERE id = $id";
 }
@@ -142,8 +134,7 @@ else {
 function actionAdmin_new_page () {
     $new_insert = $_GET['name'];
     render('/Admin_new_page',['new_insert'=>$new_insert]);
-<<<<<<< HEAD
-=======
+
 }
 
 function  actionLogin(){
@@ -213,5 +204,5 @@ function actionAdmin_exit () {
     $del_user->delete('role');
 
     redirect('admin');
->>>>>>> c4a83c31e1e37d777e40b64f5afdc0b39e5e756e
+
 }

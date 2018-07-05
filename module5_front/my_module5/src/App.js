@@ -9,7 +9,6 @@ import InfiniteScroll from 'react-infinite-scroller';
 class App extends Component {
 
 
-
     constructor() {
         super();
         this.state = {
@@ -21,25 +20,29 @@ class App extends Component {
             comments: {display: 'none'},
             tittle: {display: 'none'},
             zapros: [],
-            page:1
+            pagestart: 1,
+            pageend: true
 
 
         }
 
 
     }
-handleend =()=>{
-        console.log('sad')
-        this.setState({page: this.state.page+1});
-        // this.myZapros();
 
-}
+    handleend = () => {
+        console.log('sad');
+        this.state.pagestart !==3 ? this.setState({pagestart : this.state.pagestart + 1 }) : this.setState({pageend:false})
+
+        this.myZapros();
+
+    }
 
     myZapros = () => {
-console.log('zapros')
+        // console.log('zapros')
+        // console.log(this.state.zapros.length === 0)
         const category = (this.refNav === undefined) ? 'men' : this.refNav.refSelect.value;
 
-        const url = `https://api.imgur.com/3/gallery/search/top/all/${this.state.page}?q= ` + category;
+        const url = `https://api.imgur.com/3/gallery/search/top/all/${this.state.pagestart}?q= ` + category;
 
         fetch(url, {async: true, mode: "cors", headers: {"Authorization": 'Client-ID d2847c77a35ca8f'}})
             .then(response => response.json())
@@ -61,7 +64,9 @@ console.log('zapros')
                 }
 
             )))
-            .then(data => this.setState({zapros: data}))
+            .then(data => this.setState({
+                zapros: (this.state.zapros.length === 0) ? data : [...this.state.zapros, ...data]
+            }))
             .catch(error => console.log('This ERROR', error))
 
 
@@ -69,17 +74,15 @@ console.log('zapros')
 
 
     componentWillMount() {
-        console.log('componentWill')
+        // console.log('componentWill')
         this.myZapros();
 
     }
 
 
-
-
     categoryClick = () => {
         var category = `${this.refNav.refSelect.value}`
-        this.setState({category: `${category}`})
+        this.setState({category: `${category}`, zapros: [], pagestart: 1})
         this.myZapros();
 
 
@@ -105,60 +108,66 @@ console.log('zapros')
             <InfiniteScroll
                 pageStart={0}
                 loadMore={this.handleend}
+                initialLoad={false}
                 isReverse={false}
-                hasMore={true || false}
+
+                hasMore={this.state.pageend}
                 loader={<div className="loader" key={0}>Loading ...</div>}
             >
-            <div className="App">
-                <header className="App-header">
-                    <img src={logo} className="App-logo" alt="logo"/>
-                    <h1 className="App-title">my integration with the imgur API</h1>
-                </header>
-                <Fragment>
-                    <Navigation change={this.categoryClick} check={this.myCheck} ref={el => this.refNav = el}/>
-                </Fragment>
+                <div className="App">
+                    <header className="App-header">
+                        <img src={logo} className="App-logo" alt="logo"/>
+                        <h1 className="App-title">my integration with the imgur API</h1>
+                    </header>
+                    <Fragment>
+                        <Navigation change={this.categoryClick} check={this.myCheck} ref={el => this.refNav = el}/>
+                    </Fragment>
 
-                <div>
-                    {
-                        this.state.zapros.map(data => {
-                                if (data.sizes !== undefined) {
+                    <div>
+                        {
+                            this.state.zapros.map(data => {
+                                    if (data.sizes !== undefined) {
 
 
-                                    return (
+                                        return (
 
-                                            <div key={data.id} className={'main'}>
+                                            <div key={data.sizes+Math.random()} className={'main'}>
                                                 <p className={this.state.tittle.display}><span
                                                     className={'bg-info'} id={'title-info'}>Title: {data.title}</span></p>
                                                 <Link to={"/Comments?image_id=" + data.id + "&image_url=" + data.link}> <img
                                                     src={data.link} alt=""/></Link><br/>
                                                 <div className={'alert alert-info'} id={'alert-info'}>
                                                     <div className={'top-info'}>
-                                                        <p className={this.state.date.display}><b>Date: </b> <u>{new Date((data.datetime * 1000)).toDateString()}</u></p>
+                                                        <p className={this.state.date.display}><b>Date: </b>
+                                                            <u>{new Date((data.datetime * 1000)).toDateString()}</u></p>
                                                         <br/>
-                                                        <p className={this.state.author.display}><b>Author: </b> <u>{data.author}</u></p>
+                                                        <p className={this.state.author.display}><b>Author: </b>
+                                                            <u>{data.author}</u></p>
                                                     </div>
 
                                                     <div className={'bottom-info'}>
-                                                        <p className={this.state.views.display}><b>Views:</b> <u>{data.views}</u></p>
-                                                        <p className={this.state.comments.display}> <b>Coments: </b><u>{data.coment_count}</u></p>
-                                                        <p className={this.state.points.display}><b>Points:</b><u>{data.points}</u></p>
+                                                        <p className={this.state.views.display}><b>Views:</b>
+                                                            <u>{data.views}</u></p>
+                                                        <p className={this.state.comments.display}>
+                                                            <b>Coments: </b><u>{data.coment_count}</u></p>
+                                                        <p className={this.state.points.display}>
+                                                            <b>Points:</b><u>{data.points}</u></p>
                                                     </div>
 
                                                 </div>
                                             </div>
 
 
+                                        )
+                                    }
+                                    else return null
 
-                                    )
+
                                 }
-                                else return null
-
-
-                            }
-                        )
-                    }
+                            )
+                        }
+                    </div>
                 </div>
-            </div>
             </InfiniteScroll>
 
 

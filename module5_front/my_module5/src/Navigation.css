@@ -4,10 +4,12 @@ nav {
     border-radius: 50px;
     margin: 5px;
 }
-.left{
+
+.left {
     width: 27px;
     margin-left: 50px;
 }
+
 label {
     margin: 10px;
 }

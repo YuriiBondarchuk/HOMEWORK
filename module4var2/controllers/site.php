@@ -34,8 +34,9 @@ class Site
         $menu->modelMain();
         self::$data = new ProductListmodel();
         self::$data->tovarList();
+        self::$data->tovarListPagin();
 
-        Template::render('product', ['cat' => $menu->cat,'tovar'=>self::$data->tov_all]);
+        Template::render('product', ['cat' => $menu->cat,'tovar'=>self::$data->tov_all,'pagin'=>self::$data->pagin]);
     }
 
 }

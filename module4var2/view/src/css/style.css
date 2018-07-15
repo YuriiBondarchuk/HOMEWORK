@@ -1835,3 +1835,17 @@ display: table-cell;
 .item {
 	border: 1px solid red;
 }
+
+.navig {
+	margin-left: 40%;
+	margin-top: 30px;
+
+}
+
+.product-grid img {
+	width: 220px;
+	height: 220px;
+}
+.product-grid label, b {
+	margin-left: 3em;
+}

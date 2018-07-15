@@ -1,12 +1,13 @@
 <?php
 
+class Template
+{
+    function render($template, array $variables = [])
+    {
 
-function render ($template,array $variables=[]) {
+        $viewsPath = config::get('viewsPath');
 
-    $viewsPath = config('viewsPath');
+        require_once "{$viewsPath}/{$template}.html";
 
-    extract ($variables);
-
-    require_once "{$viewsPath}/{$template}.php";
-
+    }
 }

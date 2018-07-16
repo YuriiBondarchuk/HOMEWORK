@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 h1 {
    border: 1px solid;
    text-align: center;
@@ -55,4 +56,63 @@ ul {
 li{
     list-style-type: none;
     display: inline;
+=======
+h1 {
+   border: 1px solid;
+   text-align: center;
+    /*position: absolute;*/
+}
+
+
+.header {
+    background-image: url("ukraine.jpeg");
+    margin: 0 auto;
+    width: 800px;
+    height: 300px;
+    background-repeat: no-repeat;
+    /*position: absolute;*/
+    /*float: left;*/
+}
+
+.content {
+    margin: 0 auto;
+    width: 800px;
+    /*border: 1px solid black;*/
+}
+h4{
+    margin-left: 10px;
+    visibility: visible;
+}
+ .country {
+    font-size: 24px;
+    color: darkgoldenrod;
+    padding-top: 50px;
+    padding-left: 50px;
+}
+.nav {
+    margin: 0 auto;
+    /*position: absolute;*/
+    background-color:darkgoldenrod ;
+    width: 800px;
+    height:60px;
+    text-align: right;
+    font-size: 24px;
+
+
+}
+.nav_country {
+    left: 0px;
+    font-size:24px;
+    display: inline;
+    display: none;
+
+
+}
+ul {
+    margin-top: 0;
+}
+li{
+    list-style-type: none;
+    display: inline;
+>>>>>>> 3f13415fba2d8c1a4471c2e8664e1cb5a2329471
 }

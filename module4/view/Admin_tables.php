@@ -55,6 +55,7 @@ $table = $db->query($sql);
     <!-- Example row of columns -->
     <h1><?= $name ?></h1>
     <table class="table table-hover">
+
         <?php foreach ($table as $table) : ?>
             <tr>
                 <th scope="row"><?= $table ['id'] ?></th>
@@ -71,8 +72,14 @@ $table = $db->query($sql);
 
             </tr>
 
+
             <!--            <button class="btn">DELETE</button>-->
         <?php endforeach; ?>
+
+
+            <!--            <button class="btn">DELETE</button>-->
+        <?php endforeach; ?>
+
 
 
     </table>
@@ -80,6 +87,7 @@ $table = $db->query($sql);
         <a href="<?= toUrl("/site/admin_new_page?name={$name}") ?>">
             <button class="btn btn-primary">NEW PAGE</button>
         </a>
+
     </div>
 
 </div>

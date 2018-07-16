@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en" ng-app="app">
+<head>
+    <link rel="stylesheet" href="src/bootstrap.min.css">
+    <link rel="stylesheet" href="style/main.css">
+    <script src="src/angular.js" defer></script>
+    <script src="script/main.js" defer></script>
+    <script src="src/chance.js" defer></script>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Angular_part_1_path_2</title>
+</head>
+<body>
+<header>
+    <h1>Платья ручная робота</h1>
+    <h3>Оставайся всегда совершенной </h3>
+</header>
+
+<div ng-controller="PageController as page">
+    <input type="image" name="" id="plit" src="icons/plit.ico" ng-click="funclick($event)">
+    <input type="image" name="" id="spisok" src="icons/spis.ico" ng-click="funclick($event)">
+</div>
+
+<div class="content wrapper" ng-class="{'app-loaded': true}" ng-controller="ProductsController as product" >
+
+    <div class="model" ng-repeat="model in product.model" ng-controller="TabController as tab" >
+        <span> № {{model.article}} </span>
+
+        <div class="gallery" ng-controller="GalleryController as gallery">
+            <div class="img-wrap">
+                <img ng-src="img/{{product.model[$index].article}}/{{product.modelfoto[1].images[gallery.current]}}">
+            </div>
+            <ul class="img-thumbnail clearfix" ng-init="index = product.model[$index].article">
+
+                <li class="smile" ng-repeat="image in product.modelfoto[1].images track by $index">
+                    <img class="smile" ng-src="img/{{index}}/{{image}}" ng-click="gallery.setCurrent($index) ">
+                </li>
+            </ul>
+        </div>
+
+        <button type="button">to buy</button>
+
+        <ul class="nav nav-pills">
+            <li><a href ng-click="tab.selectedTab(1)">Description</a></li>
+            <li><a href ng-click="tab.selectedTab(2)">Specification</a></li>
+            <li><a href ng-click="tab.selectedTab(3)">Price</a></li>
+        </ul>
+
+        <div class="panel" ng-show="tab.isSelectedTab(1)">
+            <!--<h4>Description</h4>-->
+            <blockquote>{{model.description}}</blockquote>
+        </div>
+
+        <div class="panel" ng-show="tab.isSelectedTab(2)">
+            <!--<h4>Size</h4>-->
+            <blockquote>{{model.specification}}</blockquote>
+        </div>
+
+        <div class="panel" ng-show="tab.isSelectedTab(3)">
+            <!--<h4>Price</h4>-->
+            <blockquote>{{model.price}} грн.</blockquote>
+        </div>
+
+    </div>
+        <!--построение списка-->
+
+
+
+    <div class="spisok_main" ng-repeat="model in product.model">
+
+        <img ng-src="img/{{product.model[$index].article}}/{{product.modelfoto[0].image}}" alt="">
+
+        <div class="spisok tab">
+            <h4>Description</h4>
+            <p>{{model.description}}</p>
+
+        </div>
+        <div class="spisok tab">
+            <h4>specification</h4>
+            <p>{{model.specification}}</p>
+
+        </div>
+        <div class="spisok tab">
+            <h4>Price</h4>
+            <p>{{model.price}} грн.</p>
+
+        </div>
+    </div>
+
+</div>
+
+
+</body>
+</html>

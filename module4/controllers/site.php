@@ -1,7 +1,8 @@
 <?php
-//session_start();
-require_once 'class/Session.php';
 
+//session_start();
+
+require_once 'class/Session.php';
 
 
 
@@ -109,6 +110,7 @@ function actionAdmin_tables_save() {
     {
         $sql_insert = "INSERT INTO $name SET title='{$title}', content='{$content}'";
 
+
     }
 else {
 
@@ -132,6 +134,7 @@ else {
 function actionAdmin_new_page () {
     $new_insert = $_GET['name'];
     render('/Admin_new_page',['new_insert'=>$new_insert]);
+
 }
 
 function  actionLogin(){
@@ -201,4 +204,5 @@ function actionAdmin_exit () {
     $del_user->delete('role');
 
     redirect('admin');
+
 }

@@ -1,0 +1,86 @@
+.wrapper {
+  padding: 20px;
+  opacity: 0;
+  transition: opacity 1s ease;
+}
+.wrapper.app-loaded {
+  opacity: 1;
+}
+.modals {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.3);
+}
+/**************************************/
+/* div Корзины Товаров*/
+.list-group {
+  width: 500px;
+  height: auto;
+  position: fixed;
+  top: 0;
+  left: 30%;
+}
+/**************************************/
+.spisok_main {
+  display: none;
+}
+.spisok {
+  margin: 5px;
+  height: 280px;
+}
+div.spisok {
+  display: inline-table;
+  margin: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+div.spisok h4 {
+  color: #00f;
+}
+.spisok_main img {
+  width: 200px;
+  height: 280px;
+  float: left;
+  margin: 10px;
+}
+.tab {
+  width: 250px;
+  top: 10px;
+}
+header {
+  background-image: url("../img/header.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  height: 150px;
+  text-align: center;
+  color: #ff4500;
+}
+img {
+  width: 200px;
+  height: 320px;
+  padding: 10px;
+  margin: 0 auto;
+}
+li {
+  list-style-type: none;
+  display: inline;
+}
+li img {
+  height: 150px;
+  width: 100px;
+  padding: 10px;
+}
+.model {
+  width: auto;
+  height: auto;
+  float: left;
+  padding-left: 20px;
+}
+.panel {
+  width: 200px;
+  padding: 10px;
+}

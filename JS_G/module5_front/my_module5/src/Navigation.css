@@ -1,0 +1,15 @@
+nav {
+    background-image: url("./light-gray-micro-carbon.png");
+    background-color: palevioletred;
+    border-radius: 50px;
+    margin: 5px;
+}
+
+.left {
+    width: 27px;
+    margin-left: 50px;
+}
+
+label {
+    margin: 10px;
+}

@@ -1,8 +1,11 @@
 <?php
 
 function dispatch($url,$controllersPath,$baseUrl = null) {
+
     if($baseUrl){
+
         $url = substr($url,strlen($baseUrl));
+
 
     }
 

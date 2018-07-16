@@ -1849,3 +1849,13 @@ display: table-cell;
 .product-grid label, b {
 	margin-left: 3em;
 }
+.etalage li {
+	height: 100px;
+}
+
+.col-md-7, .single-top-in {
+position: initial;
+float: initial;
+width: 100%;
+
+}

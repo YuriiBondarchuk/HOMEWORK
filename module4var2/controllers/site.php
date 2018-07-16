@@ -39,4 +39,16 @@ class Site
         Template::render('product', ['cat' => $menu->cat,'tovar'=>self::$data->tov_all,'pagin'=>self::$data->pagin]);
     }
 
+    public function methodSingle()
+    {
+        $menu = new SiteModel();
+        $menu->modelMain();
+        self::$data = new SingleListModel();
+        self::$data->tovDesc();
+
+        Template::render('single', ['cat' => $menu->cat,'tovar'=>self::$data->tovar]);
+    }
+
+
+
 }

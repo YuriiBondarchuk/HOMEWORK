@@ -15,7 +15,7 @@ class SingleListModel extends Models
         $tov_id = $_GET['tov_num'];
 
         $sql = "SELECT   tovar.title AS t_title, category.title AS cat_title, subcategory.title AS sub_title,
-                         tovar.content, tovar.old_price,  tovar.new_price
+                         tovar.content, tovar.old_price,  tovar.new_price, tovar.id AS tov_id
                  FROM tovar_subcategory
                  JOIN tovar 
                  ON tovar.id = '{$tov_id}' AND  tovar_subcategory.tovar_id ='{$tov_id}'

@@ -29,8 +29,8 @@ class Session
         }
     }
 
-//    function destroy ()
-//    {
-//        session_destroy();
-//    }
+    function destroy ()
+    {
+        session_destroy();
+    }
 }

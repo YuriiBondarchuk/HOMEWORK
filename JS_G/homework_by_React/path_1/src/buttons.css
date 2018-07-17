@@ -1,0 +1,33 @@
+.btn {
+  width: auto;
+  height: auto;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+  color: #000;
+  margin: 5px;
+  border-radius: 0.5em;
+  border: 1px solid;
+  background-color: #fff;
+}
+.success {
+  background-color: #3cb371;
+  color: #fff;
+}
+.primary {
+  background-color: #1e90ff;
+  color: #fff;
+}
+.info {
+  background-color: #48d1cc;
+  color: #fff;
+}
+.warning {
+  background-color: #f4a460;
+  color: #fff;
+}
+.danger {
+  background-color: #cd5c5c;
+  color: #fff;
+}

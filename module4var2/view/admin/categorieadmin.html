@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<? require_once '/../template/head.html' ?>
+<body>
+<div id="wrapper">
+    <div id="content">
+        <div class="c1">
+            <div class="controls">
+                <nav class="links">
+                    <ul>
+                        <li>Categories AMOUNT ---> <span class="num"><?= count($variables['cat']) ?></span></a></li>
+
+                    </ul>
+                </nav>
+
+            </div>
+
+        </div>
+
+        <label class="form-control" for="categorie">Select category</label>
+        <select class="form-control" id="categorie" onchange="window.location.href=this.options[this.selectedIndex].value">
+            <?foreach ($variables['cat'] as $key):?>
+            <option value="categoryEdit?id=<?=$key['id']?>"><?=$key['title']?></option>
+            <?endforeach;?>
+        </select>
+
+    </div>
+</div>
+
+</div>
+</body>
+</html>

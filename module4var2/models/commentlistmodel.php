@@ -25,7 +25,7 @@ class commentlistmodel extends models
     public function recomend($id)
     {
 
-        $sql = "SELECT COUNT(*) AS recom FROM comments WHERE comments.recomend = '1' ";
+        $sql = "SELECT COUNT(id) AS recom FROM comments WHERE comments.tovar_id = '{$id}' AND comments.recomend = 1 ";
 
 
 

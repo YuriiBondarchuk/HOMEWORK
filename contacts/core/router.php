@@ -2,14 +2,17 @@
 function dispatch($url,$controllersPath,$baseUrl = null) {
     if($baseUrl){
         $url = substr($url,strlen($baseUrl));
+        var_dump($url);
     }
 
        $getParamsStart = stripos($url, '?');
     if ($getParamsStart !== false) {
         $url = substr($url, 0, $getParamsStart);
+
     }
 
     $part = explode('/',trim($url,'/'));
+//    var_dump($part);
 //    $part = isGuest() ? prepareGuestParts($part) : prepareUserParts($part);
 
 

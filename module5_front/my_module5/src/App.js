@@ -82,7 +82,7 @@ class App extends Component {
 
     categoryClick = () => {
         var category = `${this.refNav.refSelect.value}`
-        this.setState({category: `${category}`, zapros: [], pagestart: 1})
+        this.setState({category: `${category}`, zapros: [], pagestart: 1, pageend:true})
         this.myZapros();
 
 

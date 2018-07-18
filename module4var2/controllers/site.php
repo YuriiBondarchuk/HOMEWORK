@@ -13,6 +13,8 @@ class Site
 
     public static $data;
     public static $stock;
+    public static $comment;
+
 
     public function methodMain()
 
@@ -38,5 +40,24 @@ class Site
 
         Template::render('product', ['cat' => $menu->cat,'tovar'=>self::$data->tov_all,'pagin'=>self::$data->pagin]);
     }
+
+    public function methodSingle()
+    {
+        $menu = new SiteModel();
+        $menu->modelMain();
+        self::$data = new SingleListModel();
+        self::$data->tovDesc();
+        self::$comment = new commentlistmodel();
+        self::$comment->recomend(self::$data->tovar[0]['tov_id']);
+        self::$comment->no_recomend(self::$data->tovar[0]['tov_id']);
+
+
+
+        Template::render('single', ['cat' => $menu->cat,'tovar'=>self::$data->tovar,
+            'comment'=> self::$comment->allcomment(self::$data->tovar[0]['tov_id']),'recom'=>self::$comment->recomend,'no_recom'=>self::$comment->no_recomend]);
+    }
+
+
+
 
 }

@@ -25,5 +25,5 @@ function redirect ($url, $status = 301){
  // var_dump($url);
 
 header ("Location: {$url}", $status);
-    exit;
+//    exit;
 }

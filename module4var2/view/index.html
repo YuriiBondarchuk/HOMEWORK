@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 
@@ -25,7 +26,7 @@
     <? foreach ($variables['cat'] as $key => $value): ?>
 
         <div class="col-md-4 content-grid">
-            <h3><a href="category?cat=<?= $value['title'] ?>"><?= $value['title'] ?></a></h3>
+            <h3><a href="product?category=<?= $value['title'] ?>"><?= $value['title'] ?></a></h3>
             <? foreach ($variables['stock'][$key] as $value2): ?>
 
 

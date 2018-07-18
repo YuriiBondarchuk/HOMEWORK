@@ -16,6 +16,7 @@ class ProductListmodel extends Models
         $category = $_GET['category'];
         $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
         $start = $page==1 ? 0 : (($page-1)*3 );
+
         $sql = "SELECT tovar.title AS 't_title', tovar.short_description,tovar.id,
                        tovar.old_price, subcategory.title AS 'sub_title', category.title AS 'cat_title' 
                     FROM tovar

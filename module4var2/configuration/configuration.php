@@ -11,6 +11,8 @@ config::set('user', 'YMB');
 config::set('password', 'YMB');
 config::set('database', 'yuriibondarchukvar2');
 
+config::set('salt', '1q2w3e4rt5y6u7');
+
 
 
 

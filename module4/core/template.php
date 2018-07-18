@@ -1,6 +1,5 @@
 <?php
 
-
 function render ($template,array $variables=[]) {
 
     $viewsPath = config('viewsPath');

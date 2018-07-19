@@ -7,8 +7,8 @@ config::set('img',"/module4var2/view/src/img");
 config::set('src',"/module4var2/view/src");
 
 config::set('host', 'localhost');
-config::set('user', 'YMB');
-config::set('password', 'YMB');
+config::set('user', 'Yurii18');
+config::set('password', 'Yurii18');
 config::set('database', 'yuriibondarchukvar2');
 
 config::set('salt', '1q2w3e4rt5y6u7');

@@ -1,0 +1,81 @@
+
+<!DOCTYPE html>
+<? require_once '/../template/head.html' ?>
+<body>
+<div id="wrapper">
+    <div id="content">
+        <div class="c1">
+            <div class="controls">
+                <nav class="links">
+                    <ul>
+                        <li>Tovar <span class="num"><?= $variables['tovar'][0]['title'] ?></span></a></li>
+
+                    </ul>
+                </nav>
+
+            </div>
+
+        </div>
+        <form class="form-horizontal" role="form" action="UpdateTovar" method="post">
+            <? foreach ($variables['tovar'] as $key): ?>
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-2 control-label">id</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" name="id" id="inputEmail3" placeholder="id"
+                               value="<?= $key['id'] ?>" readonly>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputPassword3" class="col-sm-2 control-label">Name_tovar</label>
+                    <div class="col-sm-10">
+                        <input type="text" name="title" class="form-control" id="inputPassword3" placeholder="Password"
+                               value="<?= $key['title'] ?>">
+                    </div>
+                    <div class="form-group">
+                        <label for="inputPassword3" class="col-sm-2 control-label">short_description</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="short_description" class="form-control" id="inputPassword3" placeholder="Password"
+                                   value="<?= $key['short_description'] ?>">
+                        </div>
+                        <div class="form-group">
+                            <label for="inputPassword3" class="col-sm-2 control-label">Old_price</label>
+                            <div class="col-sm-10">
+                                <input type="text" name="old_price" class="form-control" id="inputPassword3" placeholder="Password"
+                                       value="<?= $key['old_price'] ?>">
+                            </div>
+                            <div class="form-group">
+                                <label for="inputPassword3" class="col-sm-2 control-label">new_price</label>
+                                <div class="col-sm-10">
+                                    <input type="text" name="old_price" class="form-control" id="inputPassword3" placeholder="Password"
+                                           value="<?= $key['new_price'] ?>">
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputPassword3" class="col-sm-2 control-label">Category_id</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" name="category_id" class="form-control" id="inputPassword3" placeholder="Password"
+                                               value="<?= $key['category_id'] ?>">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="inputPassword3" class="col-sm-2 control-label">content</label>
+                                        <div class="col-sm-10">
+                                            <textarea name="content" id="" cols="200" rows="10" ><?= $key['content']?></textarea>
+
+                                        </div>
+
+
+                </div>
+            <? endforeach; ?>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button type="submit" class="btn btn-default">SEND</button>
+                </div>
+            </div>
+        </form>
+
+
+    </div>
+</div>
+
+</div>
+</body>
+</html>

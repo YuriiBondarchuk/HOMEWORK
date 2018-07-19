@@ -11,6 +11,8 @@
             <ul class="header-in">
                 <li><a href="account"> Hello, <?=Session::get('name')?> </a></li>
 
+
+
             </ul>
             <?else:?>
             <ul class="header-in">
@@ -36,6 +38,9 @@
                 </form>
 
             </div>
+                <form action="UserExit">
+                    <button type="submit" class="btn btn-danger">EXIT</button>
+                </form>
         </div>
         <!-- search-scripts -->
         <script src="<?= helper::toUrl('js/classie.js') ?>"></script>
@@ -55,7 +60,7 @@
                 <? foreach ($variables['cat'] as $key): ?>
                     <li><a href="../site/product?category=<?= $key['title'] ?>"><?= $key['title'] ?></a></li>
                 <? endforeach; ?>
-                <li><a href="product.html">More <i> </i></a>
+                <li><a href="#">More <i> </i></a>
                     <ul>
                         <li><a href="<?=config::get('baseUrl')?>/users/account">Account</a></li>
                         <li><a href="<?=config::get('baseUrl')?>/users/newusers">Register</a></li>

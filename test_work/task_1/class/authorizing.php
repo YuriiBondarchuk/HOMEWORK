@@ -16,6 +16,7 @@ class authorizing
 
     public function zaprosUser()
     {
+
         self::$screen = new DB('localhost', 'YMB', 'YMB', 'library');
 
         if (isset($_POST['email']) && isset($_POST['password'])) {
@@ -24,7 +25,7 @@ class authorizing
 
             $password = self::$screen->escape($_POST['password']);
 
-            $sql = "SELECT `name`,  lenguage_default FROM `users` WHERE email='{$email}' AND password ='{$password}'";
+            $sql = "SELECT `name`,  language_default FROM `users` WHERE email='{$email}' AND password ='{$password}'";
             array_push(self::$data, self::$screen->query($sql));
             return self::$data;
         } else return null;
@@ -45,17 +46,18 @@ class authorizing
 
 
     }
-    public function zaprosLibraryAuthor($language,$book)
+
+    public function zaprosLibraryAuthor($language, $book)
     {
 
         if ($language == 'ukr') $language_author = self::$screen->escape('name_ukr');
         else $language_author = self::$screen->escape('name_en');
 
         $sql = "SELECT author.$language_author FROM author
-JOIN book ON book.$language_author= '{$book}'
-JOIN book_author ON author_id=author.id AND book_author.book_id=book.id";
+            JOIN book ON book.$language_author= '{$book}'
+            JOIN book_author ON author_id=author.id AND book_author.book_id=book.id";
 //var_dump($sql);die;
-              $author = self::$screen->query($sql);
+        $author = self::$screen->query($sql);
         return $author;
 
 
@@ -65,26 +67,22 @@ JOIN book_author ON author_id=author.id AND book_author.book_id=book.id";
 $user_varif = new authorizing();
 
 $user = $user_varif->zaprosUser()[0][0];
-//var_dump(self::$data);die;
-$arr=array();
+
+$arr = array();
 
 if (!empty($user)) {
     $entrance = new Session();
     $entrance->set('name', $user['name']);
 
-    $zapros_book = $user_varif->zaprosLibraryBook($user['lenguage_default']);
-    $zapros_author=array();
-foreach ($zapros_book[1] as $key){
-    $zapros_author[$key['name_book']]=$user_varif->zaprosLibraryAuthor($user['lenguage_default'],$key['name_book']);
+    $zapros_book = $user_varif->zaprosLibraryBook($user['language_default']);
+    $zapros_author = array();
+    foreach ($zapros_book[1] as $key) {
+        $zapros_author[$key['name_book']] = $user_varif->zaprosLibraryAuthor($user['language_default'], $key['name_book']);
 
 
+    }
 
-}
 
-    var_dump($zapros_author);
-//    var_dump($zapros_author);die;
-//
-//    var_dump($zapros[1]);die;
     require_once '../../library_list.php';
 }
 

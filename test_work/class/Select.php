@@ -7,7 +7,7 @@
  */
 require_once 'authorizing.php';
 
-
+//Клас для обработки запроса от скрипта script.js
 
 class Select {
     public static $data;
@@ -22,7 +22,7 @@ class Select {
 Select::$data = new authorizing();
 
 
-
+Select::$data->zaprosDefaultLanguageUpdate(Select::selectLanguage());
 
 
 
@@ -35,7 +35,8 @@ Select::$data = new authorizing();
 
     }
 
-echo json_encode(array_map(function($x) { return $x; }, $zapros_author));;
+
+echo json_encode($zapros_author);;
 
 
 

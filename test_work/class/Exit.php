@@ -6,7 +6,7 @@
  * Time: 23:20
  */
 require_once 'Session.php';
-
+//Клас для выхода из сессии
 class Exit_site
 {
     protected $SignOut;
@@ -17,7 +17,7 @@ class Exit_site
         $SignOut->destroy();
         }
 
-        header( 'Location: ../../index.php', true, 307 );
+        header( 'Location: ../index.php', true, 307 );
 
     }
 }

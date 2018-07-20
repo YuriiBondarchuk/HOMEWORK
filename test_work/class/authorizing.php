@@ -1,10 +1,5 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Zver
- * Date: 19.07.2018
- * Time: 14:28
- */
+
 require_once 'DB.php';
 require_once 'Session.php';
 
@@ -14,9 +9,12 @@ class authorizing
     public static $screen = array();
     public static $data = array();
 
+// Метод для  проверки пароля пользователя в базе и редиректа на главную в случае отсутсвие или на страницу
+// library_list.php в случае успеха
+
     public function zaprosUser()
     {
-
+//Подключение к базе данных
         self::$screen = new DB('localhost', 'YMB', 'YMB', 'library');
 
         if (isset($_POST['email']) && isset($_POST['password'])) {
@@ -26,13 +24,19 @@ class authorizing
             $password = self::$screen->escape($_POST['password']);
 
             $sql = "SELECT `name`,  language_default FROM `users` WHERE email='{$email}' AND password ='{$password}'";
+
             array_push(self::$data, self::$screen->query($sql));
-            return self::$data;
-        } else return null;
+            if (!empty(self::$data[0]))
+               return self::$data;
+            else
+                return header('Location: ../index.php', true, 307);
+
+        } else null;
 
 
     }
 
+//Вытащить все книги из базы
     public function zaprosLibraryBook($language)
     {
 
@@ -47,6 +51,7 @@ class authorizing
 
     }
 
+//Вытащить всех авторов к каждой книге
     public function zaprosLibraryAuthor($language, $book)
     {
 
@@ -56,9 +61,23 @@ class authorizing
         $sql = "SELECT author.$language_author FROM author
             JOIN book ON book.$language_author= '{$book}'
             JOIN book_author ON author_id=author.id AND book_author.book_id=book.id";
-//var_dump($sql);die;
+
         $author = self::$screen->query($sql);
         return $author;
+
+
+    }
+
+// Установка в базе языка для пользователя по его выбору
+    public function zaprosDefaultLanguageUpdate($language)
+    {
+
+        $language_default = self::$screen->escape($language);
+
+
+        $sql = "UPDATE users SET language_default = '{$language_default}'";
+
+        self::$screen->query($sql);
 
 
     }
@@ -83,7 +102,7 @@ if (!empty($user)) {
     }
 
 
-    require_once '../../library_list.php';
+    require_once '../library_list.php';
 }
 
 

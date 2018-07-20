@@ -1,4 +1,5 @@
-<?=var_dump($_POST,$_REQUEST)?><!doctype html>
+<? //=var_dump($_POST,$_REQUEST)?>
+<!doctype html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -17,29 +18,41 @@
     <title>Library</title>
 </head>
 <body>
-
+<? if (isset($_SESSION['name'])): ?>
+    <h3>Hello, <i><?= $_SESSION['name'] ?></i></h3>
+<? endif; ?>
+<br>
+<br>
 <h2>List of books</h2>
+
+<!--Выход из сессии-->
+
 <form action="Exit.php" method="post">
     <button type="submit" name="exit" class="btn btn-warning">Sign Out</button>
 </form>
-<form class="form-group" >
+<!--END-->
+<!--Выбор языка для отображения-->
+<form class="form-group">
     <label for="select">Select language</label>
-    <select class="form-control" id="select" >
-        <option selected value="ukr" >Ukraine</option>
+    <select class="form-control" id="select">
+        <option selected value="ukr">Ukraine</option>
         <option value="en">English</option>
 
     </select>
     <button type="button" name="send" onclick="send_zapros()" class="btn btn-warning">Select</button>
 </form>
+<!--END-->
 <br><br>
 <br>
-
-<table class="table table-hover">
+<!--Главная таблица с книгами и авторами-->
+<table class="table table-hover" id="table_id">
     <tr>
         <td><b>Name books</b></td>
         <td><b>Author</b></td>
     </tr>
-    <? foreach ($zapros_author  as $key => $value): ?>
+    <? foreach ($zapros_author
+
+    as $key => $value): ?>
     <tr>
 
         <td><?= $key ?></td>
@@ -57,6 +70,7 @@
     </tr>
 
 </table>
+<!--END-->
 
 </body>
 </html>

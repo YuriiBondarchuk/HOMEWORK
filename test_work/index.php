@@ -19,16 +19,15 @@
 
 <div class="container">
 
-    <!--    Проверяем существует ли глобальная переменная $_SESSION['name']-->
 
-    <!--    Выводим форму ели не существует-->
+    <!--    Выводим форму для аторизации-->
 
 
     <? if (!isset($_SESSION['name'])): ?>
-        <h1>Доступ до бібліотеки мають тільки авторизовані корситувачі</h1>
+        <h1>Доступ до бібліотеки мають тільки авторизовані користувачі</h1>
         <h3>Будь-ласка зареєструйтесь</h3>
 
-        <form method="post" action="task_1/class/authorizing.php">
+        <form method="post" action="class/authorizing.php">
             <div class="form-group row">
                 <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
                 <div class="col-sm-10">
@@ -51,11 +50,7 @@
             </div>
         </form>
 
-        <!--    Выводим приветствие если вход выполнен -->
 
-    <? elseif(isset($_SESSION['name'])): ?>
-        <h3>Hello <?= $_SESSION['name'] ?></h3>
-    <?require_once 'library_list.php'?>
     <? endif; ?>
 </div>
 

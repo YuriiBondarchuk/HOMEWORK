@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+<!--head-->
+
+<? require_once "/template/head.html" ?>
+
+<!---->
+
+<body>
+<!--header-->
+<? require_once "/template/header.html" ?>
+<!---->
+<div class="container">
+    <div class="single">
+        <div class="col-md-9 top-in-single">
+            <? foreach ($variables['tovar'] as $key): ?>
+                <div class="col-md-5 single-top">
+                    <ul id="etalage" class="etalage" style="display: block; width: 302px; height: 537px;">
+                        <li class="etalage_thumb thumb_1" style="display: none; background-image: none; opacity: 0;">
+                            <a href="optionallink.html">
+                                <img class="etalage_thumb_image img-responsive"
+                                     src="<?= helper::toUrl('img/') . '/' . $key['cat_title'] . '/' . $key['sub_title']
+                                     . '/' . $key['t_title'] . '/' . rand(1, 4) . '.jpg' ?>"
+                                     style="display: inline; width: 300px; height: 400px; opacity: 1;">
+                                <img class="etalage_source_image img-responsive"
+                                     src="<?= helper::toUrl('img/') . '/' . $key['cat_title'] . '/' . $key['sub_title']
+                                     . '/' . $key['t_title'] . '/' . rand(1, 4) . '.jpg' ?>">
+                            </a>
+                        </li>
+                        <li class="etalage_thumb thumb_2" style="background-image: none; display: none; opacity: 0;">
+                            <img class="etalage_thumb_image img-responsive"
+                                 src="<?= helper::toUrl('img/') . '/' . $key['cat_title'] . '/' . $key['sub_title']
+                                 . '/' . $key['t_title'] . '/' . rand(1, 4) . '.jpg' ?>"
+                                 style="display: inline; width: 300px; height: 400px; opacity: 1;">
+                            <img class="etalage_source_image img-responsive"
+                                 src="<?= helper::toUrl('img/') . '/' . $key['cat_title'] . '/' . $key['sub_title']
+                                 . '/' . $key['t_title'] . '/' . rand(1, 4) . '.jpg' ?>">
+                        </li>
+                        <li class="etalage_thumb thumb_3" style="background-image: none; display: none; opacity: 0;">
+                            <img class="etalage_thumb_image img-responsive"
+                                 src="<?= helper::toUrl('img/') . '/' . $key['cat_title'] . '/' . $key['sub_title']
+                                 . '/' . $key['t_title'] . '/' . rand(1, 4) . '.jpg' ?>"
+                                 style="display: inline; width: 300px; height: 400px; opacity: 1;">
+                            <img class="etalage_source_image img-responsive"
+                                 src="<?= helper::toUrl('img/') . '/' . $key['cat_title'] . '/' . $key['sub_title']
+                                 . '/' . $key['t_title'] . '/' . rand(1, 4) . '.jpg' ?>">
+                        </li>
+                        <li class="etalage_thumb thumb_4 etalage_thumb_active"
+                            style="background-image: none; display: list-item; opacity: 1;">
+                            <img class="etalage_thumb_image img-responsive"
+                                 src="<?= helper::toUrl('img/') . '/' . $key['cat_title'] . '/' . $key['sub_title']
+                                 . '/' . $key['t_title'] . '/' . rand(1, 4) . '.jpg' ?>"
+                                 style="display: inline; width: 300px; height: 400px; opacity: 1;">
+                            <img class="etalage_source_image img-responsive"
+                                 src="<?= helper::toUrl('img/') . '/' . $key['cat_title'] . '/' . $key['sub_title']
+                                 . '/' . $key['t_title'] . '/' . rand(1, 4) . '.jpg' ?>">
+                        </li>
+
+
+                        <li class="etalage_zoom_area"
+                            style="margin: 0px; left: 312px; display: none; background-image: none; opacity: 0;">
+                            <div class="etalage_description"
+                                 style="width: 560px; bottom: 0px; left: 0px; opacity: 0.7; display: none;"></div>
+                            <div style="width: 600px; height: 537px;"><img class="etalage_zoom_img"
+                                                                           src="<?= helper::toUrl('img/') . '/' . $key['cat_title'] . '/' . $key['sub_title']
+                                                                           . '/' . $key['t_title'] . '/' . rand(1, 4) . '.jpg' ?>"
+                                                                           style="width: 900px; height: 1200px; left: -39.455px; top: -344.551px;">
+                            </div>
+                        </li>
+                        <li class="etalage_small_thumbs" style="width: 302px; top: 412px;">
+                            <ul style="width: 724px;">
+                                <li class="etalage_smallthumb_navtoend"
+                                    style="margin: 0px 10px 0px 0px; opacity: 0.4; left: -216px;"><img
+                                            class="etalage_small_thumb"
+                                            src="<?= helper::toUrl('img/') . '/' . $key['cat_title'] . '/' . $key['sub_title']
+                                            . '/' . $key['t_title'] . '/' . rand(1, 4) . '.jpg' ?>" width="92"
+                                            style="width: 92px; height: 123px;"></li>
+
+                                <li class="etalage_smallthumb_navtostart etalage_smallthumb_last"
+                                    style="margin: 0px 10px 0px 0px; opacity: 0.4; left: -216px;"><img
+                                            class="etalage_small_thumb"
+                                            src="<?= helper::toUrl('img/') . '/' . $key['cat_title'] . '/' . $key['sub_title']
+                                            . '/' . $key['t_title'] . '/' . rand(1, 4) . '.jpg' ?>" width="92"
+                                            style="width: 92px; height: 123px;"></li>
+                            </ul>
+                        </li>
+                    </ul>
+
+
+                </div>
+
+
+                <div class="col-md-7 single-top-in">
+                    <div class="single-para">
+                        <h3><?= $key['t_title'] ?></h3>
+                        <p><?= $key['content'] ?></p>
+
+
+                        <div class="star">
+                            <ul>
+                                <? for ($i = 0; $i <= 4; $i++): ?>
+                                    <li><i> </i></li>
+                                <? endfor; ?>
+
+                            </ul>
+                            <div class="review">
+                                <a href=""> 3 reviews </a> /
+                                <? if (!Session::get('name')): ?>
+                                    <a href="#"> Leave a comment you need to register</a>
+                                <? endif; ?>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+
+                        <label class="add-to">$
+                            <? if ($key['new_price'] < $key['old_price'] && $key['new_price'] != 0): ?>
+                                <?= $key['new_price'] ?> <u><b>STOCK</b></u>
+
+                            <? else: ?>
+                                <?= $key['old_price'] ?>
+                            <? endif; ?>
+
+                        </label>
+
+
+                        <a href="#" class="cart ">to buy</a>
+
+<!--                        form -add comment -->
+                        <?if(Session::get('name')):?>
+                        <form role="form" method="post" action="../comment/addcomment" class="form-inline">
+                            <div class="form-group">
+                                <label for="name"> Your name</label>
+                                <input type="text" class="form-control" id="name" name="author"
+                                       placeholder="Введите имя">
+                            </div>
+
+
+                            <input type="date" class="form-control" name="date" id="date" placeholder="">
+
+
+                            <div class="form-group">
+                                <label for="text">Comments</label>
+                                <textarea name="comment" id="text" cols="30" rows="10"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-success">comment on</button>
+                            <label for="recomend">
+                                I recommend
+                                <select name="recomend" id="recomend" class="form-control">
+                                    <option value="0">No</option>
+                                    <option value="1">Yes</option>
+                                </select>
+                            </label>
+
+                            <input type="text" hidden name="tovar_id" id="date" value="<?= $_GET['tov_num'] ?>"
+                                   placeholder="">
+                        </form>
+<?endif;?>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+            <? endforeach; ?>
+            <div class="clearfix"></div>
+        </div>
+
+
+    </div>
+
+    <div class="">
+
+    </div>
+
+    <div class="clearfix"></div>
+    <br>
+    <br>
+    <hr>
+
+    <div class="container">
+        <div class="comments">
+            <h3 class="title-comments">Комментарии ( <?=count($variables['comment'])?> )</h3>
+            <?foreach ($variables['comment'] as $key ) : ?>
+            <ul class="media-list">
+                <!-- Комментарий (уровень 1) -->
+                <li class="media">
+
+                    <div class="media-body">
+                        <div class="media-heading">
+                            <div class="author"><?=$key['author']?></div>
+                            <div class="metadata">
+                                <span class="date"><?=$key['date']?></span>
+                            </div>
+                        </div>
+                        <div class="media-text text-justify">
+                            <?=$key['comment']?>
+                        </div>
+                        <div class="footer-comment">
+                        <span class="vote plus" title="Нравится">
+                            <i class="fa fa-thumbs-up"></i>
+                        </span>
+                            <span class="rating">
+                            + <?=$variables['recom'][0]['recom']?> (recommend)
+                            </span>
+                            <span class="vote minus" title="Не нравится">/
+                            <i class="fa fa-thumbs-down"> -  <?=$variables['no_recom'][0]['no_recom']?> (not recommend)
+                               </i>
+                        </span>
+                            <span class="devide">
+
+                        </span>
+                            <span class="comment-reply">
+
+                        </span>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+                <?endforeach;?>
+        </div>
+
+        <!---->
+        <!--footer-->
+        <hr>
+
+        <? require_once "/template/footer.html" ?>
+
+</body>
+</html>

@@ -1,0 +1,50 @@
+
+<!DOCTYPE html>
+<html>
+<!--head-->
+
+<? require_once "/template/head.html" ?>
+
+<!---->
+<body> 
+<!--header-->
+<? require_once "/template/header.html" ?>
+
+	<!---->	
+<div class="container">
+		<div class="register">
+		<h2>REGISTER</h2>		
+		<div class=" register-top">
+			<form method="post" action="../users/register">
+				<div> 	
+				<span>First Name</span>
+				<input type="text" name="name">
+			</div>
+			<div> 	
+				<span>Last Name</span>
+				<input type="text" name="last_name">
+			</div>
+			<div> 	
+				<span>Email</span>
+				<input type="text" name="email">
+			</div>
+			<div> 
+				<span >Password</span>
+				<input type="password" name="password">
+			</div>				
+				<input type="submit" value="Submit">
+                <?if(!empty($variables['message'])):?>
+                <div class="alert alert-info">
+                    <strong>Info!</strong> <?=$variables['message']?>
+                </div>
+                <?endif;?>
+			</form>
+		</div>		
+	</div>
+	</div>
+
+	<!---->
+<!--footer-->
+<? require_once "/template/footer.html" ?>
+</body>
+</html>

@@ -57,13 +57,14 @@
         <div class="h_menu4"><!-- start h_menu4 -->
             <a class="toggleMenu" href="#">Menu</a>
             <ul class="nav">
-                <? foreach ($variables['cat'] as $key): ?>
-                    <li><a href="../site/product?category=<?= $key['title'] ?>"><?= $key['title'] ?></a></li>
+                <? foreach ($variables['nav'] as $key): ?>
+
+                    <li><a href="../site/product?category=<?= $key['title_ukr'] ?>"><?= $key['title_ukr'] ?></a></li>
                 <? endforeach; ?>
-                <li><a href="#">More <i> </i></a>
+                <li><a href="#">Більше <i> </i></a>
                     <ul>
-                        <li><a href="<?=config::get('baseUrl')?>/users/account">Account</a></li>
-                        <li><a href="<?=config::get('baseUrl')?>/users/newusers">Register</a></li>
+                        <li><a href="<?=config::get('baseUrl')?>/users/account">Мій кабінет</a></li>
+                        <li><a href="<?=config::get('baseUrl')?>/users/newusers">Зареєструватись</a></li>
                     </ul>
                 </li>
             </ul>

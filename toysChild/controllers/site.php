@@ -21,12 +21,13 @@ class Site
     {
         self::$data = new SiteModel();
 
-        self::$data->modelMain();
+        self::$data->modelCat();
+        self::$data->modelNav();
         self::$data->modelStock();
         self::$data->modelRandom();
         self::$data->modelRandomslider();
 
-        Template::render('index', ['cat' => self::$data->cat,
+        Template::render('index', ['nav' => self::$data->nav,'cat' => self::$data->cat,
             'stock' => self::$data->stock, 'random' => self::$data->random, 'randomslider' => self::$data->randomslider]);
     }
 

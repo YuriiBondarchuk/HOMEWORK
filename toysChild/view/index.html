@@ -1,10 +1,10 @@
-<?=var_dump($variables['cat'])?>
 <!DOCTYPE html>
 <html>
 
 <!--head-->
 
 <? require_once "template/head.html" ?>
+
 
 <!---->
 
@@ -25,21 +25,22 @@
 
     <? foreach ($variables['cat'] as $key => $value): ?>
 
+
         <div class="col-md-4 content-grid">
             <h3><a href="product?category=<?= $value['title_en'] ?>"><?= $value['title_ukr'] ?></a></h3>
             <? foreach ($variables['stock'][$key] as $value2): ?>
+                <?
+                $ext = pathinfo(scandir(__DIR__ . '/' . 'src' . '/img_tovar_shop' . '/' . $value['title_en'] . '/' . $value2['subcat_title_en']
+                    . '/' . $value2['article'] . '/')[2])['extension'];
+                ?>
+
                 <div class="product-go">
 
                     <img class="img-responsive fashion"
                          src="<?= helper::toUrl('img_tovar_shop/') . '/' . $value['title_en'] . '/' . $value2['subcat_title_en']
-                         . '/' . $value2['article'] . '/' . '1.jpg'; ?>" alt="1">
-                    <img class="img-responsive fashion"
-                         src="<?= helper::toUrl('img_tovar_shop/') . '/' . $value['title_en'] . '/' . $value2['subcat_title_en']
-                         . '/' . $value2['article'] . '/' . '1.jpeg'; ?>" alt>
-                    <!--                    <img class="img-responsive fashion"-->
-                    <!--                         src="-->
-                    <? //= helper::toUrl('img_tovar_shop/') . '/' . $value['title_en'] . '/' . $value2['subcat_title_en']
-                    //                         . '/' . $value2['article'] . '/' .  '1.png';?><!--" alt="">-->
+                         . '/' . $value2['article'] . '/' . '1.' . $ext; ?>" alt="">
+
+
                     <div class="grid-product">
                         <p><b><?= $value2['t_title'] ?></b></p><br>
                         <p><i style="color: red">Stock</i></p>
@@ -52,18 +53,18 @@
             <? endforeach; ?>
 
             <? foreach ($variables['random'][$key] as $value3): ?>
+                <?
+                $ext = pathinfo(scandir(__DIR__ . '/' . 'src' . '/img_tovar_shop' . '/' . $value['title_en'] . '/' . $value3['sub_title_en']
+                    . '/' . $value3['article'] . '/')[2])['extension'];
 
+                ?>
 
                 <div class="product-go">
                     <img class="img-responsive fashion"
-                         src="<?= helper::toUrl('img_tovar_shop/') . '/' . $value['title_en'] . '/' . $value3['sub_title_en']
-                         . '/' . $value3['article'] . '/' . '1.jpg' ?>" >
-                    <img class="img-responsive fashion"
-                         src="<?= helper::toUrl('img_tovar_shop/') . '/' . $value['title_en'] . '/' . $value3['sub_title_en']
-                         . '/' . $value3['article'] . '/' . '1.jpeg' ?>" >
-                    <img class="img-responsive fashion"
-                         src="<?= helper::toUrl('img_tovar_shop/') . '/' . $value['title_en'] . '/' . $value3['sub_title_en']
-                         . '/' . $value3['article'] . '/' . '1.png' ?>" >
+                         src="<?=
+                         helper::toUrl('img_tovar_shop/') . '/' . $value['title_en'] . '/' . $value3['sub_title_en']
+                         . '/' . $value3['article'] . '/' . '1.' . $ext ?>" alt="">
+
                     <div class="grid-product">
                         <p><b><?= $value3['t_title'] ?></b></p><br>
 
@@ -103,18 +104,21 @@
 
     <!-- start content_slider -->
     <div class="line1">
-        <?= var_dump ?>
+
     </div>
     <div id="example1">
         <div id="owl-demo" class="owl-carousel text-center">
             <? foreach ($variables['randomslider'] as $key): ?>
                 <? foreach ($key as $key2): ?>
-
+                    <?
+                    $ext = pathinfo(scandir(__DIR__ . '/' . 'src' . '/img_tovar_shop' . '/' . $key2['cat_title_en'] . '/' . $key2['subcat_title_en']
+                        . '/' . $key2['article'] . '/')[2])['extension'];
+                    ?>
                     <div class="item">
 
                         <img class="img-responsive "
                              src="<?= helper::toUrl('img_tovar_shop/') . '/' . $key2['cat_title_en'] . '/' . $key2['subcat_title_en']
-                             . '/' . $key2['article'] . '/' . '1.jpg' ?>" alt="">
+                             . '/' . $key2['article'] . '/' . '1.' . $ext ?>" alt="">
 
                         <div class="run">
                             <p><b><?= $key2['t_title'] ?></b></p><br>

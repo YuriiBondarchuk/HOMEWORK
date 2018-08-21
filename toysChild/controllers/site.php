@@ -27,25 +27,26 @@ class Site
         self::$data->modelRandom();
         self::$data->modelRandomslider();
 
-        Template::render('index', ['nav' => self::$data->nav,'cat' => self::$data->cat,
+        Template::render('index', ['nav' => self::$data->nav, 'cat' => self::$data->cat,
             'stock' => self::$data->stock, 'random' => self::$data->random, 'randomslider' => self::$data->randomslider]);
     }
 
     public function methodProduct()
     {
         $menu = new SiteModel();
-        $menu->modelMain();
+        $menu->modelNav();
         self::$data = new ProductListmodel();
         self::$data->tovarList();
         self::$data->tovarListPagin();
+        self::$data->categoryName();
 
-        Template::render('product', ['cat' => $menu->cat, 'tovar' => self::$data->tov_all, 'pagin' => self::$data->pagin]);
+        Template::render('product', ['category'=>self::$data->category,'cat' => $menu->nav, 'tovar' => self::$data->tov_all, 'pagin' => self::$data->pagin]);
     }
 
     public function methodSingle()
     {
         $menu = new SiteModel();
-        $menu->modelMain();
+        $menu->modelNav();
         self::$data = new SingleListModel();
         self::$data->tovDesc();
         self::$comment = new commentlistmodel();

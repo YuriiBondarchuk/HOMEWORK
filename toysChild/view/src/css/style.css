@@ -1,9 +1,10 @@
 
 body{
-	background:#e6e6e6;
+	background:white;
 	font-family: 'Open Sans', sans-serif;
 }
 body a{
+
 	transition: 0.5s all;
 	-webkit-transition: 0.5s all;
 	-o-transition: 0.5s all;
@@ -24,7 +25,7 @@ h1,h2,h3,h4,h5,h6,label,p{
 	display:block;
 }
 .logo{
-	background:#000;
+
 	width:15%;
 	margin:0 auto;
 	float: left;
@@ -44,7 +45,7 @@ h1,h2,h3,h4,h5,h6,label,p{
 .header-top{
 	float:left;
 	width:85%;
-	background:#2f2f2f;
+
 }
 .header-in {
 	float: left;
@@ -53,6 +54,7 @@ h1,h2,h3,h4,h5,h6,label,p{
 	padding: 1em 5em 0 0;
 }
 .online{
+
 	float:left;
 	background:#000;
 	width: 10%;
@@ -81,7 +83,7 @@ h1,h2,h3,h4,h5,h6,label,p{
 	  cursor: pointer;
 }
 .header-bottom {
-	background: #4f4f4f;
+
 	padding: 1em;	
 	margin: 0em 0 0;
 }
@@ -216,7 +218,7 @@ select.in-drop {
 .nav:before,
 .nav:after {
     content: " "; 
-    display: table; 
+    display: table;
 }
 .nav:after {
     clear: both;
@@ -224,14 +226,14 @@ select.in-drop {
 .nav ul {
     list-style: none;
 	width: 18em;
-	
+
 	z-index:888;
 }
 .nav li a {
 	display: block;
 	padding: 4px 15px;
-	color: #fff;
-	font-size: 1.2em;
+	color: cornflowerblue;
+	font-size: 1.5em;
 	-webkit-transition: all 0.3s ease-out;
 	-moz-transition: all 0.3s ease-out;
 	-ms-transition: all 0.3s ease-out;
@@ -314,10 +316,11 @@ select.in-drop {
 /***** Media Quries *****/
 @media screen and (max-width: 768px) {
 .header {
-  background: #4F4F4F;
+	background: white;
 }
 	.h_logo4{
 		text-align:center;
+
 		float: none;
 		margin: 4% 0;
 	}
@@ -366,7 +369,7 @@ select.in-drop {
 }
 /*----*/
 .banner {
-	background: url(../images/banner.jpg) no-repeat center;
+	background: url(../images/banner.png) no-repeat center;
 	width: 100%;
 	min-height: 600px;
 	display: block;

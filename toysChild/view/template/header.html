@@ -1,9 +1,7 @@
-<div class="line">
 
-</div>
 <div class="header">
     <div class="logo">
-        <a href="main"><img src="<?= helper::toUrl('images/logo.png') ?>" alt=""></a>
+        <a href="main"><img src="<?= helper::toUrl('images/logo1.png') ?>" alt=""></a>
     </div>
     <div class="header-top">
         <div class="header-grid">
@@ -57,9 +55,10 @@
         <div class="h_menu4"><!-- start h_menu4 -->
             <a class="toggleMenu" href="#">Menu</a>
             <ul class="nav">
-                <? foreach ($variables['nav'] as $key): ?>
 
-                    <li><a href="../site/product?category=<?= $key['title_ukr'] ?>"><?= $key['title_ukr'] ?></a></li>
+                <? foreach ($variables['cat'] as $key): ?>
+
+                    <li><a href="../site/product?category=<?= $key['title_en'] ?>"><?= $key['title_ukr'] ?></a></li>
                 <? endforeach; ?>
                 <li><a href="#">Більше <i> </i></a>
                     <ul>
@@ -77,5 +76,8 @@
 
 <div class="clearfix"></div>
 
+
+</div>
+<div class="line">
 
 </div>

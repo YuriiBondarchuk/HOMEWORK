@@ -1,5 +1,5 @@
 <?php
-$str = 'Doorrss KKannggg';
+$str = 'Doorrs Kangarroo';
 
 function strposm($str)
 {
@@ -45,7 +45,7 @@ function strposm($str)
         }
     }
 
-    $result = array_unique(array_merge($temp_arr[0], $temp_arr[1]));
+    $result = array_unique(array_intersect($temp_arr[0], $temp_arr[1]));
     $result;
     $general = [];
 
@@ -62,13 +62,23 @@ function strposm($str)
         }
 
     }
+//   $general = array_unique(array_intersect($temp_arr[0],$temp_arr[1]));
+
 
     echo 'longest common part :';
     echo "</br>";
-    foreach (array_unique($general) as $value) {
-        echo "$value ";
-        echo "</br>";
+    if (!empty($general)) {
+        foreach (array_unique($general) as $value) {
+            echo "$value ";
+            echo "</br>";
+        }
+    } else {
+        echo '</br> ';
+        echo '<b>';
+        echo ' No matches found!';
+        echo '</b>';
     }
+
 }
 
 strposm($str);

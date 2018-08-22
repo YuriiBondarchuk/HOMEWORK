@@ -25,7 +25,7 @@ function strposm($str)
         }
 
     }
-    var_dump($temp_char2);
+//    var_dump($temp_char2);
     $temp_arr = [];
 
     foreach ($temp_char2[0] as $item => $value) {
@@ -46,18 +46,30 @@ function strposm($str)
     }
 
     $result = array_unique(array_merge($temp_arr[0], $temp_arr[1]));
-    var_dump($result);
+    $result;
+    var_dump(array_values($result));
     $general = [];
     $i=0;
+
     foreach ($result as $item => $value) {
-        $general[$i]=$value;
 
-        if (strlen($value)>=strlen($result[$item+1] )){
-          $general[$i] = $value;
-          $i++;
+       $general[count($general)]=$value;
+       var_dump($general[count($general)-1]);
 
+       var_dump(strlen($value));
+        var_dump(strlen($value)>strlen($general[count($general)-1]));
+        if (strlen($value)>strlen($general[count($general)-1])){
+          $general=[];
+          $general[]=$value;
 
+            echo 'yu nun</br>';
             }
+
+        if (strlen($value)==strlen($general[count($general)-1])){
+           array_push($general,$value);
+
+
+        }
 
     }
     var_dump($general);

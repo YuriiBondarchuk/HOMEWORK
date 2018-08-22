@@ -19,7 +19,7 @@ h1,h2,h3,h4,h5,h6,label,p{
 	margin:0;	
 }
 .line{
-	background:#d2232a;
+	background:#c63;
 	width:100%;
 	height:10px;
 	display:block;
@@ -102,11 +102,11 @@ select.in-drop {
 .sb-search {
 	position: absolute;
 	right:11%;
-	width: 0%;
+	width: 235px;
 	min-width:42px;
 	margin-top: 0;
 	top:10px;
-	height:40px;
+	height:26px;
 	float: right;
 	overflow: hidden;
 	-webkit-transition: width 0.3s;
@@ -232,7 +232,7 @@ select.in-drop {
 .nav li a {
 	display: block;
 	padding: 4px 15px;
-	color: cornflowerblue;
+	color: #b45588;
 	font-size: 1.5em;
 	-webkit-transition: all 0.3s ease-out;
 	-moz-transition: all 0.3s ease-out;
@@ -304,14 +304,14 @@ select.in-drop {
 	padding: 10px 20px;
 }
 .nav li li a:hover{
-	color:#d2232a;
+	color:#9f0;
 }
 .nav > li >  ul {
     position: absolute;
     left: -9999px;
     padding: 0;
     z-index: 9999;
-    background:#4f4f4f;
+    background:#bcc;
 }
 /***** Media Quries *****/
 @media screen and (max-width: 768px) {
@@ -371,10 +371,10 @@ select.in-drop {
 .banner {
 	background: url(../images/banner.png) no-repeat center;
 	width: 100%;
-	min-height: 600px;
+	min-height: 500px;
 	display: block;
 	padding: 12em 0 0;
-	  background-size: cover;
+	  background-size: contain;
 }
 .banner-matter h1{
 	background:rgba(0, 0, 0, 0.57);
@@ -406,7 +406,7 @@ select.in-drop {
 	background:#0087d5;
 }
 .line1,.line2 {
-  background: #d2232a;
+  background: #c63;
   width: 100%;
   height: 5px;
   display: block;
@@ -1825,6 +1825,7 @@ a.create {
 }
 .header-grid {
 	margin-bottom: 20px;
+	min-height: 150px;
 }
 .content .col-md-4 {
 display: table-cell;
@@ -1836,7 +1837,7 @@ display: table-cell;
 	width: 100%;
 }
 .item {
-	border: 1px solid red;
+	border: 1px solid #c63;
 }
 
 .navig {
@@ -1877,8 +1878,9 @@ width: 100%;
 
 }
 div.sb-search {
-	position: relative;
-	width: 245px;
+	position: absolute;
+	width: 235px;
+	height: 26px;
 }
 
 div.search-control select.active {
@@ -1890,7 +1892,9 @@ div.search-control  select:focus{
 
 }
 .header-in {
-	width: 20%;
+	width: 100%;
+	margin: auto 0;
+	margin-top: 6em;
 }
 .focus {
 	position: fixed;
@@ -1946,4 +1950,12 @@ select .focus-none {
 	padding-bottom: .25rem;
 	border-bottom: 1px solid rgba(34, 36, 38, .15);
 }
-
+div.owl-item {
+	width: 400px;
+}
+button.search-delete {
+	position: fixed;
+	top: 105px;
+	display: block;
+	right: 190px;
+}

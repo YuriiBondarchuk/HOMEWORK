@@ -85,7 +85,8 @@ position:relative;
 .owl-theme .owl-buttons{
 	position: absolute;
 	top: 0;
-	background: #000;
+	bottom: 0;
+	background: #4ff9f9;
 	left: 0;
 	min-height: 100%;
 	width: 61px;
@@ -97,7 +98,7 @@ position:relative;
 	zoom: 1;
 	*display: inline;/*IE7 life-saver */
 	width: 13px;
-	height: 27px;
+	height: 23px;
 	background: url("../images/img-sprite.png") no-repeat;
 	text-indent:-1000px;
 	transition: all 0.3s ease;
@@ -141,7 +142,7 @@ background: #fff;
 }
 @media(max-width:1440px){
 .owl-prev {
-  margin: 11em auto 0;
+  margin: 10.5em auto 0;
 }
 }
 @media(max-width:1280px){

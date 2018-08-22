@@ -82,7 +82,7 @@ class SiteModel extends Models
                     JOIN tovar_subcategory ON tovar.id = tovar_subcategory.tovar_id   AND subcategory.id = tovar_subcategory.subcategory_id 
                 
                     JOIN category ON tovar.category_id = category.id 
-                    WHERE new_price < old_price AND new_price != 0 ORDER BY RAND() LIMIT 6";
+                    WHERE new_price < old_price AND new_price != 0 ORDER BY RAND() LIMIT 10";
 
         array_push($this->randomslider, $this->db->query($sql));
 

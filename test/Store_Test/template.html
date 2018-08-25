@@ -19,12 +19,13 @@
     <!-- Custom styles for this template -->
     <link href="./src/style/jumbotron.css" rel="stylesheet">
     <link href="./src/style/my_style.css" rel="stylesheet">
-
+    <!-- my script.js -->
+    <script type="text/javascript" src="./src/script/script.js"> </script>
 </head>
 
 <body>
-<?session_start();?>
-<?=var_dump($_SESSION)?>
+
+
 <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
     <div class="container">
         <div class="navbar-header">
@@ -34,38 +35,57 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="http://bootstrap-3.ru/examples/jumbotron/?#">Store</a>
+            <a class="navbar-brand" href="./index.php">Store</a>
         </div>
-        <div class="navbar-collapse collapse">
-            <form class="navbar-form navbar-right" role="form" method="post" action="./Models/Authorizing.php">
-                <div class="form-group">
-                    <input type="text" placeholder="Name" name="login" class="form-control">
-                </div>
-                <div class="form-group">
-                    <input type="password" placeholder="Password" name="password" class="form-control">
-                </div>
-                <button type="submit" class="btn btn-success">Sign in</button>
-            </form>
-        </div><!--/.navbar-collapse -->
+        <? if (!isset($_SESSION['user'])): ?>
+            <div class="navbar-collapse collapse">
+                <form class="navbar-form navbar-right" role="form" method="post" action="./Models/Authorizing.php">
+                    <div class="form-group">
+                        <input type="text" placeholder="Name" name="login" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <input type="password" placeholder="Password" name="password" class="form-control">
+                    </div>
+                    <button type="submit" class="btn btn-success">Sign in</button>
+                </form>
+            </div>
+        <? endif; ?>
+        <!--/.navbar-collapse -->
+
         <!-- Basket -->
         <div>
-            <img class="basket" src="./src/icons/basket.png" alt="">
+            <? if (isset($_SESSION['user'])): ?>
+                <form action="./Models/Session.php" method="post" style="display: inline">
+                    <input type="submit" name="exit" value="exit" class="btn btn-warning">
+                </form>
+
+            <? endif; ?>
+            <img class="basket" id ="basket" src="./src/icons/basket.png" alt="">
             <p class="commodity">commodity: <span>0</span></p>
+
         </div>
     </div>
 </div>
 
 <!-- Main jumbotron for a primary marketing message or call to action -->
 <div class="jumbotron">
-    <div class="container">
-        <h1>Hello, my friend!</h1>
-        <p>Before you start using the site, please log in</p>
+    <? if (!isset($_SESSION['user'])): ?>
 
-        <h1>Ok! <? ?></h1>
-        <p>Now you can start please</p>
+    <div class="container">
+        <? if (!isset($_SESSION['message'])): ?>
+            <h1>Hello, my friend!</h1>
+            <p>Before you start using the site, please log in</p>
+        <? else: ?>
+            <p><b style="color: red"><?= $_SESSION['message'] ?></b></p>
+        <? endif; ?>
+        <? else: ?>
+            <h1>Ok! <?= $_SESSION['user']['name'] ?></h1>
+            <p>Now you can start please</p>
+        <? endif; ?>
 
     </div>
 </div>
+
 
 <div class="container">
     <!-- Example row of columns -->
@@ -86,12 +106,14 @@
                 <input type="hidden" name="current_rating" value="<?= $value['rating'] ?>">
                 <input type="hidden" name="name_commodity" value="<?= $value['name'] ?>">
                 </br>
-                <input type="submit" class="btn btn-primary rating"  value="estimate"/>
+                <input type="submit" class="btn btn-primary rating" value="estimate"/>
             </form>
             </br>
 
-            <button class="btn btn-primary">Add to cart</button>
+            <button class="btn btn-primary cart" onclick="addBasket(event)">Add to cart</button>
+
         </div>
+
         </br>
     <? endforeach; ?>
 

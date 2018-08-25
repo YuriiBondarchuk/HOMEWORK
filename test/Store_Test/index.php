@@ -1,12 +1,15 @@
 <?php
-//session_start();
+session_start();
 require_once './Models/autoload.php';
-$connect = new DB('localhost', 'root','','store_test');
 
-$sql =new QueryDB();
 
-var_dump($_REQUEST);
+$connect = new DB('localhost', 'root', '', 'store_test');
+
+$sql = new QueryDB();
+
 $data = $connect->query($sql->getData());
 
-
 require_once './template.html';
+
+
+

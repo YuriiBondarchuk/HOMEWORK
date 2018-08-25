@@ -1,48 +1,58 @@
 <?php
-
-
 require_once './autoload.php';
 
+session_start();
 
 class Authorizing extends DB
 {
     private $user;
+    private $userverification;
 
     public function __construct()
     {
-        $this->user = ['login' => $_POST['login'], 'password' => $_POST['password']];
-
         parent::__construct();
+        $this->setUser($_POST);
+
     }
 
-    public function userVerifacation()
+    /**
+     * @param mixed $user
+     */
+    public function setUser($user)
     {
-//        $sql = "SELECT `name`, `money` FROM `user` WHERE `login` = '{$this->user['login']}' AND `password` = '{$this->user['password']}'";
-//
-//        $data = $this->query($sql);
-//        Session::ura();
-//        if (!empty($data[0])) {
-//            Session::set('user', $data[0]['name'], $data[0]['money']);
-//            header('Location: ../index.php?result=false');
-//
-//
-//
-//        } else {
-//            $_POST['message'] = 'not a valid username or password';
-//            header('Location: ../index.php?result=false');
-//        }
-
-        $_REQUEST['name']='ura';
-        var_dump($_REQUEST);
-      require_once '../index.php';
-
-
+        $this->user = ['login' => $user['login'], 'password' => $user['password']];
     }
 
+    /**
+     * @return mixed
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    public function userVerification()
+    {
+        $sql = "SELECT `name`,`money` FROM `users`
+                WHERE `login` = '{$this->user['login']}'
+                AND `password` = '{$this->user['password']}'";
+
+        $this->userverification = $this->query($sql)[0];
+
+        if (!empty($this->userverification)) {
+            Session::set('user', $this->userverification['name'], $this->userverification['money']);
+            unset($_SESSION['message']);
+            header('Location: ../index.php');
+
+        } else {
+            $_SESSION['message'] = "user or password are invalid";
+            Session::delete('user');
+            header('Location: ../index.php');
+        }
+    }
 }
 
-$authorizing = new Authorizing();
-$authorizing->userVerifacation();
-
+$user = new Authorizing();
+$user->userVerification();
 
 

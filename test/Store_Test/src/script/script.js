@@ -28,7 +28,7 @@ var basket = {
 function addBasket(event) {
     var price_product = event.path[1].children[1].children[0].innerText;
     var name_product = event.path[1].children[0].innerText;
-    console.log(name_product);
+
     basket.all_products++;
     basket.balance -= price_product;
 
@@ -39,7 +39,7 @@ function addBasket(event) {
 
         if (name_product === value) {
             basket.by_name[value].number++;
-            basket.by_name[value].sum +=+price_product;
+            basket.by_name[value].sum += +price_product;
         }
     }
 
@@ -51,7 +51,13 @@ function addBasket(event) {
         basket.total_sum += +price_product;
         money_status.innerText = basket.balance.toFixed(2);
     }
-console.log (basket.by_name)
+    price_amount.innerText = basket.total_sum.toFixed(2) + ' $';
+    apple_amount.innerText = basket.by_name.Apple.number;
+    beer_amount.innerText = basket.by_name.Beer.number;
+    water_amount.innerText = basket.by_name.Water.number;
+    cheese_amount.innerText = basket.by_name.Cheese.number;
+    console.log(basket.by_name)
+    console.log(basket.total_sum);
 }
 
 
@@ -62,3 +68,38 @@ $(function () {
         $("#myModal2").modal('show');
     });
 });
+$(function () {
+    $("#delivery").click(function () {
+
+        if ($("#UPS")[0].checked) {
+            var delivery = {
+                name: 'UPS',
+                price: 5
+            }
+            basket.balance -= delivery.price;
+            money_status.innerText = basket.balance.toFixed(2);
+            console.log(delivery.name);
+            $("#myModal2").modal('hide');
+            return;
+        }
+
+        if ($("#Pick_up")[0].checked) {
+            var delivery = {
+                name: 'Pick_ap',
+                price: 0
+            }
+            basket.balance -= delivery.price;
+            money_status.innerText = basket.balance.toFixed(2);
+            console.log(delivery.name)
+            $("#myModal2").modal('hide');
+            return;
+        }
+        if ($("#Pick_up")[0] && $("#Pick_up")[0]) {
+            alert('Choose delivery method');
+
+        }
+    });
+
+
+});
+

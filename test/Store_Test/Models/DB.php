@@ -11,7 +11,7 @@
 
     protected $conection;
 
-        public function __construct($host='localhost', $user='root', $password='',$database='store_test')
+        public function __construct($host='localhost', $user='yurii', $password='Yurii_task8',$database='yurii_bondarchuk')
         {
                 $this->conection = new mysqli($host, $user, $password,$database);
 

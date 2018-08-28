@@ -1,7 +1,7 @@
 var basket = {
     all_products: 0,
     total_sum: 0,
-    balance: 100,
+    balance: +money_status.innerText,
     by_name: {
         Apple: {
             number: 0,
@@ -26,9 +26,20 @@ var basket = {
 
 
 function addBasket(event) {
-    var price_product = event.path[1].children[1].children[0].innerText;
-    var name_product = event.path[1].children[0].innerText;
 
+
+    if (event.path[0].dataset.basket == 'one_basket') {
+        var price_product = event.path[1].children[1].children[0].innerText;
+        var name_product = event.path[1].children[0].innerText;
+
+    }
+    else {
+        var price_product = event.path[2].children[2].innerText.substring(0, event.path[2].children[2].innerText.indexOf('$'));
+
+        var name_product = event.path[0].dataset.basket;
+
+    }
+    console.log(name_product)
     basket.all_products++;
     basket.balance -= price_product;
 
@@ -110,9 +121,52 @@ $(function () {
 // Request to update money in the database
 
 $(function () {
-    $('#btn_exit').click(function () {
+    $('.btn_make_order').click(function () {
+        var user_name = $('#session_user_name')[0].innerText;
 
-       $.post('./src/script/upgrademoneydb.php');
+        $.post('./src/script/upgrademoneydb.php', {money: basket.balance, user: user_name});
+
+
     });
 });
 
+
+function delBasket(event) {
+
+
+    var price_product = event.path[2].children[2].innerText.substring(0, event.path[2].children[2].innerText.indexOf('$'));
+
+    var name_product = event.path[0].dataset.basket;
+
+    if (basket.by_name[name_product].number != 0) {
+        basket.all_products--;
+        basket.balance += +price_product;
+
+        basket_status.innerText = basket.all_products;
+
+
+        for (var value in basket.by_name) {
+
+            if (name_product === value) {
+                basket.by_name[value].number--;
+                basket.by_name[value].sum -= +price_product;
+            }
+        }
+
+        if (basket.balance <= 0) {
+
+            return;
+        }
+        else {
+            basket.total_sum -= +price_product;
+            money_status.innerText = basket.balance.toFixed(2);
+        }
+        price_amount.innerText = basket.total_sum.toFixed(2) + ' $';
+        apple_amount.innerText = basket.by_name.Apple.number;
+        beer_amount.innerText = basket.by_name.Beer.number;
+        water_amount.innerText = basket.by_name.Water.number;
+        cheese_amount.innerText = basket.by_name.Cheese.number;
+    }
+
+
+}

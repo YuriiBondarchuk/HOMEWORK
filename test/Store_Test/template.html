@@ -26,7 +26,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
 
     <!-- my script.js -->
-    <script type="text/javascript" src="./src/script/script.js"></script>
+    <script type="text/javascript" src="./src/script/script.js" defer></script>
 
     <!-- Bootstrap JS-->
 
@@ -51,6 +51,7 @@
             </button>
             <a class="navbar-brand" href="./index.php">Store</a>
         </div>
+
         <? if (!isset($_SESSION['user'])): ?>
             <div class="navbar-collapse collapse">
                 <form class="navbar-form navbar-right" role="form" method="post" action="./Models/authorizing.php">
@@ -69,8 +70,8 @@
         <!-- Basket -->
         <div>
             <? if (isset($_SESSION['user'])): ?>
-                <form  method="post" style="display: inline">
-                    <input type="submit" name="exit" value="exit" id="btn_exit" class="btn btn-warning">
+                <form action="./Models/Session.php" method="post" style="display: inline">
+                    <input type="submit" name="exit" value="exit" class="btn btn-warning">
                 </form>
 
             <? endif; ?>
@@ -79,9 +80,11 @@
             <p class="commodity">commodity: <span id="basket_status">0</span></p>
 
         </div>
-        <div>
-            <h4><span><b>Your money: <i id="money_status">100 </i>$</b></span></h4>
-        </div>
+        <? if (isset($_SESSION['user'])): ?>
+            <div>
+                <h4><span><b>Your money: <i id="money_status"><?= $_SESSION['user']['money'] ?> </i>$</b></span></h4>
+            </div>
+        <? endif; ?>
     </div>
 </div>
 
@@ -97,7 +100,7 @@
             <p><b style="color: red"><?= $_SESSION['message'] ?></b></p>
         <? endif; ?>
         <? else: ?>
-            <h1>Ok! <?= $_SESSION['user']['name'] ?></h1>
+            <h1>Ok! <span id="session_user_name"><?= $_SESSION['user']['name'] ?></span></h1>
             <p>Now you can start please</p>
         <? endif; ?>
 
@@ -116,25 +119,25 @@
             <p>
             <h4> Average Rating: <b><?= $value['rating'] ?></b></h4>
             </p>
-            <?if ($_SESSION['user'] && !in_array($value['name'],$_SESSION['rating'])):?>
-            <form action="./Models/rating.php" method="post">
-                <? for ($i = 1; $i <= 5; $i++): ?>
-                    <label class="radio-inline">
-                        <input type="radio" name="rating" value="<?= $i ?>"> <?= $i ?>
-                    </label>
-                <? endfor; ?>
-                <input type="hidden" name="current_rating" value="<?= $value['rating'] ?>">
-                <input type="hidden" name="name_commodity" value="<?= $value['name'] ?>">
-                </br>
+            <? if ($_SESSION['user'] && !in_array($value['name'], $_SESSION['rating'])): ?>
+                <form action="./Models/rating.php" method="post">
+                    <? for ($i = 1; $i <= 5; $i++): ?>
+                        <label class="radio-inline">
+                            <input type="radio" name="rating" value="<?= $i ?>"> <?= $i ?>
+                        </label>
+                    <? endfor; ?>
+                    <input type="hidden" name="current_rating" value="<?= $value['rating'] ?>">
+                    <input type="hidden" name="name_commodity" value="<?= $value['name'] ?>">
+                    </br>
 
-                <input type="submit" class="btn btn-primary rating" value="estimate"/>
+                    <input type="submit" class="btn btn-primary rating" value="estimate"/>
 
-            </form>
-            <?endif;?>
+                </form>
+            <? endif; ?>
             </br>
-
-            <button class="btn btn-primary cart" onclick="addBasket(event)">Add to cart</button>
-
+            <? if ($_SESSION['user']): ?>
+                <button class="btn btn-primary cart" data-basket = "one_basket" onclick="addBasket(event)">Add to cart</button>
+            <? endif; ?>
         </div>
 
         </br>
@@ -176,24 +179,40 @@
                         <td>Apple</td>
                         <td>0.3 $</td>
                         <td id="apple_amount"></td>
+                        <td>
+                            <button class="btn-info" data-basket = "Apple" onclick="addBasket(event)">Add</button>
+                            <button class="btn-danger" data-basket = "Apple" onclick="delBasket(event)">Del</button>
+                        </td>
                     </tr>
                     <tr>
                         <th scope="row">2</th>
                         <td>Beer</td>
                         <td>2 $</td>
                         <td id="beer_amount"></td>
+                        <td>
+                            <button class="btn-info" data-basket = "Beer" onclick="addBasket(event)">Add</button>
+                            <button class="btn-danger" data-basket = "Beer" onclick="delBasket(event)">Del</button>
+                        </td>
                     </tr>
                     <tr>
                         <th scope="row">3</th>
                         <td>Water</td>
                         <td>1 $</td>
                         <td id="water_amount"></td>
+                        <td>
+                            <button class="btn-info" data-basket = "Water" onclick="addBasket(event)">Add</button>
+                            <button class="btn-danger" data-basket = "Water" onclick="delBasket(event)">Del</button>
+                        </td>
                     </tr>
                     <tr>
                         <th scope="row">4</th>
                         <td>Cheese</td>
                         <td>3.74 $</td>
                         <td id="cheese_amount"></td>
+                        <td>
+                            <button class="btn-info" data-basket = "Cheese" onclick="addBasket(event)">Add</button>
+                            <button class="btn-danger" data-basket = "Cheese" onclick="delBasket(event)">Del</button>
+                        </td>
                     </tr>
                     <tr>
                         <td colspan="3" align="left"> In all :</td>
@@ -215,7 +234,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal" id="close">Close</button>
-                <button type="button" class="btn btn-primary" id="delivery" >Make order</button>
+                <button type="button" class="btn btn-primary btn_make_order" id="delivery">Make order</button>
             </div>
         </div>
     </div>

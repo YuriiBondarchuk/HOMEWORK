@@ -5,7 +5,7 @@
  * Date: 28.08.2018
  * Time: 11:41
  */
-
+require_once '../../Models/DB.php';
 class upgrademoneydb extends DB
 {
     public $sql;
@@ -17,13 +17,12 @@ class upgrademoneydb extends DB
 
     public function requestCreate()
     {
-        $sql = "UPDATE `users` SET `money` = '{$_POST["money"]}' WHERE `name` = '{$_POST['user_name']}'";
+        $sql = "UPDATE `users` SET `money` = '{$_POST["money"]}' WHERE `name` = '{$_POST['user']}'";
         $this->sql = $sql;
     }
 
 
 }
 $upgrade = new upgrademoneydb();
-//$upgrade->query($this->sql);
-$name = 'ura';
-file_put_contents('test.txt',"$name");
+$upgrade->requestCreate();
+$upgrade->query($upgrade->sql);

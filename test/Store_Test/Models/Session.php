@@ -4,9 +4,13 @@ session_start();
 
 if (isset($_POST['exit'])) {
 
-    Session::delete('user');
-    unset($_POST['exit']);
-    header('Location: ../index.php');
+//    Session::delete('user');
+//
+//    unset($_POST['exit']);
+//
+//    Session::delete('rating');
+//
+//    header('Location: ../index.php');
 }
 
 class Session

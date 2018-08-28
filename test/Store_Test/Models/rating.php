@@ -1,5 +1,6 @@
 <?php
 require_once './DB.php';
+require_once './Session.php';
 
 class  SettingRating extends DB
 {
@@ -34,10 +35,14 @@ class  SettingRating extends DB
 }
 
 $rating = new SettingRating();
+//var_dump($this->data);die;
 
 $rating->findRating();
 
 $rating->query($rating->setRating());
+
+
+array_push($_SESSION['rating'],$_POST['name_commodity'] );
 
 header('Location: ../ ');
 

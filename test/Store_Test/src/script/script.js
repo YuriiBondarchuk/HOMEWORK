@@ -56,8 +56,8 @@ function addBasket(event) {
     beer_amount.innerText = basket.by_name.Beer.number;
     water_amount.innerText = basket.by_name.Water.number;
     cheese_amount.innerText = basket.by_name.Cheese.number;
-    console.log(basket.by_name)
-    console.log(basket.total_sum);
+
+
 }
 
 
@@ -80,6 +80,8 @@ $(function () {
             money_status.innerText = basket.balance.toFixed(2);
             console.log(delivery.name);
             $("#myModal2").modal('hide');
+            basket.all_products = 0;
+            basket_status.innerText = basket.all_products;
             return;
         }
 
@@ -90,8 +92,10 @@ $(function () {
             }
             basket.balance -= delivery.price;
             money_status.innerText = basket.balance.toFixed(2);
-            console.log(delivery.name)
+            // console.log(delivery.name)
             $("#myModal2").modal('hide');
+            basket.all_products = 0;
+            basket_status.innerText = basket.all_products;
             return;
         }
         if ($("#Pick_up")[0] && $("#Pick_up")[0]) {
@@ -101,5 +105,14 @@ $(function () {
     });
 
 
+});
+
+// Request to update money in the database
+
+$(function () {
+    $('#btn_exit').click(function () {
+
+       $.post('./src/script/upgrademoneydb.php');
+    });
 });
 

@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -68,8 +69,8 @@
         <!-- Basket -->
         <div>
             <? if (isset($_SESSION['user'])): ?>
-                <form action="./Models/session.php" method="post" style="display: inline">
-                    <input type="submit" name="exit" value="exit" class="btn btn-warning">
+                <form  method="post" style="display: inline">
+                    <input type="submit" name="exit" value="exit" id="btn_exit" class="btn btn-warning">
                 </form>
 
             <? endif; ?>
@@ -110,11 +111,12 @@
     <? foreach ($data as $value): ?>
         <div class="col-md-4">
             <h2><?= ucfirst($value['name']); ?></h2>
-            <h4>Price: <span> <?= $value['price'] ?> </span> <b>$</b></h4>
+            <h4>Price: <span> <?= $value['cost'] ?> </span> <b>$</b></h4>
             <img src="<?= './src/image/' . $value['name'] . '.jpg' ?>" alt=""/>
             <p>
             <h4> Average Rating: <b><?= $value['rating'] ?></b></h4>
             </p>
+            <?if ($_SESSION['user'] && !in_array($value['name'],$_SESSION['rating'])):?>
             <form action="./Models/rating.php" method="post">
                 <? for ($i = 1; $i <= 5; $i++): ?>
                     <label class="radio-inline">
@@ -124,8 +126,11 @@
                 <input type="hidden" name="current_rating" value="<?= $value['rating'] ?>">
                 <input type="hidden" name="name_commodity" value="<?= $value['name'] ?>">
                 </br>
+
                 <input type="submit" class="btn btn-primary rating" value="estimate"/>
+
             </form>
+            <?endif;?>
             </br>
 
             <button class="btn btn-primary cart" onclick="addBasket(event)">Add to cart</button>

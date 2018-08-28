@@ -42,6 +42,7 @@ class Authorizing extends DB
         if (!empty($this->userverification)) {
             Session::set('user', $this->userverification['name'], $this->userverification['money']);
             unset($_SESSION['message']);
+            $_SESSION['rating'] = array();
             header('Location: ../index.php');
 
         } else {

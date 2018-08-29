@@ -19,14 +19,6 @@
                 throw new Exception('Connected failed');
 
             }
-//    public function __construct($host='localhost', $user='root', $password='',$database='store_test')
-//    {
-//        $this->conection = new mysqli($host, $user, $password,$database);
-//
-//        if ( mysqli_connect_error()) {
-//            throw new Exception('Connected failed');
-//
-//        }
 
         }
         public function query ($sql,$name=null) {

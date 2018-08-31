@@ -24,6 +24,8 @@ var basket = {
 
 };
 
+var transportadd = 0;
+
 
 function addBasket(event) {
 
@@ -39,26 +41,28 @@ function addBasket(event) {
         var name_product = event.path[0].dataset.basket;
 
     }
-    console.log(name_product)
-    basket.all_products++;
-    basket.balance -= price_product;
 
-    basket_status.innerText = basket.all_products;
-
-
-    for (var value in basket.by_name) {
-
-        if (name_product === value) {
-            basket.by_name[value].number++;
-            basket.by_name[value].sum += +price_product;
-        }
-    }
-
-    if (basket.balance <= 0) {
+    if (basket.balance <= price_product) {
         alert('You ran out of money');
         return;
     }
     else {
+
+        basket.all_products++;
+        basket.balance -= price_product;
+
+        basket_status.innerText = basket.all_products;
+
+
+        for (var value in basket.by_name) {
+
+            if (name_product === value) {
+                basket.by_name[value].number++;
+                basket.by_name[value].sum += +price_product;
+            }
+        }
+
+
         basket.total_sum += +price_product;
         money_status.innerText = basket.balance.toFixed(2);
     }
@@ -68,7 +72,7 @@ function addBasket(event) {
     water_amount.innerText = basket.by_name.Water.number;
     cheese_amount.innerText = basket.by_name.Cheese.number;
 
-
+    console.log(basket.balance, basket.total_sum)
 }
 
 
@@ -77,6 +81,7 @@ function addBasket(event) {
 $(function () {
     $("#btn2").click(function () {
         $("#myModal2").modal('show');
+        window.transportadd = 0;
     });
 });
 $(function () {
@@ -124,7 +129,31 @@ $(function () {
     $('.btn_make_order').click(function () {
         var user_name = $('#session_user_name')[0].innerText;
 
-        $.post('./src/script/upgrademoneydb.php', {money: basket.balance, user: user_name});
+        if (UPS.checked != false && Pick_up.checked != false) {
+
+            for (var value in basket.by_name) {
+
+
+                basket.by_name[value].number = 0;
+                basket.by_name[value].sum = 0;
+
+            }
+
+            basket.total_sum = 0;
+
+            price_amount.innerText = basket.total_sum + ' $';
+            apple_amount.innerText = basket.by_name.Apple.number;
+            beer_amount.innerText = basket.by_name.Beer.number;
+            water_amount.innerText = basket.by_name.Water.number;
+            cheese_amount.innerText = basket.by_name.Cheese.number;
+
+
+            UPS.checked = false;
+            Pick_up.checked = false;
+
+
+            $.post('./src/script/upgrademoneydb.php', {money: basket.balance, user: user_name});
+        }
 
 
     });
@@ -168,5 +197,48 @@ function delBasket(event) {
         cheese_amount.innerText = basket.by_name.Cheese.number;
     }
 
+
+}
+
+var clickPickup = 0;
+var clickUPS = 0;
+
+function addUPS() {
+    if (basket.balance >= 5) {
+
+        if (clickUPS == 0) {
+            clickUPS = 1
+            transportadd = 1;
+            basket.total_sum += 5;
+            price_amount.innerText = basket.total_sum.toFixed(2) + ' $';
+
+            basket.balance -= 5;
+
+            money_status.innerText = basket.balance.toFixed(2) + ' $';
+
+        }
+        clickPickup = 0;
+    }
+    else {
+        alert('you do not have enough money. Remove something from the cart');
+        UPS.checked = false;
+    }
+
+
+}
+
+function delUPS() {
+    clickUPS = 0;
+
+    if (transportadd == 1 && clickPickup == 0) {
+        basket.total_sum -= 5;
+        price_amount.innerText = basket.total_sum.toFixed(2) + ' $';
+        transportadd == 0;
+        clickPickup = 1;
+
+        basket.balance += 5;
+
+        money_status.innerText = basket.balance.toFixed(2) + ' $';
+    }
 
 }

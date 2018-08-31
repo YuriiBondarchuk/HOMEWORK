@@ -11,22 +11,22 @@
 
     protected $conection;
 
-        public function __construct($host='localhost', $user='yurii', $password='Yurii_task8',$database='yurii_bondarchuk')
-        {
-                $this->conection = new mysqli($host, $user, $password,$database);
-
-            if ( mysqli_connect_error()) {
-                throw new Exception('Connected failed');
-
-            }
-//    public function __construct($host='localhost', $user='root', $password='',$database='store_test')
-//    {
-//        $this->conection = new mysqli($host, $user, $password,$database);
+//        public function __construct($host='localhost', $user='yurii', $password='Yurii_task8',$database='yurii_bondarchuk')
+//        {
+//                $this->conection = new mysqli($host, $user, $password,$database);
 //
-//        if ( mysqli_connect_error()) {
-//            throw new Exception('Connected failed');
+//            if ( mysqli_connect_error()) {
+//                throw new Exception('Connected failed');
 //
-//        }
+//            }
+    public function __construct($host='localhost', $user='root', $password='',$database='store_test')
+    {
+        $this->conection = new mysqli($host, $user, $password,$database);
+
+        if ( mysqli_connect_error()) {
+            throw new Exception('Connected failed');
+
+        }
 
         }
         public function query ($sql,$name=null) {

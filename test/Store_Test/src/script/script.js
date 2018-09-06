@@ -88,16 +88,19 @@ $(function () {
     $("#delivery").click(function () {
 
         if ($("#UPS")[0].checked) {
-            var delivery = {
-                name: 'UPS',
-                price: 5
-            }
-            basket.balance -= delivery.price;
-            money_status.innerText = basket.balance.toFixed(2);
-            console.log(delivery.name);
+            // var delivery = {
+            //     name: 'UPS',
+            //     price: 5
+            // }
+            // basket.balance -= delivery.price;
+            // money_status.innerText = basket.balance.toFixed(2);
+            // console.log(delivery.name);
             $("#myModal2").modal('hide');
             basket.all_products = 0;
             basket_status.innerText = basket.all_products;
+
+            upgradeMoneyDB ();
+
             return;
         }
 
@@ -112,6 +115,9 @@ $(function () {
             $("#myModal2").modal('hide');
             basket.all_products = 0;
             basket_status.innerText = basket.all_products;
+
+            upgradeMoneyDB ();
+
             return;
         }
         if ($("#Pick_up")[0] && $("#Pick_up")[0]) {
@@ -125,40 +131,37 @@ $(function () {
 
 // Request to update money in the database
 
-$(function () {
-    $('.btn_make_order').click(function () {
+
+
+function upgradeMoneyDB () {
+
         var user_name = $('#session_user_name')[0].innerText;
 
-        if (UPS.checked != false && Pick_up.checked != false) {
+        for (var value in basket.by_name) {
 
-            for (var value in basket.by_name) {
+            basket.by_name[value].number = 0;
+            basket.by_name[value].sum = 0;
 
-
-                basket.by_name[value].number = 0;
-                basket.by_name[value].sum = 0;
-
-            }
-
-            basket.total_sum = 0;
-
-            price_amount.innerText = basket.total_sum + ' $';
-            apple_amount.innerText = basket.by_name.Apple.number;
-            beer_amount.innerText = basket.by_name.Beer.number;
-            water_amount.innerText = basket.by_name.Water.number;
-            cheese_amount.innerText = basket.by_name.Cheese.number;
-
-
-            UPS.checked = false;
-            Pick_up.checked = false;
-
-
-            $.post('./src/script/upgrademoneydb.php', {money: basket.balance, user: user_name});
         }
 
+        basket.total_sum = 0;
 
-    });
-});
+        price_amount.innerText = basket.total_sum + ' $';
+        apple_amount.innerText = basket.by_name.Apple.number;
+        beer_amount.innerText = basket.by_name.Beer.number;
+        water_amount.innerText = basket.by_name.Water.number;
+        cheese_amount.innerText = basket.by_name.Cheese.number;
 
+
+        UPS.checked = false;
+        Pick_up.checked = false;
+
+
+        $.post('./src/script/upgrademoneydb.php', {money: basket.balance, user: user_name});
+
+
+
+    }
 
 function delBasket(event) {
 

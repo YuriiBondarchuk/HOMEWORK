@@ -1,0 +1,10 @@
+<?php
+$product = $block->getProduct();
+$text = $product->getData('promotion_text');
+$interval = $product->getData('promotion_interval');
+?>
+
+<span id="element-id" data-interval="<?=$interval?>000" style="display: none"></span>
+<div id="modal-content" data-mage-init='{"interval-modal": {"target": "#modal-content"}}'>
+    <?php echo $text; ?>
+</div>

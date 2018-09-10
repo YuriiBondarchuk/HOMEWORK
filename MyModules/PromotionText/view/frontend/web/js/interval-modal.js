@@ -1,47 +1,3 @@
-// define(['jquery', 'jquery/ui'],
-//     document.onreadystatechange = function(){
-//         if(document.readyState === 'complete'){
-//
-//
-//
-//
-//             setTimeout(console.log( 'Привет' ), 3000);
-//         }
-//     }
-//
-//
-// );
-
-
-
-
-
-
-
-
-
-
-
-
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 define([
         "jquery", "Magento_Ui/js/modal/modal"
@@ -50,9 +6,11 @@ define([
             initModal: function(config, element) {
 
                 var $target = $(config.target);
-                var interval = $('#element-id').data('interval');
+                var interval = $('#element-id').data('interval')*1000;
+
                 $target.modal();
                 setInterval(function() {
+                    console.log(interval)
                     $target.modal('openModal')
                 }, interval);
 

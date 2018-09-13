@@ -1,8 +1,8 @@
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:View/Layout:etc/page_configuration.xsd">
     <body>
         <referenceContainer name="content">
-            <block class="Magento\Catalog\Block\Product\View\Attributes"
-                   template="MyModules_PromotionText::interval-modal.phtml" />
+            <block class="MyModules\PromotionText\Block\Promotion"
+                   template="MyModules_PromotionText::interval-modal.phtml" ></block>
         </referenceContainer>
     </body>
 </page>

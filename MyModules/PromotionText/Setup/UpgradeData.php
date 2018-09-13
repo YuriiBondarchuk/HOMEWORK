@@ -46,7 +46,7 @@ class UpgradeData implements UpgradeDataInterface
      */
     public function upgrade(ModuleDataSetupInterface $setup, ModuleContextInterface $context)
     {
-        if (version_compare($context->getVersion(), '0.0.5', '<=')) {
+        if (version_compare($context->getVersion(), '1.0.0', '<=')) {
             $setup->startSetup();
             /** @var EavSetup $eavSetup */
             $eavSetup = $this->eavSetupFactory->create(['setup' => $setup]);
@@ -60,10 +60,8 @@ class UpgradeData implements UpgradeDataInterface
                     'type' => 'varchar',
 
                     'label' => 'Promotion_text',
-                    'input' => 'text',
+                    'input' => 'select',
                     'class' => '',
-
-                    'global' => \Magento\Catalog\Model\ResourceModel\Eav\Attribute::SCOPE_GLOBAL,
                     'visible' => false,
                     'required' => false,
                     'user_defined' => true,

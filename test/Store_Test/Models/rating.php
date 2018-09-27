@@ -17,32 +17,41 @@ class  SettingRating extends DB
     /**
      * @param mixed $rating
      */
-    public function setRating()
+    public function addNewRating()
     {
-        $sql = "UPDATE commodity SET rating = {$this->rating} WHERE name = '{$this->data['name_commodity']}'";
+        $sql = "INSERT INTO `rating_commodity`(`commodity_name`, `rating`) VALUES ('{$this->data['name_commodity']}','{$this->data['rating']}')";
 
-        return $sql;
+        SettingRating::query($sql);
+
 
     }
 
-    public function findRating()
+    public function countNewAvarageRating()
     {
-        $new_rating = ((int)$this->data['current_rating'] + (int)$this->data['rating']) / 2;
+        $count = SettingRating::query("SELECT COUNT(*) FROM rating_commodity WHERE commodity_name = '{$this->data['name_commodity']}'")[0]['COUNT(*)'];
+        $sum = SettingRating::query("SELECT SUM(rating) FROM rating_commodity WHERE commodity_name = '{$this->data['name_commodity']}'")[0]['SUM(rating)'];
 
-        $this->rating = $new_rating;
+        $this->rating = round (floatval($sum)/(int) $count,1);
     }
+
+    public function upgradeRatingDB()
+    {
+        $sql = "UPDATE `commodity` SET `rating` = '{$this->rating}' WHERE `name` = '{$this->data['name_commodity']}'";
+        SettingRating::query($sql);
+    }
+
 
 }
 
 $rating = new SettingRating();
-//var_dump($this->data);die;
-
-$rating->findRating();
-
-$rating->query($rating->setRating());
 
 
-array_push($_SESSION['rating'],$_POST['name_commodity'] );
+$rating->addNewRating();
+$rating->countNewAvarageRating();
+$rating->upgradeRatingDB();
+
+
+array_push($_SESSION['rating'], $_POST['name_commodity']);
 
 header('Location: ../ ');
 

@@ -124,40 +124,40 @@ $(function () {
 });
 
 // Request to update money in the database
-
-$(function () {
-    $('.btn_make_order').click(function () {
-        var user_name = $('#session_user_name')[0].innerText;
-
-        if (UPS.checked != false && Pick_up.checked != false) {
-
-            for (var value in basket.by_name) {
-
-
-                basket.by_name[value].number = 0;
-                basket.by_name[value].sum = 0;
-
-            }
-
-            basket.total_sum = 0;
-
-            price_amount.innerText = basket.total_sum + ' $';
-            apple_amount.innerText = basket.by_name.Apple.number;
-            beer_amount.innerText = basket.by_name.Beer.number;
-            water_amount.innerText = basket.by_name.Water.number;
-            cheese_amount.innerText = basket.by_name.Cheese.number;
-
-
-            UPS.checked = false;
-            Pick_up.checked = false;
-
-
-            $.post('./src/script/upgrademoneydb.php', {money: basket.balance, user: user_name});
-        }
-
-
-    });
-});
+//
+// $(function () {
+//     $('.btn_make_order').click(function () {
+//         var user_name = $('#session_user_name')[0].innerText;
+//
+//         if (UPS.checked != false && Pick_up.checked != false) {
+//
+//             for (var value in basket.by_name) {
+//
+//
+//                 basket.by_name[value].number = 0;
+//                 basket.by_name[value].sum = 0;
+//
+//             }
+//
+//             basket.total_sum = 0;
+//
+//             price_amount.innerText = basket.total_sum + ' $';
+//             apple_amount.innerText = basket.by_name.Apple.number;
+//             beer_amount.innerText = basket.by_name.Beer.number;
+//             water_amount.innerText = basket.by_name.Water.number;
+//             cheese_amount.innerText = basket.by_name.Cheese.number;
+//
+//
+//             UPS.checked = false;
+//             Pick_up.checked = false;
+//
+//
+//             $.post('./src/script/upgrademoneydb.php', {money: basket.balance, user: user_name});
+//         }
+//
+//
+//     });
+// });
 
 
 function delBasket(event) {
